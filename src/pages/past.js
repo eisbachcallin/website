@@ -77,7 +77,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/past/" } } 
-      sort: { fields: [frontmatter___date], order: ASC }) {
+      sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       nodes {
         excerpt
