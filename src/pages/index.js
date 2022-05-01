@@ -9,6 +9,7 @@ import GatsbyImg from "gatsby-image"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const totalcount = data.allMarkdownRemark.totalCount
 
 
   if (posts.length === 0) {
@@ -28,7 +29,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol style={{ listStyle: `none` }}>
+      <ol style={{ listStyle: `none` , columns: totalcount}}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -75,6 +76,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: ASC }) {
+      totalCount
       nodes {
         excerpt
         fields {
