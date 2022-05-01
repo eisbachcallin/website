@@ -6,7 +6,7 @@ module.exports = {
       summary: `who lives and works in San Francisco building useful things.`,
     },
     description: `TODO Eisbach Callin description`,
-    siteUrl: `https:/eisbachcallin.com/`,
+    siteUrl: `https://eisbachcallin.github.io/`,
     social: {
       twitter: `eisbachcallin`,
     },
@@ -19,6 +19,14 @@ module.exports = {
           name:'past',
           link:'/past'
       },
+      {
+        name:'about',
+        link:'/about'
+      },
+      {
+        name:'contact',
+        link:'/contact'
+      },
     ]
   },
   plugins: [
@@ -27,7 +35,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/upcoming`,
-        name: `blog`,
+        name: `upcoming`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/past`,
+        name: `past`,
       },
     },
     {

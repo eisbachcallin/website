@@ -5,7 +5,6 @@ import { Link } from "gatsby"
 const Header = ({ siteTitle, menuLinks }) => (
   <header
     style={{
-      background: `#000000`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -20,7 +19,6 @@ const Header = ({ siteTitle, menuLinks }) => (
         <Link
           to="/"
           style={{
-            color: `white`,
             textDecoration: `none`,
           }}
         >
@@ -38,7 +36,7 @@ const Header = ({ siteTitle, menuLinks }) => (
                     padding: `1rem`,
                   }}
                 >
-                  <Link style={{ color: `white` }} to={link.link}>
+                  <Link to={link.link}>
                     {link.name}
                   </Link>
                 </li>
