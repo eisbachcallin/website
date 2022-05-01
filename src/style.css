@@ -244,10 +244,17 @@ a:focus {
 
 /* Custom classes */
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
   padding: var(--spacing-10) var(--spacing-5);
+  list-style-image: none;
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
