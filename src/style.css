@@ -9,9 +9,13 @@
   --maxWidth-xl: 36rem;
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
-  --maxWidth-4xl: 56rem;
+  --maxWidth-4xl: 54rem;
+  --maxWidth-5xl: 60rem;
+  --maxWidth-6xl: 66rem;
+  --maxWidth-7xl: 72rem;
+  --maxWidth-8xl: 78rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-wrapper: var(--maxWidth-8xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
