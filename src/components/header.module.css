@@ -4,7 +4,10 @@ list-style-type: none;
 padding: 1rem
 }
 
+header{
+padding: var(--spacing-5); 
+}
+
 ul{
-padding: "1.45rem 1rem";
 margin-bottom: "1.45rem"
 }

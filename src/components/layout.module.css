@@ -4,12 +4,17 @@
   grid-template-columns: 1fr 10fr;
 }
 
-.item1 {
-  background-color: lime;
+.sidebar {
   grid-column: 1;
+  display: none;
 }
 
-.item2 {
-  background-color: yellow;
+@media screen and (min-width : 900px) {
+  .sidebar{
+    display: block;
+  }
+}
+
+.main {
   grid-column: 2;
 }

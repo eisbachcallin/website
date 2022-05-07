@@ -24,23 +24,26 @@ const Layout = ({ location, children }) => {
 
   return (
     <div className={styles.grid} data-is-root-path={isRootPath}>
-      <div className={styles.item1}>
+      <div className={styles.sidebar}>
         {" "}
         <Header
           className="global-header"
           menuLinks={data.site.siteMetadata.menuLinks}
           siteTitle={data.site.siteMetadata?.title || `Title`}
         />
+        <footer>
+       socials
+      </footer>
       </div>
-      <div className={styles.item2}>
+      <div className={styles.main}>
         <main>{children}</main>
-      </div>
+
 
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        © {new Date().getFullYear()}, Built with ❤️
       </footer>
+      </div>
+
     </div>
   )
 }

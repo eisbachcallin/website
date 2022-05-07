@@ -23,10 +23,6 @@ module.exports = {
         name:'about',
         link:'/about'
       },
-      {
-        name:'contact',
-        link:'/contact'
-      },
     ]
   },
   plugins: [

@@ -244,12 +244,6 @@ a:focus {
 
 /* Custom classes */
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
-}
-
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
@@ -270,9 +264,21 @@ a:focus {
   margin: 0;
 }
 
-.post-list-item {
+.post-list {
+  columns: auto 1;
   margin-bottom: var(--spacing-0);
   margin-top: var(--spacing-0);
+}
+
+@media screen and (min-width : 900px) {
+  .post-list{
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 1rem;
+      justify-content: space-between; 
+  }
 }
 
 .post-list-item p {
