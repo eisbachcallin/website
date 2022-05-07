@@ -1,0 +1,10 @@
+.nav{
+text-decoration: none;
+list-style-type: none;
+padding: 1rem
+}
+
+ul{
+padding: "1.45rem 1rem";
+margin-bottom: "1.45rem"
+}
