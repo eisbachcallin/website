@@ -25,9 +25,9 @@ const Layout = ({ location, children }) => {
 
   return (
     <div className={styles.grid} data-is-root-path={isRootPath}>
-  <div className={styles.item1}>1</div>
-  <div className={styles.item2}>2</div>
-  <div className={styles.item3}>3</div>
+  <div className={styles.item1}>     <Header className="global-header" menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata?.title || `Title`} /></div>
+  <div className={styles.item2}>
+  <main>{children}</main></div>
 
 
       <footer>
