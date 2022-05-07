@@ -27,7 +27,6 @@ const Layout = ({ location, children }) => {
       <div className={styles.sidebar}>
         {" "}
         <Header
-          className="global-header"
           menuLinks={data.site.siteMetadata.menuLinks}
           siteTitle={data.site.siteMetadata?.title || `Title`}
         />

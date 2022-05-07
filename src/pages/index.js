@@ -27,7 +27,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol className="post-list">
+      <ol className="post-list" style={{gridTemplateColumns: '1fr'}}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
