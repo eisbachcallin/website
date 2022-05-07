@@ -1,0 +1,20 @@
+.grid {
+  display: grid;
+  height: 100px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 100px;
+}
+
+.item1 {
+  background-color: lime;
+}
+
+.item2 {
+  background-color: yellow;
+  grid-column: 2 / 4;
+}
+
+.item3 {
+  background-color: blue;
+  grid-column: span 2 / 7;
+}

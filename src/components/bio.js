@@ -44,7 +44,7 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          TODO Eisbach Callin description
+          Eisbach Callin' - Munich's finest underground dance party since 2010
         </p>
       )}
     </div>

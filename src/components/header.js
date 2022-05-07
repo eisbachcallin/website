@@ -1,6 +1,10 @@
 import * as React from "react"
+
+import * as styles from './header.module.css'
+
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Header = ({ siteTitle, menuLinks }) => (
   <header
@@ -10,11 +14,25 @@ const Header = ({ siteTitle, menuLinks }) => (
   >
     <div
       style={{
+        id: "header",
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
+        top: 0,
+        left: 0,
+        width: `250px`,
       }}
-    >
+    >      
+    <StaticImage
+    className="logo"
+    layout="fixed"
+    formats={["auto", "webp", "avif"]}
+    src="../images/logo.png"
+    width={50}
+    height={50}
+    quality={95}
+    alt="Eisbach Callin Logo"
+  />
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"

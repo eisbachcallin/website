@@ -29,7 +29,7 @@ const Past = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol className="gallery" >
+      <ol className="gallery" style={{ listStyle: `none`}} >
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
