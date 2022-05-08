@@ -266,6 +266,7 @@ a:focus {
 }
 
 .post-list {
+  width: 80%;
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
