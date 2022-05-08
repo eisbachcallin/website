@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import GatsbyImg from "gatsby-image"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -29,6 +30,7 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        <GatsbyImg fluid={post.frontmatter.cover.childImageSharp.fluid} />
         <hr />
         <footer>
           <Bio />
@@ -83,7 +85,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "[|] DD MMMM YYYY [| Doors:] h:mm [|]")
         description
         cover {
           childImageSharp {

@@ -324,6 +324,14 @@ a:focus {
   border-radius: 100%;
 }
 
+.blog-post{
+  max-width: 75%;
+}
+
+.blog-post header h2 {
+  margin: var(--spacing-0);
+}
+
 .blog-post header h1 {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
 }
@@ -335,6 +343,7 @@ a:focus {
 
 .blog-post-nav ul {
   margin: var(--spacing-0);
+  list-style: none;
 }
 
 .gatsby-highlight {
