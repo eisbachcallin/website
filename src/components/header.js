@@ -26,7 +26,6 @@ const Header = ({ siteTitle, menuLinks }) => (
           ))}
         </ul>
         <p>Munich's finest underground dance party since 2010</p>
-
       </div>
     </div>
   </header>

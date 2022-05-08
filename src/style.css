@@ -282,7 +282,7 @@ a:focus {
 }
 
 .post-list-item{
-  margin-right: var(--spacing-32);
+  margin-right: var(--spacing-2);
 }
 
 .post-list-item p {
@@ -297,7 +297,7 @@ a:focus {
 }
 
 .post-list-item header {
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-1);
 }
 
 .header-link-home {

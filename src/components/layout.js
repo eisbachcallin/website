@@ -30,9 +30,6 @@ const Layout = ({ location, children }) => {
           menuLinks={data.site.siteMetadata.menuLinks}
           siteTitle={data.site.siteMetadata?.title || `Title`}
         />
-        <footer>
-       socials
-      </footer>
       </div>
       <div className={styles.main}>
         <main>{children}</main>
