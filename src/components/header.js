@@ -14,13 +14,9 @@ const Header = ({ siteTitle, menuLinks }) => (
         <img src={Logo} />
       </Link>
       <div>
-        <ul
-          className={styles.nav}
-        >
+        <ul className={styles.nav}>
           {menuLinks.map(link => (
-            <li
-              key={link.name}
-            >
+            <li key={link.name}>
               <Link to={link.link}>{link.name}</Link>
             </li>
           ))}

@@ -10,14 +10,11 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
   const totalcount = data.allMarkdownRemark.totalCount
 
-
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <Seo title="All posts" />
-        <p>
-          No content posts found. Woops.
-        </p>
+        <p>No content posts found. Woops.</p>
       </Layout>
     )
   }
@@ -25,7 +22,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol className="post-list" style={{gridTemplateColumns: '1fr'}}>
+      <ol className="post-list" style={{ gridTemplateColumns: "1fr" }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -44,7 +41,9 @@ const BlogIndex = ({ data, location }) => {
                   </h2>
                   <small>{post.frontmatter.date}</small>
                 </header>
-                <GatsbyImg fluid={post.frontmatter.cover.childImageSharp.fluid} />
+                <GatsbyImg
+                  fluid={post.frontmatter.cover.childImageSharp.fluid}
+                />
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
@@ -72,8 +71,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/upcoming/" } } 
-      sort: { fields: [frontmatter___date], order: ASC }) {
+      filter: { fileAbsolutePath: { regex: "/upcoming/" } }
+      sort: { fields: [frontmatter___date], order: ASC }
+    ) {
       totalCount
       nodes {
         excerpt
