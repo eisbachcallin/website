@@ -2,28 +2,28 @@ module.exports = {
   siteMetadata: {
     title: `Eisbach Callin`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Eisbach Callin`,
+      summary: `Munich's finest underground dance party since 2010`,
     },
-    description: `TODO Eisbach Callin description`,
+    description: `Munich's finest underground dance party since 2010`,
     siteUrl: `https://eisbachcallin.github.io/`,
     social: {
       twitter: `eisbachcallin`,
     },
-    menuLinks:[
+    menuLinks: [
       {
-          name:'upcoming',
-          link:'/'
+        name: "upcoming",
+        link: "/",
       },
       {
-          name:'past',
-          link:'/past'
+        name: "past",
+        link: "/past",
       },
       {
-        name:'about',
-        link:'/about'
+        name: "about",
+        link: "/about",
       },
-    ]
+    ],
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -107,33 +107,25 @@ module.exports = {
               })
             },
             query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                      cover {
-                        childImageSharp {
-                          fluid {
-                            ...GatsbyImageSharpFluid
-                          }
+            {
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___date] },
+              ) {
+                nodes {
+                  excerpt
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                    date
                         }
                       }
                     }
                   }
-                }
-              }
             `,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "Eisbach Callin RSS Feed",
           },
         ],
       },
@@ -141,8 +133,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Eisbach Callin`,
+        short_name: `EBC`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
