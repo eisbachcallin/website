@@ -5,19 +5,40 @@ module.exports = {
       name: `Kyle Mathews`,
       summary: `who lives and works in San Francisco building useful things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `TODO Eisbach Callin description`,
+    siteUrl: `https://eisbachcallin.github.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `eisbachcallin`,
     },
+    menuLinks:[
+      {
+          name:'upcoming',
+          link:'/'
+      },
+      {
+          name:'past',
+          link:'/past'
+      },
+      {
+        name:'about',
+        link:'/about'
+      },
+    ]
   },
   plugins: [
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/upcoming`,
+        name: `upcoming`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/past`,
+        name: `past`,
       },
     },
     {

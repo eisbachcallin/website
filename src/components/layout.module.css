@@ -1,0 +1,20 @@
+.grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 10fr;
+}
+
+.sidebar {
+  grid-column: 1;
+  display: none;
+}
+
+@media screen and (min-width : 900px) {
+  .sidebar{
+    display: block;
+  }
+}
+
+.main {
+  grid-column: 2;
+}

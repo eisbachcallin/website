@@ -1,0 +1,13 @@
+.nav{
+text-decoration: none;
+list-style-type: none;
+padding: 1rem
+}
+
+header{
+padding: var(--spacing-2); 
+}
+
+ul{
+margin-bottom: "1.45rem"
+}

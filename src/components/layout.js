@@ -1,34 +1,45 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import Header from "./header"
+import Sidebar from "../components/sidebar"
+import * as styles from "./layout.module.css"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  let header
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
+  //  const classes = `global-wrapper grid`
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+          menuLinks {
+            name
+            link
+          }
+        }
+      }
+    }
+  `)
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
+    <div className={styles.grid} data-is-root-path={isRootPath}>
+      <div className={styles.sidebar}>
+        {" "}
+        <Header
+          menuLinks={data.site.siteMetadata.menuLinks}
+          siteTitle={data.site.siteMetadata?.title || `Title`}
+        />
+      </div>
+      <div className={styles.main}>
+        <main>{children}</main>
+
+
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        © {new Date().getFullYear()}, Built with ❤️
       </footer>
+      </div>
+
     </div>
   )
 }
