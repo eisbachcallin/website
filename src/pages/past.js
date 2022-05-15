@@ -4,13 +4,12 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import GatsbyImg from "gatsby-image"
+import GatsbyImage from "gatsby-image"
 
 const Past = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   const totalcount = data.allMarkdownRemark.totalCount
-
 
   if (posts.length === 0) {
     return (
@@ -29,7 +28,7 @@ const Past = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol className="post-list" >
+      <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -48,7 +47,9 @@ const Past = ({ data, location }) => {
                   </h2>
                   <small>{post.frontmatter.date}</small>
                 </header>
-                <GatsbyImg fluid={post.frontmatter.cover.childImageSharp.fluid} />
+                <GatsbyImage
+                  fluid={post.frontmatter.cover.childImageSharp.fluid}
+                />
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
@@ -76,8 +77,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/past/" } } 
-      sort: { fields: [frontmatter___date], order: DESC }) {
+      filter: { fileAbsolutePath: { regex: "/past/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       totalCount
       nodes {
         excerpt
