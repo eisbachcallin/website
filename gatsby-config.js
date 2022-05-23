@@ -3,24 +3,24 @@ module.exports = {
     title: `Eisbach Callin`,
     author: {
       name: `Eisbach Callin`,
-      summary: `Munich's finest underground dance party since 2010`,
+      summary: `Eisbach Callin - underground dance party.`,
     },
-    description: `Munich's finest underground dance party since 2010`,
-    siteUrl: `https://eisbachcallin.github.io/`,
+    description: `Eisbach Callin - underground dance party.`,
+    siteUrl: `https://eisbachcallin.com/`,
     social: {
       twitter: `eisbachcallin`,
     },
     menuLinks: [
       {
-        name: "upcoming",
+        name: "➫ next",
         link: "/",
       },
       {
-        name: "past",
+        name: "➫ past",
         link: "/past",
       },
       {
-        name: "about",
+        name: "➫ about",
         link: "/about",
       },
     ],
