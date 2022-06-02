@@ -31,7 +31,7 @@ const BlogIndex = ({ data, location }) => {
                 className="post-list-item"
                 itemScope
                 itemType="http://schema.org/Article"
-                style={{ columnCount: 2 }}
+                style={{ columnCount: 1 }}
               >
               <GatsbyImage
                 fluid={post.frontmatter.cover.childImageSharp.fluid}

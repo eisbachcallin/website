@@ -1,8 +1,8 @@
 ---
-date: "2022-06-28T22:40:32.169Z"
+date: "2022-06-10T22:00:00.000Z"
 title: "Reboot the Rave"
 description: "Sunny Red, Feierwerk, Hansastraße 39, Munich"
-cover: "./042020.png"
+cover: "./062022-1.png"
 ---
 
 Nach 2 Jahren unfreiwilliger Pause ist Eisbach Callin' endlich wieder zurück im Sunny Red!  
@@ -13,9 +13,10 @@ Wir kramen die Turntables und CDJs aus dem Lager, fahren die Endstufen hoch und 
 - Time Tripping DJ Crew
 - Miso
 - Noise Colors
-- Weiky
 - Turdbaby
 
 ## VJ
 
 - Visionaer
+
+![Back Flyer](./062022-1.png)
