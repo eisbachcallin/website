@@ -21,7 +21,7 @@ const Header = ({ siteTitle, menuLinks }) => (
             </li>
           ))}
         </ul>
-        <p>Munich's finest underground dance party since 2010</p>
+        <p>Eisbach Callin - underground dance party.</p>
       </div>
     </div>
   </header>

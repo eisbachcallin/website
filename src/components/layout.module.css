@@ -5,12 +5,12 @@
 }
 
 .sidebar {
-  grid-column: 1;
-  display: none;
+  display: block;
 }
 
 @media screen and (min-width : 900px) {
   .sidebar{
+    grid-column: 1;
     display: block;
   }
 }

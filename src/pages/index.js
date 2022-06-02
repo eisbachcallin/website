@@ -22,29 +22,30 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol className="post-list" style={{ gridTemplateColumns: "1fr" }}>
+      <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-
           return (
             <li key={post.fields.slug}>
               <article
                 className="post-list-item"
                 itemScope
                 itemType="http://schema.org/Article"
+                style={{ columnCount: 1 }}
               >
-                <header>
-                  <h2>
+              <GatsbyImage
+                fluid={post.frontmatter.cover.childImageSharp.fluid}
+                className="flyer"
+              />
+                <header style={{ gridTemplateColumns: "1fr" }}>
+                  <h2>{' '}
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <h3>{post.frontmatter.date}</h3>
                 </header>
-                <GatsbyImage
-                  fluid={post.frontmatter.cover.childImageSharp.fluid}
-                />
-                <section>
+                <section style={{ gridTemplateColumns: "1fr" }}>
                   <p
                     dangerouslySetInnerHTML={{
                       __html: post.frontmatter.description || post.excerpt,
