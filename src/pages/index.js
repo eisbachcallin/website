@@ -10,18 +10,9 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
   const totalcount = data.allMarkdownRemark.totalCount
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
-        <p>No content posts found. Woops.</p>
-      </Layout>
-    )
-  }
-
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
+      <Seo title="Eisbach Callin | Underground Rave since 2010" />
       <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -33,12 +24,13 @@ const BlogIndex = ({ data, location }) => {
                 itemType="http://schema.org/Article"
                 style={{ columnCount: 1 }}
               >
-              <GatsbyImage
-                fluid={post.frontmatter.cover.childImageSharp.fluid}
-                className="flyer"
-              />
+                <GatsbyImage
+                  fluid={post.frontmatter.cover.childImageSharp.fluid}
+                  className="flyer"
+                />
                 <header style={{ gridTemplateColumns: "1fr" }}>
-                  <h2>{' '}
+                  <h2>
+                    {" "}
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>

@@ -11,23 +11,9 @@ const Past = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
   const totalcount = data.allMarkdownRemark.totalCount
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
-
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
+      <Seo title="Past Event | Eisbach Callin" />
       <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
