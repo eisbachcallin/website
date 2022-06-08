@@ -3,9 +3,9 @@ module.exports = {
     title: `Eisbach Callin`,
     author: {
       name: `Eisbach Callin`,
-      summary: `Eisbach Callin - underground dance party.`,
+      summary: `Eisbach Callin - Don't act like an idiot, dance like one!`,
     },
-    description: `Eisbach Callin - underground dance party.`,
+    description: `Eisbach Callin - Don't act like an idiot, dance like one`,
     siteUrl: `https://eisbachcallin.com/`,
     social: {
       twitter: `eisbachcallin`,
