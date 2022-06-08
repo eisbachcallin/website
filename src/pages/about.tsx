@@ -2,13 +2,15 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Bio from "../components/bio"
+import Seo from "../components/seo"
 
 const about = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
   return (
     <Layout location={location} title={siteTitle}>
-        <Bio />
+      <Seo title="About | Eisbach Callin" />
+      <Bio />
     </Layout>
   )
 }
