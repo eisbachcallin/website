@@ -8,7 +8,6 @@ import GatsbyImage from "gatsby-image"
 const Past = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const totalcount = data.allMarkdownRemark.totalCount
 
   return (
     <Layout location={location} title={siteTitle}>
