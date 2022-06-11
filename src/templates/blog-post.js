@@ -32,9 +32,6 @@ const BlogPostTemplate = ({ data, location }) => {
         />
         <GatsbyImage fluid={post.frontmatter.cover.childImageSharp.fluid} />
         <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
       <nav className="blog-post-nav">
         <ul
