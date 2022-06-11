@@ -24,10 +24,12 @@ const BlogIndex = ({ data, location }) => {
                 itemType="http://schema.org/Article"
                 style={{ columnCount: 1 }}
               >
-                <GatsbyImage
-                  fluid={post.frontmatter.cover.childImageSharp.fluid}
-                  className="flyer"
-                />
+                <Link to={post.fields.slug} itemProp="url">
+                  <GatsbyImage
+                    fluid={post.frontmatter.cover.childImageSharp.fluid}
+                    className="flyer"
+                  />{" "}
+                </Link>
                 <header style={{ gridTemplateColumns: "1fr" }}>
                   <h2>
                     {" "}
