@@ -8,11 +8,10 @@ import GatsbyImage from "gatsby-image"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const totalcount = data.allMarkdownRemark.totalCount
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Eisbach Callin | Underground Rave since 2010" />
+      <Seo title="Eisbach Callin | Underground Rave since 2010" />
       <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -24,10 +23,12 @@ const BlogIndex = ({ data, location }) => {
                 itemType="http://schema.org/Article"
                 style={{ columnCount: 1 }}
               >
-                <GatsbyImage
-                  fluid={post.frontmatter.cover.childImageSharp.fluid}
-                  className="flyer"
-                />
+                <Link to={post.fields.slug} itemProp="url">
+                  <GatsbyImage
+                    fluid={post.frontmatter.cover.childImageSharp.fluid}
+                    className="flyer"
+                  />{" "}
+                </Link>
                 <header style={{ gridTemplateColumns: "1fr" }}>
                   <h2>
                     {" "}

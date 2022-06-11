@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import GatsbyImage from "gatsby-image"
@@ -9,7 +8,6 @@ import GatsbyImage from "gatsby-image"
 const Past = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const totalcount = data.allMarkdownRemark.totalCount
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -35,14 +33,9 @@ const Past = ({ data, location }) => {
                 </header>
                 <GatsbyImage
                   fluid={post.frontmatter.cover.childImageSharp.fluid}
+                  className="flyer"
                 />
                 <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
                 </section>
               </article>
             </li>

@@ -35,10 +35,21 @@ const Bio = () => {
       <h2>Eisbach Callin - Don't act like an idiot, dance like one 🥳</h2>
       <p>
         Eisbach Callin is a underground dance party at home in Munich, Germany
-        since 2010. Eisbach Callin is only possible through the dedication and
-        love of all of our supporters. Thanks for your support & love over the
-        years 🤗.
+        since 2010.
       </p>
+      <p>
+        All of this is only possible through the dedication and love of all of
+        our supporters.{" "}
+      </p>
+      <p>Hugz and kisses for your support over the years 🤗😚</p>
+      <h3>Links & Socials</h3>
+      <ul>
+        <li><a href="https://t.me/eisbach">Telegram: @eisbach</a></li>
+        <li><a href="https://www.instagram.com/eisbachcallin/?hl=de">Instagram: @eisbachcallin</a></li>
+        <li><a href="https://www.youtube.com/channel/UCc0bYukxAuJEb5-WD-8Ylrg/">Youtube (kinda empty tho)</a></li>
+        <li><a href="https://soundcloud.com/eisbachcallin/">Soundcloud (more sounds coming soon 🤞)</a></li>
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1452419287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </ul>
       <h3>Artists</h3>
       <h4>Miso</h4>
       <p>
@@ -48,6 +59,7 @@ const Bio = () => {
         offer. Whether vocal-based, break-heavy or just groovy, nothing is safe
         from his three decks and is promptly served with plenty of bass.
       </p>
+      <p><a href="https://blendits.bandcamp.com/album/voodoo-princess-loopholes">Listen & Download: Miso - Voodoo Princess / Loopholes</a></p>
       <h4>Noise Colors</h4>
       <p>
         Noise Colors are two producers from Munich who have dedicated themselves
@@ -66,13 +78,15 @@ const Bio = () => {
         the fringes of breakcore and dark dub - anything goes, as long as the
         rave is in ruins afterwards!
       </p>
-      <h4>Weiki</h4>
+      <p><a href="https://www.mixcloud.com/dnbmuc_podcast/dnbmuc-podcast029-turdbaby-eisbach-callin/">Listen & Download: DNB Muc Podcast - Turdbaby</a></p>
+      
+      <h4>Weiky</h4>
       <p>
         Sweet, full of vitamins and somehow mysterious: The live sets of Munich
-        DJ Weiki are as exotic and intoxicating as the fruit. It's no secret;
+        DJ Weiky are as exotic and intoxicating as the fruit. It's no secret;
         just take one part each of Techno, Tech House and Minimal Techno, mix it
         with a pinch of humor and self-irony and the result is a dish that makes
-        you dance until dawn: Weiki.
+        you dance until dawn: Weiky.
       </p>
       <h4>Visionär</h4>
       <p>
