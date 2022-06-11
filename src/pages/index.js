@@ -11,7 +11,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Eisbach Callin | Underground Rave since 2010" />
+      <Seo title="Eisbach Callin | Underground Rave since 2010" />
       <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
