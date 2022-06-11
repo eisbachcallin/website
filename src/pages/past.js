@@ -36,12 +36,6 @@ const Past = ({ data, location }) => {
                   className="flyer"
                 />
                 <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
                 </section>
               </article>
             </li>
