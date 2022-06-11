@@ -1,5 +1,5 @@
 ---
-date: "2022-06-10T22:00:00.000Z"
+date: "2022-06-10T23:00:00.000Z"
 title: "Reboot the Rave"
 description: "Sunny Red, Feierwerk, Hansastraße 39, Munich"
 cover: "./062022-1.png"
@@ -19,4 +19,4 @@ Wir kramen die Turntables und CDJs aus dem Lager, fahren die Endstufen hoch und 
 
 - Visionaer
 
-![Back Flyer](./062022-1.png)
+![Back Flyer](./062022.png)
