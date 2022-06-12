@@ -34,8 +34,8 @@ const Layout = ({ location, children }) => {
       <div className={styles.main}>
         <main>{children}</main>
 
-        <footer>© {new Date().getFullYear()}, Built with ❤️</footer>
       </div>
+      <footer>© {new Date().getFullYear()}</footer>
     </div>
   )
 }
