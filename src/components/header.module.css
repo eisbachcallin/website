@@ -1,14 +1,9 @@
 .nav{
 text-decoration: none;
 list-style-type: none;
-padding: 1rem;
-padding-top: 12rem;
+padding-top: 8rem;
 }
 
 header{
-padding: var(--spacing-2); 
-}
-
-ul{
-margin-bottom: "1.45rem"
+padding: var(--spacing-1) var(--spacing-2) var(--spacing-0); 
 }

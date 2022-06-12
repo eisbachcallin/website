@@ -7,7 +7,6 @@
 
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Logo from "../images/logo.svg"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -41,14 +40,34 @@ const Bio = () => {
         All of this is only possible through the dedication and love of all of
         our supporters.{" "}
       </p>
-      <p>Hugz and kisses for your support over the years 🤗😚</p>
+      <p>Hugs and kisses for your support over the years 🤗😚</p>
       <h3>Links & Socials</h3>
       <ul>
-        <li><a href="https://t.me/eisbach">Telegram: @eisbach</a></li>
-        <li><a href="https://www.instagram.com/eisbachcallin/?hl=de">Instagram: @eisbachcallin</a></li>
-        <li><a href="https://www.youtube.com/channel/UCc0bYukxAuJEb5-WD-8Ylrg/">Youtube (kinda empty tho)</a></li>
-        <li><a href="https://soundcloud.com/eisbachcallin/">Soundcloud (more sounds coming soon 🤞)</a></li>
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1452419287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        <li>
+        Email:{" "}
+          <a>eisbach[at]gmail.com </a>| don't be shy, write us!
+        </li>
+        <li>Telegram:{" "}
+          <a href="https://t.me/eisbach">
+            @eisbach 
+          </a> | Join to get news on upcoming events
+        </li>
+        <li>Instagram:{" "}
+          <a href="https://www.instagram.com/eisbachcallin/?hl=de">
+            @eisbachcallin
+          </a> | Follow to get news on upcoming events
+        </li>
+        <li>Mixcloud:{" "}
+          <a href="https://www.mixcloud.com/eisbachcallin/">
+          eisbachcallin
+          </a> | most of our recordings are here
+        </li>
+        <iframe
+          width="100%"
+          height="60"
+          src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2Feisbachcallin%2F"
+          frameborder="0"
+        ></iframe>
       </ul>
       <h3>Artists</h3>
       <h4>Miso</h4>
@@ -59,16 +78,36 @@ const Bio = () => {
         offer. Whether vocal-based, break-heavy or just groovy, nothing is safe
         from his three decks and is promptly served with plenty of bass.
       </p>
-      <p><a href="https://blendits.bandcamp.com/album/voodoo-princess-loopholes">Listen & Download: Miso - Voodoo Princess / Loopholes</a></p>
+      <p>
+        <a href="https://blendits.bandcamp.com/album/voodoo-princess-loopholes">
+          Miso | Bandcamp
+        </a>
+      </p>
+      <p>
+        <a href="https://www.beatport.com/artist/miso/10741">
+          Miso | Beatport
+        </a>
+      </p>
+      <p>
+        <a href="https://soundcloud.com/misoelectronica">
+          Miso | Soundcloud
+        </a>
+      </p>
       <h4>Noise Colors</h4>
       <p>
-        Noise Colors are two producers from Munich who have dedicated themselves
-        to drum & bass and dubstep. As studio musicians, however, survival is
-        not easy in times of major labels worth billions - as long as the first
-        No. 1 hit is still missing, they therefore earn their living as DJs. So
-        that one of them doesn't stand around twiddling thumbs while the other
-        celebrates with the crowd, they DJ in pairs with three decks. And they
-        do it at a speed that sometimes makes them dizzy themselves.
+        Two passionate musicians and producers from Munich, Germany, have joined
+        forces to create a fresh Drum & Bass and Dubstep project: "Noise
+        Colors". Their live trademark - two Mixers with three turntables - has
+        proven itself on numerous occasions. Supporting artists like "Mind
+        Vortex" and playing regularly at plenty of local venues such as "The
+        Drum & Bass Issue", "Isar Bass", "Clandestino Rave", "Neokeller" and
+        "Eisbach Callin'", they build up their reputation as one of Munich's
+        freshest electronic acts.
+      </p>
+      <p>
+        <a href="https://soundcloud.com/noise-colors">
+          Noise Colors | Soundcloud
+        </a>
       </p>
       <h4>Turdbaby</h4>
       <p>
@@ -78,8 +117,16 @@ const Bio = () => {
         the fringes of breakcore and dark dub - anything goes, as long as the
         rave is in ruins afterwards!
       </p>
-      <p><a href="https://www.mixcloud.com/dnbmuc_podcast/dnbmuc-podcast029-turdbaby-eisbach-callin/">Listen & Download: DNB Muc Podcast - Turdbaby</a></p>
-      
+      <p>
+        <a href="https://www.mixcloud.com/turdbaby/">
+          Turdbaby | Mixcloud
+        </a>
+      </p>
+      <p>
+        <a href="https://www.mixcloud.com/dnbmuc_podcast/dnbmuc-podcast029-turdbaby-eisbach-callin/">
+          DNB Muc Podcast 29 | Mixcloud
+        </a>
+      </p>
       <h4>Weiky</h4>
       <p>
         Sweet, full of vitamins and somehow mysterious: The live sets of Munich
@@ -87,6 +134,11 @@ const Bio = () => {
         just take one part each of Techno, Tech House and Minimal Techno, mix it
         with a pinch of humor and self-irony and the result is a dish that makes
         you dance until dawn: Weiky.
+      </p>
+      <p>
+        <a href="https://www.mixcloud.com/Weiky/">
+          Weiky | Mixcloud
+        </a>
       </p>
       <h4>Visionär</h4>
       <p>

@@ -69,10 +69,6 @@
   --color-accent: #d1dce5;
 }
 
-.flyer {
-  max-width: 700px;
-}
-
 /* HTML elements */
 
 *,
@@ -83,15 +79,14 @@
 
 html {
   line-height: var(--lineHeight-normal);
-  font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-background);
 }
 
 body {
+  font-size: var(--fontSize-root);
   font-family: var(--font-body);
-  font-size: var(--fontSize-1);
   color: var(--color-text);
 }
 
@@ -99,15 +94,10 @@ footer {
   padding: var(--spacing-6) var(--spacing-0);
 }
 
-hr {
-  background: var(--color-accent);
-  height: 1px;
-  border: 0;
-}
-
 /* Heading */
 
-h1,
+h1
+h2,
 h3,
 h4,
 h5,
@@ -117,19 +107,11 @@ h6 {
   margin-bottom: var(--spacing-0);
   line-height: var(--lineHeight-tight);
   letter-spacing: -0.025em;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
   font-weight: var(--fontWeight-bold);
   color: var(--color-primary);
 }
 
 h1 {
-  font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
   color: var(--color-heading);
 }
@@ -143,6 +125,7 @@ h3 {
 }
 
 h4 {
+  margin-bottom: var(--spacing-3);
   font-size: var(--fontSize-3);
 }
 
@@ -152,11 +135,6 @@ h5 {
 
 h6 {
   font-size: var(--fontSize-1);
-}
-
-h1 > a {
-  color: inherit;
-  text-decoration: none;
 }
 
 h2 > a,
@@ -170,13 +148,6 @@ h6 > a {
 
 /* Prose */
 
-p {
-  line-height: var(--lineHeight-relaxed);
-  --baseline-multiplier: 0.179;
-  --x-height-multiplier: 0.35;
-  margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
-  padding: var(--spacing-0);
-}
 
 ul,
 ol {
@@ -252,11 +223,8 @@ a:focus {
 
 /* Custom classes */
 
-.global-wrapper {
-  margin: var(--spacing-0) auto;
-  max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
-  list-style-image: none;
+.siteTitle{
+  font-size: var(--fontSize-1);
 }
 
 .global-header {
@@ -299,33 +267,6 @@ a:focus {
   font-size: var(--fontSize-2);
 }
 
-.bio {
-  margin-bottom: var(--spacing-16);
-  margin-top: var(--spacing-16);
-}
-
-.bio h2,
-.bio h3,
-.bio h4 {
-  margin-top: var(--spacing-4);
-  margin-bottom: var(--spacing-4);
-}
-
-.bio p {
-  margin-bottom: var(--spacing-0);
-}
-
-.bio-avatar {
-  margin-right: var(--spacing-4);
-  margin-bottom: var(--spacing-0);
-  min-width: 50px;
-  border-radius: 100%;
-}
-
-.blog-post{
-  max-width: 75%;
-}
-
 .blog-post header h2 {
   margin: var(--spacing-0);
 }
@@ -340,8 +281,9 @@ a:focus {
 }
 
 .blog-post-nav ul {
-  margin: var(--spacing-0);
+  margin: var(--spacing-8) var(--spacing-0) var(--spacing-0);
   list-style: none;
+  max-width: 900px
 }
 
 .gatsby-highlight {

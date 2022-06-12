@@ -21,14 +21,7 @@ const BlogIndex = ({ data, location }) => {
                 className="post-list-item"
                 itemScope
                 itemType="http://schema.org/Article"
-                style={{ columnCount: 1 }}
               >
-                <Link to={post.fields.slug} itemProp="url">
-                  <GatsbyImage
-                    fluid={post.frontmatter.cover.childImageSharp.fluid}
-                    className="flyer"
-                  />{" "}
-                </Link>
                 <header style={{ gridTemplateColumns: "1fr" }}>
                   <h2>
                     {" "}
@@ -38,6 +31,11 @@ const BlogIndex = ({ data, location }) => {
                   </h2>
                   <h3>{post.frontmatter.date}</h3>
                 </header>
+                <Link to={post.fields.slug} itemProp="url">
+                  <GatsbyImage
+                    fluid={post.frontmatter.cover.childImageSharp.fluid}
+                  />{" "}
+                </Link>
                 <section style={{ gridTemplateColumns: "1fr" }}>
                   <p
                     dangerouslySetInnerHTML={{

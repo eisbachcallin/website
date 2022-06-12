@@ -22,15 +22,14 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <h2 itemProp="headline">{post.frontmatter.title}</h2>
           <p>{post.frontmatter.date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <GatsbyImage fluid={post.frontmatter.cover.childImageSharp.fluid} />
-        <hr />
+        <GatsbyImage fluid={post.frontmatter.cover.childImageSharp.fluid} className="flyer" />
       </article>
       <nav className="blog-post-nav">
         <ul
