@@ -13,6 +13,7 @@ const Header = ({ siteTitle, menuLinks }) => (
       <Link to="/">
         <img width="100px" src={Logo} />
       </Link>
+      <p>{siteTitle}</p>
       <div>
         <ul className={styles.nav}>
           {menuLinks.map(link => (
@@ -21,7 +22,7 @@ const Header = ({ siteTitle, menuLinks }) => (
             </li>
           ))}
         </ul>
-        <p>Eisbach Callin - Don't act like an idiot, dance like one!</p>
+        <p>Don't act like an idiot, dance like one!</p>
       </div>
     </div>
   </header>
