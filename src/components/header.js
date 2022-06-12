@@ -11,7 +11,7 @@ const Header = ({ siteTitle, menuLinks }) => (
     <div>
       {" "}
       <Link to="/">
-        <img src={Logo} />
+        <img width="100px" src={Logo} />
       </Link>
       <div>
         <ul className={styles.nav}>
