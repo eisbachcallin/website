@@ -34,7 +34,6 @@ const BlogIndex = ({ data, location }) => {
                 <Link to={post.fields.slug} itemProp="url">
                   <GatsbyImage
                     fluid={post.frontmatter.cover.childImageSharp.fluid}
-                    className="flyer"
                   />{" "}
                 </Link>
                 <section style={{ gridTemplateColumns: "1fr" }}>

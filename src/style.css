@@ -69,10 +69,6 @@
   --color-accent: #d1dce5;
 }
 
-.flyer {
-  max-width: 700px;
-}
-
 /* HTML elements */
 
 *,
@@ -287,7 +283,7 @@ a:focus {
 .blog-post-nav ul {
   margin: var(--spacing-8) var(--spacing-0) var(--spacing-0);
   list-style: none;
-  max-width: 700px
+  max-width: 900px
 }
 
 .gatsby-highlight {

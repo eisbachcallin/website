@@ -22,4 +22,4 @@ We get the turntables and CDJs from storage, crank up the power amps and blow th
 
 - Visionaer
 
-![Back Flyer](2022-06-10-1.png)
+![Back Flyer](2022-06-10.png)

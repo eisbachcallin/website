@@ -33,7 +33,6 @@ const Past = ({ data, location }) => {
                 </header>
                 <GatsbyImage
                   fluid={post.frontmatter.cover.childImageSharp.fluid}
-                  className="flyer"
                 />
               </article>
             </li>
