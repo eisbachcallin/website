@@ -80,17 +80,17 @@ const Bio = () => {
       </p>
       <p>
         <a href="https://blendits.bandcamp.com/album/voodoo-princess-loopholes">
-          Listen & Download: Miso - Voodoo Princess / Loopholes | Bandcamp
+          Miso | Bandcamp
         </a>
       </p>
       <p>
         <a href="https://www.beatport.com/artist/miso/10741">
-          Listen & Buy : Miso | Beatport
+          Miso | Beatport
         </a>
       </p>
       <p>
         <a href="https://soundcloud.com/misoelectronica">
-          Listen : Miso | Soundcloud
+          Miso | Soundcloud
         </a>
       </p>
       <h4>Noise Colors</h4>
@@ -104,6 +104,11 @@ const Bio = () => {
         "Eisbach Callin'", they build up their reputation as one of Munich's
         freshest electronic acts.
       </p>
+      <p>
+        <a href="https://soundcloud.com/noise-colors">
+          Noise Colors | Soundcloud
+        </a>
+      </p>
       <h4>Turdbaby</h4>
       <p>
         Turdbaby takes you on a colorful journey through all varieties of bass
@@ -113,11 +118,15 @@ const Bio = () => {
         rave is in ruins afterwards!
       </p>
       <p>
-        <a href="https://www.mixcloud.com/dnbmuc_podcast/dnbmuc-podcast029-turdbaby-eisbach-callin/">
-          Listen & Download: Turdbaby - DNB Muc Podcast 29 | Mixcloud
+        <a href="https://www.mixcloud.com/turdbaby/">
+          Turdbaby | Mixcloud
         </a>
       </p>
-
+      <p>
+        <a href="https://www.mixcloud.com/dnbmuc_podcast/dnbmuc-podcast029-turdbaby-eisbach-callin/">
+          DNB Muc Podcast 29 | Mixcloud
+        </a>
+      </p>
       <h4>Weiky</h4>
       <p>
         Sweet, full of vitamins and somehow mysterious: The live sets of Munich
@@ -125,6 +134,11 @@ const Bio = () => {
         just take one part each of Techno, Tech House and Minimal Techno, mix it
         with a pinch of humor and self-irony and the result is a dish that makes
         you dance until dawn: Weiky.
+      </p>
+      <p>
+        <a href="https://www.mixcloud.com/Weiky/">
+          Weiky | Mixcloud
+        </a>
       </p>
       <h4>Visionär</h4>
       <p>
