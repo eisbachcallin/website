@@ -7,7 +7,6 @@
 
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Logo from "../images/logo.svg"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -41,23 +40,25 @@ const Bio = () => {
         All of this is only possible through the dedication and love of all of
         our supporters.{" "}
       </p>
-      <p>Hugz and kisses for your support over the years 🤗😚</p>
+      <p>Hugs and kisses for your support over the years 🤗😚</p>
       <h3>Links & Socials</h3>
       <ul>
         <li>
+          <a>Email: eisbach[at]gmail.com | don't be shy, write us!</a>
+        </li>
+        <li>
           <a href="https://t.me/eisbach">
-            Telegram: @eisbach | Join to get news on upcoming events &
-            discounts!
+            Telegram: @eisbach | Join to get news on upcoming events
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/eisbachcallin/?hl=de">
-            Instagram: @eisbachcallin
+            Instagram: @eisbachcallin | Follow to get news on upcoming events
           </a>
         </li>
         <li>
           <a href="https://www.mixcloud.com/eisbachcallin/">
-            Mixcloud | you can find most of our recordings here
+            Mixcloud | most of our recordings are here
           </a>
         </li>
         <br />
@@ -73,11 +74,9 @@ const Bio = () => {
         </li>
         <iframe
           width="100%"
-          height="300"
-          scrolling="no"
-          frameborder="no"
-          allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1452419287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+          height="60"
+          src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2Feisbachcallin%2F"
+          frameborder="0"
         ></iframe>
       </ul>
       <h3>Artists</h3>
