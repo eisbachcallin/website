@@ -11,11 +11,11 @@ const Past = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Past Event | Eisbach Callin" />
+      <Seo title="Past Events | Eisbach Callin" />
+      <h2>Past Events</h2>
       <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
-
           return (
             <li key={post.fields.slug}>
               <article
@@ -24,19 +24,17 @@ const Past = ({ data, location }) => {
                 itemType="http://schema.org/Article"
               >
                 <header>
-                  <h2>
+                  <h3>
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
-                  </h2>
+                  </h3>
                   <small>{post.frontmatter.date}</small>
                 </header>
                 <GatsbyImage
                   fluid={post.frontmatter.cover.childImageSharp.fluid}
                   className="flyer"
                 />
-                <section>
-                </section>
               </article>
             </li>
           )

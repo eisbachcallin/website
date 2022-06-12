@@ -6,7 +6,6 @@ import * as styles from "./layout.module.css"
 const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  //  const classes = `global-wrapper grid`
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,7 +29,6 @@ const Layout = ({ location, children }) => {
         />
       <div className={styles.main}>
         <main>{children}</main>
-
       </div>
       <footer>© {new Date().getFullYear()}</footer>
     </div>

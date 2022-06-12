@@ -13,7 +13,7 @@ const Header = ({ siteTitle, menuLinks }) => (
       <Link to="/">
         <img width="100px" src={Logo} />
       </Link>
-      <p>{siteTitle}</p>
+      <h1 className="siteTitle">{siteTitle}</h1>
       <div>
         <ul className={styles.nav}>
           {menuLinks.map(link => (
