@@ -29,7 +29,7 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <GatsbyImage fluid={post.frontmatter.cover.childImageSharp.fluid} />
+        <GatsbyImage fluid={post.frontmatter.cover.childImageSharp.fluid} className="flyer" />
         <hr />
       </article>
       <nav className="blog-post-nav">
