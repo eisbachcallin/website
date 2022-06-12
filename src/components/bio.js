@@ -44,33 +44,23 @@ const Bio = () => {
       <h3>Links & Socials</h3>
       <ul>
         <li>
-          <a>Email: eisbach[at]gmail.com | don't be shy, write us!</a>
+        Email:{" "}
+          <a>eisbach[at]gmail.com </a>| don't be shy, write us!
         </li>
-        <li>
+        <li>Telegram:{" "}
           <a href="https://t.me/eisbach">
-            Telegram: @eisbach | Join to get news on upcoming events
-          </a>
+            @eisbach 
+          </a> | Join to get news on upcoming events
         </li>
-        <li>
+        <li>Instagram:{" "}
           <a href="https://www.instagram.com/eisbachcallin/?hl=de">
-            Instagram: @eisbachcallin | Follow to get news on upcoming events
-          </a>
+            @eisbachcallin
+          </a> | Follow to get news on upcoming events
         </li>
-        <li>
+        <li>Mixcloud:{" "}
           <a href="https://www.mixcloud.com/eisbachcallin/">
-            Mixcloud | most of our recordings are here
-          </a>
-        </li>
-        <br />
-        <li>
-          <a href="https://soundcloud.com/eisbachcallin/">
-            Soundcloud | outdated, check out mixcloud
-          </a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/channel/UCc0bYukxAuJEb5-WD-8Ylrg/">
-            Youtube | kinda empty tho 🙈
-          </a>
+          eisbachcallin
+          </a> | most of our recordings are here
         </li>
         <iframe
           width="100%"
