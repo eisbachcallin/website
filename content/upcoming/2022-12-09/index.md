@@ -7,7 +7,7 @@ cover: "./2022-12-09.png"
 
 A night of Drum&Bass, Breaks, Dubstep, HipHop at Munichs longest-running underground party: Eisbach Callin presents Psychic Pressure @ Sunny Red. Entry 10€.
 
-We are proud to invite one of the hottest newcomers in the german Drum&Bass scene to our hallowed halls. Psychic Pressure, part of the WEAREYZZY collective hailing from Augsburg, has seen support by legends like Noisia or Eskei83 and copped releases on Skankandbass and Crispy Crust. The future is looking bright and we are looking forward to yet another classic Eisbach rave.
+We are proud to invite one of the hottest newcomers in the german Drum&Bass scene to our hallowed halls. Psychic Pressure, part of the WEAREYZZY collective hailing from Augsburg, has seen support by legends like Noisia or Eskei83 and copped releases on Skankandbass and Crispy Crust. The broken-beats future is looking bright and we are looking forward to yet another classic Eisbach rave.
 As always, Psychic Pressure will be joined by the Eisbach DJ crew, hosted by legendary MC Irie Treasure and VJ Visionär.  
 Don't act like an idiot, dance like one!
 
