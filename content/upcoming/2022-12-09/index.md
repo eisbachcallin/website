@@ -34,6 +34,4 @@ Don't act like an idiot, dance like one!
 
 - Irie Treasure
 
-(https://www.weareyzzy.com/)
-
-![Flyer](2022-12-09.png)
+Visit [WEAREYZZY](https://www.weareyzzy.com/)
