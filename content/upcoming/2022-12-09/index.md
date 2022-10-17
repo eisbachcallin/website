@@ -13,7 +13,7 @@ Don't act like an idiot, dance like one!
 
 ---
 
-Drum&Bass, Breaks, Dubstep und HipHop auf der ältesten underground Party Münchens: Eisbach Callin presents Psychic Pressure @ Sunny Red. Eintritt 10€.
+Drum&Bass, Breaks, Dubstep und HipHop auf der besten underground Party Münchens: Eisbach Callin presents Psychic Pressure @ Sunny Red. Eintritt 10€.
 
 Wir sind stolz darauf, einen der angesagtesten Newcomer der deutschen Drum&Bass-Szene in unsere heiligen Hallen einzuladen. Psychic Pressure, Teil des Augsburger WEAREYZZY-Kollektivs, wurde bereits von Legenden wie Noisia oder Eskei83 unterstützt und hat Veröffentlichungen auf Skankandbass und Crispy Crust vorzuweisen. Die broken-beats Zukunft sieht rosig aus und wir freuen uns auf den nächsten Eisbach-Rave mit euch!
 Mit am Start ist wie immer die Eisbach DJ-Crew, mit dem legendären MC Irie Treasure und VJ Visionär.  
