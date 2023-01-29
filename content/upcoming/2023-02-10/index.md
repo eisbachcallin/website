@@ -6,7 +6,7 @@ cover: "./2023-02-10.png"
 ---
 
 A night of Drum&Bass, Breaks, Dubstep, HipHop at Munichs longest-running underground party:  
-Eisbach Callin presents Ras @ Sunny Red. Entry 12€.
+Eisbach Callin presents Ras @ Sunny Red. Entry 12€ / 8€ before midnight
 
 Join us for a night of high-energy bass music as the Eisbach Callin crew invites another legendary local DJ - none other than Ras from the re:duction crew.
 Brace yourself for a sub-heavy soundscape filled with relentless beats and speaker-shredding bass.
@@ -17,7 +17,7 @@ Don't act like an idiot, dance like one!
 ---
 
 Drum&Bass, Breaks, Dubstep und HipHop auf der besten underground Party Münchens:  
-Eisbach Callin presents Ras @ Sunny Red. Eintritt 12€.
+Eisbach Callin presents Ras @ Sunny Red. Eintritt 12€ / 8€ vor 12
 
 Komm vorbei für eine Eisbach Callin Nacht voll hochenergetischer Bass-Musik mit einem weiteren legendären Münchner DJ - niemand anderes als Ras von der re:duction Crew.
 Mach dich bereit für einen sub-schwere Mix mit harten Beats und lautsprecherzerfetzendem Bass.
