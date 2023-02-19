@@ -47,11 +47,6 @@ const Bio = () => {
         Email:{" "}
           <a>eisbach[at]gmail.com </a>| don't be shy, write us!
         </li>
-        <li>Telegram:{" "}
-          <a href="https://t.me/eisbach">
-            @eisbach 
-          </a> | Join to get news on upcoming events
-        </li>
         <li>Instagram:{" "}
           <a href="https://www.instagram.com/eisbachcallin/?hl=de">
             @eisbachcallin
