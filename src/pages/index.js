@@ -4,7 +4,6 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
-import Bio from "../components/bio"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -50,7 +49,6 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
-      <Bio />
     </Layout>
   )
 }
@@ -66,7 +64,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/upcoming/" } }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { frontmatter: { date: ASC } }
     ) {
       totalCount
       nodes {
