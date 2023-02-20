@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import GatsbyImage from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Past = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -32,7 +32,7 @@ const Past = ({ data, location }) => {
                   <small>{post.frontmatter.date}</small>
                 </header>
                 <GatsbyImage
-                  fluid={post.frontmatter.cover.childImageSharp.fluid}
+                  image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
                 />
               </article>
             </li>
@@ -68,9 +68,7 @@ export const pageQuery = graphql`
           description
           cover {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }

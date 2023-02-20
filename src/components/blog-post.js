@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "./layout"
 import Seo from "./seo"
-import GatsbyImage from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -29,7 +29,9 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <GatsbyImage fluid={post.frontmatter.cover.childImageSharp.fluid} className="flyer" />
+        <GatsbyImage
+          image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
+        />
       </article>
       <nav className="blog-post-nav">
         <ul
@@ -84,9 +86,7 @@ export const pageQuery = graphql`
         description
         cover {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
