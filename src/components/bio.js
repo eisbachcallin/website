@@ -1,34 +1,6 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 
-const Bio = () => {
-  const data = useStaticQuery(graphql`
-    query BioQuery {
-      site {
-        siteMetadata {
-          author {
-            name
-            summary
-          }
-          social {
-            twitter
-          }
-        }
-      }
-    }
-  `)
-
-  // Set these values by editing "siteMetadata" in gatsby-config.js
-  const author = data.site.siteMetadata?.author
-  const social = data.site.siteMetadata?.social
-
+function Bio() {
   return (
     <div className="bio">
       <h2>Eisbach Callin - Don't act like an idiot, dance like one 🥳</h2>
@@ -38,31 +10,29 @@ const Bio = () => {
       </p>
       <p>
         All of this is only possible through the dedication and love of all of
-        our supporters.{" "}
+        our supporters.
       </p>
       <p>Hugs and kisses for your support over the years 🤗😚</p>
       <h3>Links & Socials</h3>
       <ul>
         <li>
-        Email:{" "}
-          <a>eisbach[at]gmail.com </a>| don't be shy, write us!
+          Email: <a href="mailto:eisbach@gmail.com">eisbach[at]gmail.com</a>|
+          don't be shy, write us!
         </li>
-        <li>Telegram:{" "}
-          <a href="https://t.me/eisbach">
-            @eisbach 
-          </a> | Join to get news on upcoming events
-        </li>
-        <li>Instagram:{" "}
+        <li>
+          Instagram:{" "}
           <a href="https://www.instagram.com/eisbachcallin/?hl=de">
             @eisbachcallin
-          </a> | Follow to get news on upcoming events
+          </a>{" "}
+          | Follow to get news on upcoming events
         </li>
-        <li>Mixcloud:{" "}
-          <a href="https://www.mixcloud.com/eisbachcallin/">
-          eisbachcallin
-          </a> | most of our recordings are here
+        <li>
+          Mixcloud:{" "}
+          <a href="https://www.mixcloud.com/eisbachcallin/">eisbachcallin</a> |
+          most of our recordings are here
         </li>
         <iframe
+          title="eisbachcallin mixcloud"
           width="100%"
           height="60"
           src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2Feisbachcallin%2F"
@@ -84,14 +54,10 @@ const Bio = () => {
         </a>
       </p>
       <p>
-        <a href="https://www.beatport.com/artist/miso/10741">
-          Miso | Beatport
-        </a>
+        <a href="https://www.beatport.com/artist/miso/10741">Miso | Beatport</a>
       </p>
       <p>
-        <a href="https://soundcloud.com/misoelectronica">
-          Miso | Soundcloud
-        </a>
+        <a href="https://soundcloud.com/misoelectronica">Miso | Soundcloud</a>
       </p>
       <h4>Noise Colors</h4>
       <p>
@@ -118,9 +84,7 @@ const Bio = () => {
         rave is in ruins afterwards!
       </p>
       <p>
-        <a href="https://www.mixcloud.com/turdbaby/">
-          Turdbaby | Mixcloud
-        </a>
+        <a href="https://www.mixcloud.com/turdbaby/">Turdbaby | Mixcloud</a>
       </p>
       <p>
         <a href="https://www.mixcloud.com/dnbmuc_podcast/dnbmuc-podcast029-turdbaby-eisbach-callin/">
@@ -136,9 +100,7 @@ const Bio = () => {
         you dance until dawn: Weiky.
       </p>
       <p>
-        <a href="https://www.mixcloud.com/Weiky/">
-          Weiky | Mixcloud
-        </a>
+        <a href="https://www.mixcloud.com/Weiky/">Weiky | Mixcloud</a>
       </p>
       <h4>Visionär</h4>
       <p>

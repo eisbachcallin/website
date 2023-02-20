@@ -7,9 +7,6 @@ module.exports = {
     },
     description: `Eisbach Callin - Don't act like an idiot, dance like one`,
     siteUrl: `https://eisbachcallin.com/`,
-    social: {
-      twitter: `eisbachcallin`,
-    },
     menuLinks: [
       {
         name: "➫ next",

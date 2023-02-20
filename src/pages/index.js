@@ -3,12 +3,11 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import GatsbyImage from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Eisbach Callin | Underground Rave since 2010" />
@@ -24,7 +23,6 @@ const BlogIndex = ({ data, location }) => {
               >
                 <header style={{ gridTemplateColumns: "1fr" }}>
                   <h2>
-                    {" "}
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
@@ -33,8 +31,10 @@ const BlogIndex = ({ data, location }) => {
                 </header>
                 <Link to={post.fields.slug} itemProp="url">
                   <GatsbyImage
-                    fluid={post.frontmatter.cover.childImageSharp.fluid}
-                  />{" "}
+                    image={
+                      post.frontmatter.cover.childImageSharp.gatsbyImageData
+                    }
+                  />
                 </Link>
                 <section style={{ gridTemplateColumns: "1fr" }}>
                   <p
@@ -64,7 +64,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/upcoming/" } }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { frontmatter: { date: ASC } }
     ) {
       totalCount
       nodes {
@@ -78,9 +78,7 @@ export const pageQuery = graphql`
           description
           cover {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
