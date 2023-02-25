@@ -19,7 +19,7 @@
   color: var(--color-heading);
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1250px) {
   .post-list {
     grid-template-columns: repeat(1, 1fr); /* create one column */
   }
