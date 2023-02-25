@@ -1,9 +1,7 @@
 import * as React from "react"
 
-import * as styles from "./layout.module.css"
-
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
+import HeaderNext from "./next/header"
 
 const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -23,13 +21,13 @@ const Layout = ({ location, children }) => {
   `)
 
   return (
-    <div className={styles.layout} data-is-root-path={isRootPath}>
+    <div data-is-root-path={isRootPath} className="bg-black">
       {" "}
-      <Header menuLinks={data.site.siteMetadata.menuLinks} />
-      <div className={styles.main}>
-        <main>{children}</main>
-      </div>
-      <footer>Eisbach Callin ©{new Date().getFullYear()}</footer>
+      <HeaderNext menuLinks={data.site.siteMetadata.menuLinks} />
+      <main className="flex items-center justify-between p-4 py-8 lg:p-8">
+        {children}
+      </main>
+      <footer className="flex justify-end p-4 lg:px-8 lg:py-4 text-white">Eisbach Callin ©{new Date().getFullYear()}</footer>
     </div>
   )
 }
