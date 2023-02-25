@@ -3,23 +3,23 @@ module.exports = {
     title: `Eisbach Callin`,
     author: {
       name: `Eisbach Callin`,
-      summary: `Eisbach Callin - Don't act like a clown, dance like one!`,
+      summary: `Eisbach Callin - Don't act like a clown, dance like one!`
     },
     description: `Eisbach Callin - Don't act like an idiot, dance like one`,
     siteUrl: `https://eisbachcallin.com/`,
     menuLinks: [
       {
         name: "➫ next",
-        link: "/",
+        link: "/"
       },
       {
         name: "➫ past",
-        link: "/past",
+        link: "/past"
       },
       {
         name: "➫ about",
-        link: "/about",
-      },
+        link: "/about"
+      }
     ],
     head: [
       // Add the following to your siteMetadata.head:
@@ -27,9 +27,9 @@ module.exports = {
         name: "link",
         type: "text/css",
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap",
-      },
-    ],
+        href: "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      }
+    ]
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -37,22 +37,22 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/upcoming`,
-        name: `upcoming`,
-      },
+        name: `upcoming`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/past`,
-        name: `past`,
-      },
+        name: `past`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -61,20 +61,20 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
-            },
+              maxWidth: 630
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
+          `gatsby-remark-smartypants`
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -108,7 +108,7 @@ module.exports = {
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  custom_elements: [{ "content:encoded": node.html }]
                 })
               })
             },
@@ -129,10 +129,10 @@ module.exports = {
                   }
             `,
             output: "/rss.xml",
-            title: "Eisbach Callin RSS Feed",
-          },
-        ],
-      },
+            title: "Eisbach Callin RSS Feed"
+          }
+        ]
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -145,12 +145,14 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
-      },
+        icon: `src/images/logo.png` // This path is relative to the root of the site.
+      }
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-postcss`,
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-  ],
+  ]
 }
