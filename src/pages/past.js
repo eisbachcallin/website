@@ -7,45 +7,6 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const seo = "Past Events | Eisbach Callin"
 
-// const Past = ({ data, location }) => {
-//   const siteTitle = data.site.siteMetadata?.title || `Title`
-//   const posts = data.allMarkdownRemark.nodes
-//
-//   return (
-//     <Layout location={location} title={siteTitle}>
-//       <Seo title="Past Events | Eisbach Callin" />
-//       <h2>Past Events</h2>
-//       <ol className="post-list">
-//         {posts.map(post => {
-//           const title = post.frontmatter.title || post.fields.slug
-//           return (
-//             <li key={post.fields.slug}>
-//               <article
-//                 className="post-list-item"
-//                 itemScope
-//                 itemType="http://schema.org/Article"
-//               >
-//                 <header>
-//                   <h3>
-//                     <Link to={post.fields.slug} itemProp="url">
-//                       <span itemProp="headline">{title}</span>
-//                     </Link>
-//                   </h3>
-//                   <small>{post.frontmatter.date}</small>
-//                 </header>
-//                 <GatsbyImage
-//                   image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
-//                 />
-//               </article>
-//             </li>
-//           )
-//         })}
-//       </ol>
-//     </Layout>
-//   )
-// }
-//
-// export default Past
 
 const ebcPast = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
