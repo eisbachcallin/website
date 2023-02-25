@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "gatsby": "^5.6.1",
-    "gatsby-image": "^3.11.0",
     "gatsby-plugin-feed": "^5.0.0",
     "gatsby-plugin-gatsby-cloud": "^5.0.0",
     "gatsby-plugin-google-analytics": "^5.0.0",
@@ -29,9 +28,7 @@
     "prismjs": "^1.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "prettier": "^2.6.2"
