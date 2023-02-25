@@ -71,3 +71,9 @@ yarn-error.log
 # 
 
 _halde/
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/website.iml
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
