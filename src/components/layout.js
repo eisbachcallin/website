@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { useStaticQuery, graphql } from "gatsby"
-import HeaderNext from "./next/header"
+import HeaderNext from "./header"
 
 const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
