@@ -29,7 +29,7 @@ const Layout = ({ location, children }) => {
       <div className={styles.main}>
         <main>{children}</main>
       </div>
-      <footer>© {new Date().getFullYear()}</footer>
+      <footer>Eisbach Callin ©{new Date().getFullYear()}</footer>
     </div>
   )
 }

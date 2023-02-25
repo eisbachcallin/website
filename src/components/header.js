@@ -12,8 +12,8 @@ const Header = ({ siteTitle, menuLinks }) => (
   <header>
     <Link to="/">
       <div className="logo">
-        <img width="100px" alt="Eisbach Callin" src={Logo} />
-        <h1 className="siteTitle">{siteTitle}</h1>{" "}
+        <img width="240px" alt="Eisbach Callin" src={Logo} />
+        <h1 className="siteTitle">{siteTitle}</h1>
       </div>
     </Link>
     <div>

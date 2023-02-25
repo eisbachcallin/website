@@ -87,6 +87,7 @@ body {
 
 footer {
   padding: var(--spacing-6) var(--spacing-0);
+  text-align: right;
 }
 
 /* Heading */
@@ -216,10 +217,6 @@ a:focus {
 
 /* Custom classes */
 
-.siteTitle {
-  font-size: var(--fontSize-1);
-}
-
 .global-header {
   margin-bottom: var(--spacing-12);
 }
@@ -284,9 +281,3 @@ a:focus {
 }
 
 /* Media queries */
-
-@media screen and (min-width: 900px) {
-  .post-list {
-    list-style: none;
-  }
-}

@@ -8,3 +8,7 @@ main {
 .sidebar {
   display: block;
 }
+
+.footer {
+  text-align: right;
+}
