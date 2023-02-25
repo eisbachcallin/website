@@ -17,30 +17,31 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article
-        className="blog-post"
+        className="grid grid-cols-4 gap-4"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
-          <h2 itemProp="headline">{post.frontmatter.title}</h2>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        <GatsbyImage
-          image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
-        />
+
+            <GatsbyImage
+              className="sticky grid col-span-1 aspect-din object-fill transition ease-in duration-150"
+              image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
+              alt={post.frontmatter.description}
+            />
+            <section
+              className="grid col-span-3 prose prose-a:text-pink-500 prose-invert lg:prose-lg"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+              itemProp="articleBody"
+            />
+
       </article>
-      <nav className="blog-post-nav">
+      <nav>
         <ul
           style={{
             display: `flex`,
             flexWrap: `wrap`,
             justifyContent: `space-between`,
             listStyle: `none`,
-            padding: 0,
+            padding: 0
           }}
         >
           <li>

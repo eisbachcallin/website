@@ -5,9 +5,6 @@ description: "Foobar"
 cover: "./2012-04-13.jpg"
 ---
 
-Eisbach Callin - Don't act like an idiot, dance like one 🥳
------------------------------------------------------------
-
 Eisbach Callin is a underground dance party at home in Munich, Germany since 2010.
 
 All of this is only possible through the dedication and love of all of our supporters.
