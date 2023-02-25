@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import * as styles from "./index.module.css"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -11,44 +12,34 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Eisbach Callin | Underground Rave since 2010" />
-      <ol className="post-list">
+      <div className={styles.postList}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
           return (
-            <li key={post.fields.slug}>
+            <Link to={post.fields.slug} key={post.fields.slug} itemProp="url">
               <article
-                className="post-list-item"
+                className={styles.postListItem}
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header style={{ gridTemplateColumns: "1fr" }}>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <h3>{post.frontmatter.date}</h3>
-                </header>
-                <Link to={post.fields.slug} itemProp="url">
-                  <GatsbyImage
-                    image={
-                      post.frontmatter.cover.childImageSharp.gatsbyImageData
-                    }
-                  />
-                </Link>
-                <section style={{ gridTemplateColumns: "1fr" }}>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
+                <h2>
+                  <span itemProp="headline">{title}</span>
+                </h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: post.frontmatter.description || post.excerpt,
+                  }}
+                  itemProp="description"
+                />
+                <h3>{post.frontmatter.date}</h3>
+                <GatsbyImage
+                  image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
+                />
               </article>
-            </li>
+            </Link>
           )
         })}
-      </ol>
+      </div>
     </Layout>
   )
 }
@@ -78,7 +69,7 @@ export const pageQuery = graphql`
           description
           cover {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(layout: CONSTRAINED, height: 666)
             }
           }
         }

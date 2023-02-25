@@ -6,24 +6,27 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import Logo from "../images/logo.svg"
 
+const scrollmessage = "Don't act like a clown, dance like one 🤡🥳"
+
 const Header = ({ siteTitle, menuLinks }) => (
   <header>
-    <div>
-      {" "}
-      <Link to="/">
-        <img width="100px" src={Logo} />
-      </Link>
-      <h1 className="siteTitle">{siteTitle}</h1>
-      <div>
-        <ul className={styles.nav}>
-          {menuLinks.map(link => (
-            <li key={link.name}>
-              <Link to={link.link}>{link.name}</Link>
-            </li>
-          ))}
-        </ul>
-        <p>Don't act like an idiot, dance like one!</p>
+    <Link to="/">
+      <div className="logo">
+        <img width="100px" alt="Eisbach Callin" src={Logo} />
+        <h1 className="siteTitle">{siteTitle}</h1>{" "}
       </div>
+    </Link>
+    <div>
+      <div className={styles.nav}>
+        {menuLinks.map(link => (
+          <div className={styles.navlinks} key={link.name}>
+            <Link to={link.link}>{link.name}</Link>
+          </div>
+        ))}
+      </div>
+      <marquee className={styles.nav} behaviour="scroll">
+        {scrollmessage}
+      </marquee>
     </div>
   </header>
 )

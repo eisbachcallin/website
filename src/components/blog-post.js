@@ -82,7 +82,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "[|] DD MMMM YYYY [| Doors:] h:mm [|]")
+        date(formatString: "DD MMMM YYYY [| Doors:] h:mm")
         description
         cover {
           childImageSharp {

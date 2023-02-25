@@ -1,25 +1,10 @@
-
-main{ 
-  max-width: 900px;
+main {
+  padding: 2rem;
 }
 
-.grid {
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr 10fr;
+.layout {
+  font-family: "Share Tech Mono", monospace;
 }
-
 .sidebar {
   display: block;
-}
-
-@media screen and (min-width : 900px) {
-  .sidebar{
-    grid-column: 1;
-    display: block;
-  }
-}
-
-.main {
-  grid-column: 2;
 }

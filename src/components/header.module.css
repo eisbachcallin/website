@@ -1,9 +1,17 @@
-.nav{
-text-decoration: none;
-list-style-type: none;
-padding-top: 8rem;
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style-type: none;
 }
 
-header{
-padding: var(--spacing-1) var(--spacing-2) var(--spacing-0); 
+.navlinks {
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
