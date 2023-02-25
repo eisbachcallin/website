@@ -8,6 +8,7 @@
     "url": "https://github.com/eisbachcallin/website/issues"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.12",
     "gatsby": "^5.6.1",
     "gatsby-plugin-feed": "^5.0.0",
     "gatsby-plugin-gatsby-cloud": "^5.0.0",
