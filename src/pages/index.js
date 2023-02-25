@@ -6,7 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const seo = "Eisbach Callin | Underground Rave since 2010"
 
-const BlogIndex = ({ data, location }) => {
+const ebcHome = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   return (
@@ -47,7 +47,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default ebcHome
 
 export const pageQuery = graphql`
   query {
