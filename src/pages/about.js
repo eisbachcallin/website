@@ -5,21 +5,34 @@ import Seo from "../components/seo"
 
 const seo = "About | Eisbach Callin"
 
-const about = ({ data, location }) => {
+const About = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
+
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title={seo} />
-      <article
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        itemProp="articleBody"
+      <Seo
+        title={seo}
       />
+      <article
+        className="blog-post"
+        itemScope
+        itemType="http://schema.org/Article"
+      >
+        <header>
+          <h2 itemProp="headline">{post.frontmatter.title}</h2>
+          <p>{post.frontmatter.date}</p>
+        </header>
+        <section
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          itemProp="articleBody"
+        />
+      </article>
     </Layout>
   )
 }
 
-export default about
+export default About
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -63,5 +76,5 @@ export const pageQuery = graphql`
         title
       }
     }
-  }  
+  }
 `
