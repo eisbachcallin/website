@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         ShareTechMono: ["'Share Tech Mono', monospace"],
       },
+      aspectRatio: {
+        'din': '1 / 1.41',
+      },
     },
   },
   plugins: [],
