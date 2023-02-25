@@ -5,30 +5,25 @@ module.exports = {
       name: `Eisbach Callin`,
       summary: `Eisbach Callin - Don't act like a clown, dance like one!`
     },
-    description: `Eisbach Callin - Don't act like an idiot, dance like one`,
+    description: `Eisbach Callin - Don't act like a clown, dance like one!`,
     siteUrl: `https://eisbachcallin.com/`,
     menuLinks: [
       {
-        name: "➫ next",
+        name: "next",
         link: "/"
       },
       {
-        name: "➫ past",
+        name: "past",
         link: "/past"
       },
       {
-        name: "➫ about",
+        name: "about",
         link: "/about"
       }
     ],
     head: [
       // Add the following to your siteMetadata.head:
-      {
-        name: "link",
-        type: "text/css",
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
-      }
+
     ]
   },
   plugins: [
