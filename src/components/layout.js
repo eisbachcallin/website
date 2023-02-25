@@ -21,13 +21,15 @@ const Layout = ({ location, children }) => {
   `)
 
   return (
-    <div data-is-root-path={isRootPath} className="bg-black">
+    <div data-is-root-path={isRootPath} className="bg-black min-h-screen flex flex-col justify-between">
       {" "}
-      <HeaderNext menuLinks={data.site.siteMetadata.menuLinks} />
-      <main className="flex items-center justify-between p-4 py-8 lg:p-8">
-        {children}
-      </main>
-      <footer className="flex justify-end p-4 lg:px-8 lg:py-4 text-white">Eisbach Callin ©{new Date().getFullYear()}</footer>
+      <div>
+        <HeaderNext menuLinks={data.site.siteMetadata.menuLinks} />
+        <main className="p-4 py-8 lg:p-8">
+          {children}
+        </main>
+      </div>
+      <footer className="flex self-end min-w-screen bg-black justify-end p-4 lg:px-8 lg:py-4 text-white text-xs uppercase">Eisbach Callin ©{new Date().getFullYear()}</footer>
     </div>
   )
 }
