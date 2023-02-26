@@ -1,59 +1,29 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { GatsbyImage } from "gatsby-plugin-image"
+import CardTile from "../components/card-tile"
 
-const BlogIndex = ({ data, location }) => {
+const seo = "Eisbach Callin | Underground Rave since 2010"
+
+const ebcHome = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Eisbach Callin | Underground Rave since 2010" />
-      <ol className="post-list">
+      <Seo title={seo} />
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2 lg:grid-cols-4 lg:gap-2">
         {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
           return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header style={{ gridTemplateColumns: "1fr" }}>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <h3>{post.frontmatter.date}</h3>
-                </header>
-                <Link to={post.fields.slug} itemProp="url">
-                  <GatsbyImage
-                    image={
-                      post.frontmatter.cover.childImageSharp.gatsbyImageData
-                    }
-                  />
-                </Link>
-                <section style={{ gridTemplateColumns: "1fr" }}>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
+            <CardTile post={post} key={post.fields.slug}/>
           )
         })}
-      </ol>
+      </div>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default ebcHome
 
 export const pageQuery = graphql`
   query {
@@ -78,7 +48,7 @@ export const pageQuery = graphql`
           description
           cover {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(layout: CONSTRAINED, height: 666)
             }
           }
         }
