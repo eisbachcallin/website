@@ -17,21 +17,22 @@ const BlogPostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article
-        className="grid grid-cols-4 gap-4"
+        className="grid grid-cols-7 gap-4 lg:gap-8"
         itemScope
         itemType="http://schema.org/Article"
       >
-
-            <GatsbyImage
-              className="sticky grid col-span-1 aspect-din object-fill transition ease-in duration-150"
-              image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
-              alt={post.frontmatter.description}
-            />
-            <section
-              className="grid col-span-3 prose prose-a:text-pink-500 prose-invert lg:prose-lg"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-              itemProp="articleBody"
-            />
+        <div className="grid col-span-7 md:col-span-3 lg:col-span-2 h-full">
+          <GatsbyImage
+            className="md:sticky md:top-20 aspect-din object-fill transition ease-in duration-150"
+            image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
+            alt={post.frontmatter.description}
+          />
+        </div>
+        <section
+          className="grid col-span-7 md:col-span-4 lg:col-span-5 prose prose-invert prose-a:text-pink-500 lg:prose-lg"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          itemProp="articleBody"
+        />
 
       </article>
       <nav>
