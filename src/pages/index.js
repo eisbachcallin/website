@@ -1,42 +1,21 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
-import * as styles from "./index.module.css"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { GatsbyImage } from "gatsby-plugin-image"
+import CardTile from "../components/card-tile"
 
-const BlogIndex = ({ data, location }) => {
+const seo = "Eisbach Callin | Underground Rave since 2010"
+
+const ebcHome = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Eisbach Callin | Underground Rave since 2010" />
-      <div className={styles.postList}>
+      <Seo title={seo} />
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2 lg:grid-cols-4 lg:gap-2">
         {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
           return (
-            <Link to={post.fields.slug} key={post.fields.slug} itemProp="url">
-              <article
-                className={styles.postListItem}
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <h2>
-                  <span itemProp="headline">{title}</span>
-                </h2>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: post.frontmatter.description || post.excerpt,
-                  }}
-                  itemProp="description"
-                />
-                <h3>{post.frontmatter.date}</h3>
-                <GatsbyImage
-                  image={post.frontmatter.cover.childImageSharp.gatsbyImageData}
-                />
-              </article>
-            </Link>
+            <CardTile post={post} key={post.fields.slug}/>
           )
         })}
       </div>
@@ -44,7 +23,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default ebcHome
 
 export const pageQuery = graphql`
   query {
