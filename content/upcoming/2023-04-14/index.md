@@ -2,7 +2,7 @@
 date: "2023-04-14T23:00:00.000Z"
 title: "Eisbach Callin Vs Pressurized"
 description: "Sunny Red, Feierwerk, Hansastraße 39, Munich"
-cover: "./2023-02-10.png"
+cover: "./2023-04-14.png"
 ---
 
 ## DJs
