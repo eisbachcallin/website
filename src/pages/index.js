@@ -12,7 +12,7 @@ const ebcHome = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title={seo} />
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-8">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2 lg:grid-cols-4 lg:gap-2">
         {posts.map(post => {
           return (
             <CardTile post={post} key={post.fields.slug}/>
