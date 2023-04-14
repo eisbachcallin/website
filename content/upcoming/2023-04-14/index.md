@@ -8,8 +8,6 @@ cover: "./2023-04-14.png"
 ## DJs
 
 - [Pressurized](https://www.facebook.com/pressurizeddnb/)
-  - Tobsen
-  - Oakin
   - Ecliptix
 
 **vs.**
