@@ -30,7 +30,7 @@ const mdxMeta = defineNestedType(() => ({
 
 export const EventPost = defineDocumentType(() => ({
   name: 'Event',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `events/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     date: {
@@ -51,7 +51,7 @@ export const EventPost = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: 'src/events',
+  contentDirPath: 'src/content',
   documentTypes: [EventPost],
   mdx: {
     remarkPlugins: [remarkGfm],
