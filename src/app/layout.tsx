@@ -12,6 +12,15 @@ const mono = Mono({
   variable: '--font-mono',
 })
 
+export const metadata = {
+  title: {
+    template: '%s | Eisbach Callin',
+    default: 'Eisbach Callin',
+  },
+  description:
+    'Underground Rave since 2010',
+}
+
 export default function RootLayout({
   children,
 }: {
