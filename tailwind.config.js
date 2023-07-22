@@ -13,6 +13,9 @@ module.exports = {
         sans: ['var(--font-sans)', ...fontFamily.sans],
         mono: ['var(--font-mono)', ...fontFamily.mono],
       },
+      aspectRatio: {
+        din: '1 / 1.41',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
