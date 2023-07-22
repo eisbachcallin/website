@@ -1,20 +1,23 @@
 import Image from 'next/image'
-import { allEvents } from 'contentlayer/generated'
+import { allEvents, Event } from 'contentlayer/generated'
 import { compareDesc, addDays, isAfter, isBefore } from 'date-fns'
 import EventCard from './components/EventCard'
 
 export default function Home() {
   const latentDay = addDays(new Date(), 2)
 
-  const sortedEvents = allEvents.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  )
-  const futureEvents = sortedEvents.filter((event) =>
-    isAfter(new Date(event.date), latentDay)
-  )
-  const pastEvents = sortedEvents.filter((event) =>
-    isBefore(new Date(event.date), latentDay)
-  )
+  let futureEvents: Event[] = []
+  let pastEvents: Event[] = []
+
+  ;(allEvents as Event[])
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+    .forEach((event) => {
+      if (isAfter(new Date(event.date), latentDay)) {
+        futureEvents.push(event)
+      } else {
+        pastEvents.push(event)
+      }
+    })
 
   return (
     <div className='mx-auto my-4 max-w-5xl'>
@@ -22,15 +25,15 @@ export default function Home() {
       {futureEvents.length > 0 ? (
         <>
           <h2>Future Events</h2>
-          {futureEvents.map((post, _id) => (
-            <EventCard key={_id} eventPost={post} />
+          {futureEvents.map((event) => (
+            <EventCard key={event._id} eventPost={event} />
           ))}
         </>
       ) : null}
 
       <h2>Past Events</h2>
-      {pastEvents.map((post, _id) => (
-        <EventCard key={_id} eventPost={post} />
+      {pastEvents.map((event) => (
+        <EventCard key={event._id} eventPost={event} />
       ))}
     </div>
   )
