@@ -3,6 +3,7 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import { RenderMdx } from '@/app/components/RenderMDX'
 import { Metadata } from 'next'
+import EventHero from '@/app/components/EventHero'
 
 interface PageProps {
   params: {
@@ -34,6 +35,7 @@ const ExamplePostPage = async ({ params }: PageProps) => {
 
   return (
     <article className='mx-auto max-w-5xl p-5'>
+      <EventHero post={post} />
       <RenderMdx code={post.body.code} />
     </article>
   )
