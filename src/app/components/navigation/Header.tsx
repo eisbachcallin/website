@@ -28,11 +28,11 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       )}
     >
       <nav
-        className='mx-auto flex items-center justify-between p-4 lg:px-8'
+        className='mx-auto flex max-w-max items-center justify-between p-2 '
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
-          <Link href='/' className='-m-1.5 p-1.5'>
+          <Link href={'/'} className='-m-1.5 p-1.5'>
             <span className='sr-only'>Eisbach Callin</span>
             <Logo className='h-6 w-6 fill-black dark:fill-white' />
           </Link>
