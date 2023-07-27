@@ -38,7 +38,7 @@ export default function RootLayout({
     >
       <body className='relative bg-white dark:bg-gray-950'>
         <Header />
-        {children}
+        <main className='min-h-[calc(100vh-6rem)]'>{children}</main>
         <Footer />
       </body>
     </html>
