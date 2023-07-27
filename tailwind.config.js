@@ -16,6 +16,9 @@ module.exports = {
       aspectRatio: {
         din: '1 / 1.41',
       },
+      maxWidth: {
+        max: '180rem',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
