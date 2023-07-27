@@ -2,6 +2,7 @@ import './globals.css'
 import { Gothic_A1 as Sans, JetBrains_Mono as Mono } from 'next/font/google'
 import clsx from 'clsx'
 import Header from './components/navigation/Header'
+import Footer from './components/navigation/Footer'
 
 const sans = Sans({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className='relative bg-white dark:bg-gray-950'>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
