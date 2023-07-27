@@ -1,34 +1,26 @@
-import { format, parseISO } from 'date-fns'
-import Link from 'next/link'
+import clsx from 'clsx'
 import { Event } from 'contentlayer/generated'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface CardPostProps {
   eventPost: Event
+  className?: string
 }
 
-export default function EventCard({ eventPost }: CardPostProps) {
+export default function EventCard({ eventPost, className }: CardPostProps) {
   return (
-    <article className='flex max-w-xl flex-col items-start justify-between gap-y-4'>
-      <div className='flex items-center gap-x-4 text-xs'>
-        <time
-          dateTime={eventPost.date}
-          className='shrink-0 text-xs leading-loose text-gray-500'
-        >
-          {format(parseISO(eventPost.date), 'LLLL d, yyyy')}
-        </time>
-        <span className='text-xs text-pink-500'>/</span>
-      </div>
-      <div className='group relative gap-y-1'>
-        <h3 className='text-2xl font-semibold text-gray-900 group-hover:text-gray-600'>
-          <Link href={eventPost.slugAsParams}>
-            <span className='absolute inset-0' />
-            {eventPost.mdxMeta.title}
-          </Link>
-        </h3>
-        <p className='mt-5 text-sm leading-normal text-gray-600'>
-          {eventPost.mdxMeta.description}
-        </p>
-      </div>
+    <article className={clsx(className, 'relative aspect-din w-full')}>
+      <Link href={eventPost.slugAsParams}>
+        <Image
+          alt={eventPost.mdxMeta.title}
+          width={800}
+          height={800}
+          loading='lazy'
+          src={eventPost.cover}
+          className='h-full w-full object-cover'
+        />
+      </Link>
     </article>
   )
 }
