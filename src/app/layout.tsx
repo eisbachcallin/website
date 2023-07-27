@@ -1,11 +1,12 @@
 import './globals.css'
-import { Inter as Sans, JetBrains_Mono as Mono } from 'next/font/google'
+import { Gothic_A1 as Sans, JetBrains_Mono as Mono } from 'next/font/google'
 import clsx from 'clsx'
 import Header from './components/navigation/Header'
 
 const sans = Sans({
   subsets: ['latin'],
   variable: '--font-sans',
+  weight: ['400', '500', '700'],
 })
 
 const mono = Mono({
