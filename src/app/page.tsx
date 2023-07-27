@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { allEvents, Event } from 'contentlayer/generated'
 import { compareDesc, addDays, isAfter, isBefore } from 'date-fns'
 import EventCard from './components/EventCard'
