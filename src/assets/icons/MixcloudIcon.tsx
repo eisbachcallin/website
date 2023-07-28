@@ -1,0 +1,14 @@
+type IconProps = {
+  className?: string
+}
+
+const MixcloudIcon: React.FC<IconProps> = ({ className }) => (
+  <svg className={className} viewBox='0 0 32 32'>
+    <path
+      fillRule='evenodd'
+      clipRule='evenodd'
+      d='M4 7C4 5.89543 4.89543 5 6 5H8.67007C9.6325 5 10.4585 5.68548 10.6358 6.63142L14.8299 25H17.1701L21.3642 6.63142C21.5415 5.68548 22.3675 5 23.3299 5H26C27.1046 5 28 5.89543 28 7V26C28 26.5523 27.5523 27 27 27C26.4477 27 26 26.5523 26 26V7H23.3299L19.1358 25.3686C18.9585 26.3145 18.1325 27 17.1701 27H14.8299C13.8675 27 13.0415 26.3145 12.8642 25.3686L8.67007 7L6 7V26C6 26.5523 5.55228 27 5 27C4.44772 27 4 26.5523 4 26V7Z'
+    />
+  </svg>
+)
+export default MixcloudIcon
