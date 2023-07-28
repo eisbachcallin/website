@@ -1,9 +1,9 @@
 import { allEvents } from 'contentlayer/generated'
 import React from 'react'
 import { notFound } from 'next/navigation'
-import { RenderMdx } from '@/app/components/RenderMDX'
+import { RenderMdx } from '@/components/RenderMDX'
 import { Metadata } from 'next'
-import EventHero from '@/app/components/EventHero'
+import EventHero from '@/components/EventHero'
 
 interface PageProps {
   params: {

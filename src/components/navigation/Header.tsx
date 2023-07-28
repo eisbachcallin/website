@@ -1,6 +1,6 @@
 'use client'
 
-import Logo from '@/app/assets/Logo'
+import Logo from '@/assets/Logo'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'

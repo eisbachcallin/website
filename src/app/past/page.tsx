@@ -1,6 +1,6 @@
 import { allEvents, Event } from 'contentlayer/generated'
 import { compareDesc, isAfter, addDays } from 'date-fns'
-import EventCard from '../components/EventCard'
+import EventCard from '@/components/EventCard'
 import Link from 'next/link'
 
 export default function PastEventsPage() {

@@ -1,7 +1,6 @@
 import { allEvents, Event } from 'contentlayer/generated'
 import { compareDesc, isAfter, addDays } from 'date-fns'
-import EventCard from '../components/EventCard'
-import Link from 'next/link'
+import EventCard from '@/components/EventCard'
 
 export default function NextEventsPage() {
   const latentDay = addDays(new Date(), 2)
