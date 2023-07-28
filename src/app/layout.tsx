@@ -32,7 +32,7 @@ export default function RootLayout({
       lang='en'
       className={clsx(
         `${sans.variable} ${mono.variable}`,
-        'scroll-smooth font-mono selection:bg-pink-500 selection:text-white dark:selection:text-black'
+        'scroll-smooth selection:bg-pink-500 selection:text-white dark:selection:text-black'
       )}
     >
       <body className='relative bg-white dark:bg-gray-950'>
