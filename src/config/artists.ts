@@ -29,19 +29,6 @@ const artists = [
     ],
   },
   {
-    name: 'Noise Colors',
-    avatar: '/artists/noisecolors.jpg',
-    description:
-      "Two passionate musicians and producers from Munich, Germany, have joined forces to create a fresh Drum & Bass and Dubstep project: 'Noise Colors'. Their live trademark - two Mixers with three turntables - has proven itself on numerous occasions. Supporting artists like 'Mind Vortex' and playing regularly at plenty of local venues such as 'The Drum & Bass Issue', 'Isar Bass', 'Clandestino Rave', 'Neokeller' and 'Eisbach Callin', they build up their reputation as one of Munich's freshest electronic acts.",
-    links: [
-      {
-        url: 'https://soundcloud.com/noise-colors',
-        platform: 'Soundcloud',
-        Icon: SoundcloudIcon,
-      },
-    ],
-  },
-  {
     name: 'Turdbaby',
     avatar: '/artists/turdbaby.jpg',
     description:
@@ -51,6 +38,19 @@ const artists = [
         url: 'https://www.mixcloud.com/turdbaby/',
         platform: 'Mixcloud',
         Icon: MixcloudIcon,
+      },
+    ],
+  },
+  {
+    name: 'Noise Colors',
+    avatar: '/artists/noisecolors.jpg',
+    description:
+      "Two passionate musicians and producers from Munich, Germany, have joined forces to create a fresh Drum & Bass and Dubstep project: 'Noise Colors'. Their live trademark - two Mixers with three turntables - has proven itself on numerous occasions. Supporting artists like 'Mind Vortex' and playing regularly at plenty of local venues such as 'The Drum & Bass Issue', 'Isar Bass', 'Clandestino Rave', 'Neokeller' and 'Eisbach Callin', they build up their reputation as one of Munich's freshest electronic acts.",
+    links: [
+      {
+        url: 'https://soundcloud.com/noise-colors',
+        platform: 'Soundcloud',
+        Icon: SoundcloudIcon,
       },
     ],
   },
