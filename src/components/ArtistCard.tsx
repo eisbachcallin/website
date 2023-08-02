@@ -30,14 +30,14 @@ interface ArtistCardProps {
 
 const ArtistCard = ({ artist }: ArtistCardProps) => {
   return (
-    <article className='mb-16 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0'>
+    <article className='mb-16 flex flex-col space-y-4 font-sans sm:flex-row sm:space-x-4 sm:space-y-0'>
       <div className='flex min-w-[8rem] flex-col items-start space-y-4'>
         <Image
           width={64}
           height={64}
           src={artist.avatar}
           alt={`${artist.name} avatar`}
-          className='h-16 w-16 rounded-none border border-black'
+          className='h-16 w-16 rounded-full border border-black'
         />
         <div className='flex flex-col space-y-2'>
           {artist.links.map((link) => (
@@ -56,7 +56,7 @@ const ArtistCard = ({ artist }: ArtistCardProps) => {
           ))}
         </div>
       </div>
-      <div className='space-y-4'>
+      <div className='max-w-[60ch] space-y-4'>
         <h3 className='text-lg font-semibold'>{artist.name}</h3>
         <p>{artist.description}</p>
       </div>
