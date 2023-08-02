@@ -35,7 +35,7 @@ export default function RootLayout({
         'scroll-smooth selection:bg-pink-500 selection:text-white dark:selection:text-black'
       )}
     >
-      <body className='relative bg-white dark:bg-gray-950'>
+      <body className='relative bg-white font-mono dark:bg-gray-950'>
         <Header />
         <main className='min-h-[calc(100vh-6rem)]'>{children}</main>
         <Footer />
