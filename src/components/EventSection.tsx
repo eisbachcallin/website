@@ -14,7 +14,7 @@ const EventSection = ({ events, label }: EventSectionProps) => {
   })
 
   return (
-    <div className='space-y-2'>
+    <section className='space-y-2'>
       <h2 className='text-sm font-light uppercase leading-none'>{label}</h2>
       {events.length > 0 ? (
         <div className={clsx(gridClasses, 'sm:grid-cols-2')}>
@@ -25,7 +25,7 @@ const EventSection = ({ events, label }: EventSectionProps) => {
       ) : (
         <h2>No events found.</h2>
       )}
-    </div>
+    </section>
   )
 }
 
