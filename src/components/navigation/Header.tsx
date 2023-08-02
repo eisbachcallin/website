@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-10 border-b border-black bg-white/5 font-mono backdrop-blur-2xl',
+        'sticky top-0 z-10 border-b border-black bg-white/5 backdrop-blur-2xl',
         className
       )}
     >
