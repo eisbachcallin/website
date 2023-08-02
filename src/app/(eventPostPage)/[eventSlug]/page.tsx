@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { RenderMdx } from '@/components/RenderMDX'
 import { Metadata } from 'next'
 import EventHero from '@/components/EventHero'
+import SplitContainer from '@/components/layout/SplitContainer'
 
 interface PageProps {
   params: {
@@ -34,10 +35,10 @@ const ExamplePostPage = async ({ params }: PageProps) => {
   const post = await getPostFromParams(params.eventSlug)
 
   return (
-    <article className='mx-auto max-w-5xl p-5'>
-      <EventHero post={post} />
-      <RenderMdx code={post.body.code} />
-    </article>
+    <SplitContainer
+      leftSide={<EventHero post={post} />}
+      rightSide={<RenderMdx code={post.body.code} />}
+    />
   )
 }
 

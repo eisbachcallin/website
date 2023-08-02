@@ -3,12 +3,14 @@ import ArtistCard from '@/components/ArtistCard'
 import artists from '@/config/artists'
 import Image from 'next/image'
 import Link from 'next/link'
+import SplitContainer from '@/components/layout/SplitContainer'
 
 const About = () => {
   return (
-    <div className='mx-auto w-full px-2 py-12'>
-      <div className='flex flex-col items-start justify-center gap-6 xl:mx-auto xl:grid xl:max-w-max xl:grid-cols-2 '>
-        <div className='  xl:grid-col-1  mx-auto w-full max-w-max space-y-8 object-cover font-sans sm:py-16 sm:text-8xl xl:sticky xl:top-0 xl:max-w-none  xl:space-y-16  '>
+    <SplitContainer
+      stickyLeft
+      leftSide={
+        <div className='space-y-8 object-cover font-sans sm:text-8xl xl:space-y-16'>
           <section className='text-2xl sm:text-3xl xl:max-w-[30ch] xl:text-4xl'>
             <span className='sr-only'>About Eisbach Callin</span>
             <h1>
@@ -59,27 +61,26 @@ const About = () => {
             </p>
           </section>
         </div>
-
-        <div className='xl:max-w-1/2 xl:grid-col-1 max-w-maxxl:max-w-none xl:py-16'>
-          <div className='space-y-8 sm:max-w-[60ch] xl:max-w-[80ch] '>
-            <Image
-              priority
-              width={800}
-              height={500}
-              src='/about/group.jpg'
-              alt='foobar'
-              className='w-full border border-black object-cover'
-            />
-            <section>
-              <span className='sr-only'>Resident artists</span>
-              {artists.map((artist, index) => (
-                <ArtistCard key={index} artist={artist} />
-              ))}
-            </section>
-          </div>
+      }
+      rightSide={
+        <div className='space-y-8 sm:py-16'>
+          <Image
+            priority
+            width={800}
+            height={500}
+            src='/about/group.jpg'
+            alt='foobar'
+            className='w-full border border-black object-cover'
+          />
+          <section>
+            <span className='sr-only'>Resident artists</span>
+            {artists.map((artist, index) => (
+              <ArtistCard key={index} artist={artist} />
+            ))}
+          </section>
         </div>
-      </div>
-    </div>
+      }
+    />
   )
 }
 
