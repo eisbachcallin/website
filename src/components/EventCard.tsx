@@ -10,7 +10,12 @@ interface CardPostProps {
 
 export default function EventCard({ eventPost, className }: CardPostProps) {
   return (
-    <article className={clsx(className, 'relative aspect-din w-full')}>
+    <article
+      className={clsx(
+        className,
+        'relative aspect-din w-full border border-black'
+      )}
+    >
       <Link href={eventPost.slugAsParams}>
         <Image
           alt={eventPost.mdxMeta.title}
