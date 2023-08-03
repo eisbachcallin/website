@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       )}
     >
       <nav
-        className='xl: mx-auto flex max-w-max items-center justify-between p-2 xl:border-x xl:border-black'
+        className='mx-auto flex max-w-max items-center justify-between p-2 xl:border-x xl:border-black'
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
