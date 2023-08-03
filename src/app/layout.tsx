@@ -37,7 +37,7 @@ export default function RootLayout({
     >
       <body className='relative bg-white font-mono dark:bg-gray-950'>
         <Header />
-        <main className='min-h-[calc(100vh-6rem)]'>{children}</main>
+        <main className='flex min-h-[calc(100vh-6rem)]'>{children}</main>
         <Footer />
       </body>
     </html>
