@@ -4,6 +4,24 @@ import InstagramIcon from '@/assets/icons/InstagramIcon'
 import BeatportIcon from '@/assets/icons/BeatportIcon'
 import BandcampIcon from '@/assets/icons/BandcampIcon'
 
+type Icon =
+  | typeof SoundcloudIcon
+  | typeof BeatportIcon
+  | typeof MixcloudIcon
+  | typeof InstagramIcon
+
+interface Link {
+  url: string
+  platform: string
+  Icon: Icon
+}
+
+export interface Artist {
+  name: string
+  description: string
+  avatar: string
+  links: Link[]
+}
 const artists = [
   {
     name: 'Miso',
