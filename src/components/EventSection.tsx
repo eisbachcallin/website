@@ -1,5 +1,3 @@
-// EventSection
-import clsx from 'clsx'
 import EventCard from '@/components/EventCard'
 import { Event } from 'contentlayer/generated'
 
