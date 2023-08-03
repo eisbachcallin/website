@@ -10,10 +10,10 @@ type FooterProps = {
 const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
     <footer
-      className={clsx('border-t border-black bg-white', className)}
+      className={clsx('border-y border-black bg-white', className)}
       aria-label='Global'
     >
-      <div className='mx-auto flex h-12 max-w-max items-center justify-end p-2'>
+      <div className='mx-auto flex h-12 max-w-max items-center justify-end p-2 xl:border-x xl:border-black'>
         <p className='text-sm font-light uppercase leading-none text-black'>
           eisbach callin ©{getYear(new Date())}
         </p>

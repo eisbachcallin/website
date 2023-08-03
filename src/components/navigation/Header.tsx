@@ -23,12 +23,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-10 border-b border-black bg-white/5 backdrop-blur-2xl',
+        'sticky top-0 z-10 border-y border-black bg-white',
         className
       )}
     >
       <nav
-        className='mx-auto flex max-w-max items-center justify-between p-2 '
+        className='xl: mx-auto flex max-w-max items-center justify-between p-2 xl:border-x xl:border-black'
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
