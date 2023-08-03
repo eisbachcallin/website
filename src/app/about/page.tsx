@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import SplitContainer from '@/components/layout/SplitContainer'
 import ResidentSection from '@/components/ResidentSection'
-import artists from '../../config/artists'
+import artists from '../../config/residents'
 import Image from 'next/image'
 
 const About = () => {

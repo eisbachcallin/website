@@ -1,9 +1,8 @@
-import clsx from 'clsx'
 import ResidentCard from '@/components/ResidentCard'
-import { Artist } from '@/config/artists'
+import { Resident } from '@/config/residents'
 
 interface ResidentSectionProps {
-  residents: Artist[]
+  residents: Resident[]
   label: string
 }
 
@@ -19,7 +18,7 @@ const ResidentSection = ({ residents, label }: ResidentSectionProps) => {
         }
       >
         {residents.map((resident) => (
-          <ResidentCard key={resident.name} artist={resident} />
+          <ResidentCard key={resident.name} residents={resident} />
         ))}
       </div>
     </section>

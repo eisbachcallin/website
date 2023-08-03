@@ -1,28 +1,16 @@
-import SoundcloudIcon from '@/assets/icons/SoundcloudIcon'
-import MixcloudIcon from '@/assets/icons/MixcloudIcon'
-import InstagramIcon from '@/assets/icons/InstagramIcon'
-import BeatportIcon from '@/assets/icons/BeatportIcon'
-import BandcampIcon from '@/assets/icons/BandcampIcon'
-
-type Icon =
-  | typeof SoundcloudIcon
-  | typeof BeatportIcon
-  | typeof MixcloudIcon
-  | typeof InstagramIcon
-
-interface Link {
+interface ResidentLink {
   url: string
   platform: string
-  Icon: Icon
 }
 
-export interface Artist {
+export interface Resident {
   name: string
   description: string
   avatar: string
-  links: Link[]
+  links: ResidentLink[]
 }
-const artists = [
+
+const residents: Resident[] = [
   {
     name: 'Miso',
     avatar: '/artists/miso.jpg',
@@ -32,17 +20,14 @@ const artists = [
       {
         url: 'https://blendits.bandcamp.com/album/voodoo-princess-loopholes',
         platform: 'Bandcamp',
-        Icon: BandcampIcon,
       },
       {
         url: 'https://www.beatport.com/artist/miso/10741',
         platform: 'Beatport',
-        Icon: BeatportIcon,
       },
       {
         url: 'https://soundcloud.com/misoelectronica',
         platform: 'Soundcloud',
-        Icon: SoundcloudIcon,
       },
     ],
   },
@@ -55,7 +40,6 @@ const artists = [
       {
         url: 'https://www.mixcloud.com/turdbaby/',
         platform: 'Mixcloud',
-        Icon: MixcloudIcon,
       },
     ],
   },
@@ -68,7 +52,6 @@ const artists = [
       {
         url: 'https://soundcloud.com/noise-colors',
         platform: 'Soundcloud',
-        Icon: SoundcloudIcon,
       },
     ],
   },
@@ -81,7 +64,6 @@ const artists = [
       {
         url: 'https://www.mixcloud.com/Weiky/',
         platform: 'Mixcloud',
-        Icon: MixcloudIcon,
       },
     ],
   },
@@ -94,10 +76,9 @@ const artists = [
       {
         url: 'https://www.mixcloud.com/Weiky/',
         platform: 'Mixcloud',
-        Icon: MixcloudIcon,
       },
     ],
   },
 ]
 
-export default artists
+export default residents

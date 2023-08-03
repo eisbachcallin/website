@@ -1,29 +1,29 @@
-import { Artist } from '@/config/artists'
+import { Resident } from '@/config/residents'
 import Image from 'next/image'
 import Link from 'next/link'
 
 interface ResidentCardProps {
-  artist: Artist
+  residents: Resident
 }
 
-const ResidentCard = ({ artist }: ResidentCardProps) => {
+const ResidentCard = ({ residents }: ResidentCardProps) => {
   return (
     <div className='grid grid-cols-1 gap-4 font-sans sm:grid-cols-2 '>
       <div className='relative aspect-din w-full border border-black'>
         <Image
           width={800}
           height={800}
-          src={artist.avatar}
-          alt={artist.name}
+          src={residents.avatar}
+          alt={residents.name}
           className='h-full w-full object-cover'
         />
       </div>
 
       <div className='mb-2 space-y-2'>
-        <h2 className='text-lg font-semibold'>{artist.name}</h2>
-        <p className='text-base'>{artist.description}</p>
+        <h2 className='text-lg font-semibold'>{residents.name}</h2>
+        <p className='text-base'>{residents.description}</p>
         <div className='flex flex-col space-y-2'>
-          {artist.links.map((link, index) => (
+          {residents.links.map((link, index) => (
             <Link
               key={index}
               href={link.url}
