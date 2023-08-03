@@ -1,9 +1,9 @@
 import React from 'react'
-import ArtistCard from '@/components/ArtistCard'
-import artists from '@/config/artists'
-import Image from 'next/image'
 import Link from 'next/link'
 import SplitContainer from '@/components/layout/SplitContainer'
+import ResidentSection from '@/components/ResidentSection'
+import artists from '../../config/artists'
+import Image from 'next/image'
 
 const About = () => {
   return (
@@ -11,7 +11,7 @@ const About = () => {
       stickyLeft
       leftSide={
         <div className='space-y-8 object-cover font-sans sm:text-8xl xl:space-y-16'>
-          <section className='text-2xl sm:text-3xl xl:max-w-[30ch] xl:text-4xl'>
+          <div className='text-2xl sm:text-3xl xl:max-w-[30ch] xl:text-4xl'>
             <span className='sr-only'>About Eisbach Callin</span>
             <h1>
               Eisbach Callin is a underground dance party at home in Munich,
@@ -19,7 +19,7 @@ const About = () => {
               dedication and love of all of our supporters. Hugs and kisses for
               your support over the years 🤗😚
             </h1>
-          </section>
+          </div>
           <section className='text-2xl sm:text-3xl xl:max-w-[30ch] xl:text-4xl'>
             <span className='sr-only'>Links & Socials</span>
             <p>
@@ -63,21 +63,16 @@ const About = () => {
         </div>
       }
       rightSide={
-        <div className='space-y-8 sm:py-16'>
+        <div className='p-2'>
           <Image
             priority
             width={800}
             height={500}
             src='/about/group.jpg'
             alt='foobar'
-            className='w-full border border-black object-cover'
+            className='mb-2 w-full border border-black object-cover'
           />
-          <section>
-            <span className='sr-only'>Resident artists</span>
-            {artists.map((artist, index) => (
-              <ArtistCard key={index} artist={artist} />
-            ))}
-          </section>
+          <ResidentSection residents={artists} label='residents ↓ ↓ ↓' />
         </div>
       }
     />
