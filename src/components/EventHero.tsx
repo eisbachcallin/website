@@ -12,10 +12,15 @@ const EventHero: React.FC<PostHeroProps> = ({ post }) => {
 
   return (
     <div className='grid gap-y-8'>
-      <div className='flex flex-col gap-y-2 pb-2 font-sans text-3xl font-semibold'>
-        <h1 className='text-gray-950 dark:text-white '>{mdxMeta.title}</h1>
+      <div className='flex flex-col gap-y-2 pb-2 text-3xl font-semibold'>
+        <h1 className='font-sans  text-gray-950  dark:text-white '>
+          {mdxMeta.title}
+        </h1>
         <div className='flex flex-wrap items-baseline gap-x-4'>
-          <time dateTime={date} className='bg-pink-500 p-[0.05rem] text-white'>
+          <time
+            dateTime={date}
+            className='bg-pink-500 p-[0.05rem] font-mono text-white'
+          >
             {format(parseISO(date), 'dd-MM-yyyy')}
           </time>
         </div>
