@@ -8,7 +8,10 @@ interface ResidentCardProps {
 
 const ResidentCard = ({ residents }: ResidentCardProps) => {
   return (
-    <div className='grid grid-cols-1 gap-4 font-sans sm:grid-cols-2 '>
+    <div
+      id={residents.name}
+      className='grid grid-cols-1 gap-4 font-sans sm:grid-cols-2 '
+    >
       <div className='relative aspect-din w-full border border-black'>
         <Image
           width={800}
