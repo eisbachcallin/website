@@ -15,7 +15,7 @@ export function RenderMdx({ code, className }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <div className='mdx prose prose-sm dark:prose-invert md:prose-base sm:py-16'>
+    <div className='mdx prose prose-sm h-full flex-col p-2 font-sans dark:prose-invert md:prose-base xl:border-r xl:border-black'>
       <Component className={className} components={components} />
     </div>
   )
