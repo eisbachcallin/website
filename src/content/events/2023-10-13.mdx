@@ -8,31 +8,65 @@ mdxMeta:
 
 A night of Drum&Bass, Breaks, Dubstep, and HipHop at Munichs longest-running underground party:
 
-Eisbach Callin Presents SKS
-
 Get ready to witness the talent of SKS, the renowned owner of Vandal Records and Vandal Ltd. Hailing all the way from France, Vandal Records has been a driving force in the Drum & Bass scene since its inception in 2004, dedicated to delivering dancefloor devastation like no other. This isn't just another party; it's a testament to the power of underground music and the relentless spirit of Eisbach Callin.
 
-As always, Eisbach callin will be hosted by legendary MC Irie Treasure with visuals by VJ Visionär.  
+As always, Eisbach callin will be hosted by legendary MC Irie Treasure with visuals by VJ Visionär.
+
 Don't act like a clown, dance like one!
 
-## DJs
+## Time
 
-- [SKS](https://soundcloud.com/sksvandal)
-- Miso
-- Noise Colors
-- Turdbaby
+<RenderDoors
+  timeDoors='22'
+  price='10'
+  before={{ timeBefore: '23', priceBefore: '8' }}
+/>
 
-## VJ
+## Location
 
-- Visionaer
+<RenderLocation
+  venueName='Sunny Red'
+  address='Feierwerk Hansastr. 39'
+  city='Munich'
+  mapUrl='https://goo.gl/maps/mA8iv2XEHf7XfRLv7'
+/>
 
-## MC
+## Lineup
 
-- Irie Treasure
+<RenderArtists
+  artists={[
+    {
+      name: 'SKS',
+      label: 'Vandal Records',
+      href: 'https://soundcloud.com/sksvandal',
+    },
+    { name: 'Miso' },
+    { name: 'Noise Colors' },
+    { name: 'Turdbaby' },
+  ]}
+/>
 
-Support underground music ❤️
+### VJ
 
-- [SKS on Discogs](https://www.discogs.com/artist/279501-DJ-Sks)
-- [SKS on Soundcloud](https://soundcloud.com/sksvandal)
-- [Vandal Records on Bandcamp](https://vandalrecords.bandcamp.com/)
-- [SKS on Facebook](https://www.facebook.com/SKSVandal)
+<RenderArtists artists={[{ name: 'Visionaer' }]} />
+
+### MC
+
+<RenderArtists artists={[{ name: 'Irie Treasure' }]} />
+
+## Support underground music
+
+<RenderLinks
+  links={[
+    {
+      title: 'SKS on Discogs',
+      href: 'https://www.discogs.com/artist/279501-DJ-Sks',
+    },
+    { title: 'SKS on Soundcloud', href: 'https://soundcloud.com/sksvandal' },
+    {
+      title: 'Vandal Records on Bandcamp',
+      href: 'https://vandalrecords.bandcamp.com/',
+    },
+    { title: 'SKS on Facebook', href: 'https://www.facebook.com/SKSVandal' },
+  ]}
+/>
