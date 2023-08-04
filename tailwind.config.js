@@ -19,6 +19,30 @@ module.exports = {
       maxWidth: {
         max: '180rem',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            '.hashtag': {
+              opacity: '0',
+              position: 'absolute',
+              marginLeft: '1ch',
+              marginTop: '0',
+              width: 'auto',
+              height: 'auto',
+              cursor: 'pointer',
+            },
+            'h1:hover .hashtag': {
+              opacity: '100%',
+            },
+            'h2:hover .hashtag': {
+              opacity: '100%',
+            },
+            'h3:hover .hashtag': {
+              opacity: '100%',
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require('@tailwindcss/typography')],

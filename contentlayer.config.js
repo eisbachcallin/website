@@ -60,7 +60,7 @@ export default makeSource({
       [
         rehypeAutolinkHeadings,
         {
-          behavior: 'prepend',
+          behavior: 'append',
           properties: {
             class: 'anchor-link',
             ariaHidden: true,
