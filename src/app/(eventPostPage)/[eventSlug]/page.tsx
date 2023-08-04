@@ -36,6 +36,7 @@ const ExamplePostPage = async ({ params }: PageProps) => {
 
   return (
     <SplitContainer
+      stickyLeft
       leftSide={<EventHero post={post} />}
       rightSide={<RenderMdx code={post.body.code} />}
     />
