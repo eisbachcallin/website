@@ -14,11 +14,7 @@ const ResidentSection = ({ residents, label }: ResidentSectionProps) => {
           {label}
         </h2>
       </div>
-      <div
-        className={
-          'grid w-full gap-2 lg:grid-cols-2 xl:col-span-5 xl:grid-cols-1'
-        }
-      >
+      <div className={'grid gap-2 lg:grid-cols-2 xl:col-span-5 xl:grid-cols-1'}>
         {residents.map((resident) => (
           <ResidentCard key={resident.name} residents={resident} />
         ))}
