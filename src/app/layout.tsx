@@ -32,10 +32,10 @@ export default function RootLayout({
       lang='en'
       className={clsx(
         `${sans.variable} ${mono.variable}`,
-        'scroll-smooth selection:bg-pink-500 selection:text-white dark:selection:text-black'
+        'scroll-smooth selection:bg-accent selection:text-onaccent'
       )}
     >
-      <body className='relative bg-white font-mono dark:bg-gray-950'>
+      <body className='relative bg-default font-mono'>
         <Header />
         <main className='flex min-h-[calc(100vh-6rem)]'>{children}</main>
         <Footer />
