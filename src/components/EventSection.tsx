@@ -8,10 +8,13 @@ interface EventSectionProps {
 
 const EventSection = ({ events, label }: EventSectionProps) => {
   return (
-    <section className='flex flex-col gap-y-2 p-2 xl:grid xl:grid-cols-6'>
-      <h2 className='text-sm font-light uppercase leading-none xl:col-span-1'>
-        {label}
-      </h2>
+    <section className='flex flex-col gap-y-2 p-2 '>
+      <div className='flex'>
+        <h2 className='bg-pink-500 p-[0.05rem] text-sm font-light uppercase leading-none  text-white'>
+          {label}
+        </h2>
+      </div>
+
       {events.length > 0 ? (
         <div
           className={
