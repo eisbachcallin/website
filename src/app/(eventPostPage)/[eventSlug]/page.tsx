@@ -13,9 +13,9 @@ interface PageProps {
 }
 
 async function getPostFromParams(slug: string) {
-  const examplePost = allEvents.find((post) => post.slugAsParams === slug)
-  if (!examplePost) notFound()
-  return examplePost
+  const event = allEvents.find((post) => post.slugAsParams === slug)
+  if (!event) notFound()
+  return event
 }
 
 export const generateStaticParams = async () =>
@@ -25,13 +25,14 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const post = await getPostFromParams(params.eventSlug)
+
   return {
     title: post.mdxMeta.title,
     description: post.mdxMeta.description,
   }
 }
 
-const ExamplePostPage = async ({ params }: PageProps) => {
+const EventPostPage = async ({ params }: PageProps) => {
   const post = await getPostFromParams(params.eventSlug)
 
   return (
@@ -43,4 +44,4 @@ const ExamplePostPage = async ({ params }: PageProps) => {
   )
 }
 
-export default ExamplePostPage
+export default EventPostPage
