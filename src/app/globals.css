@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-black: 0 0 0;
+    --color-white: 255 255 255;
+    --color-lime: 163 230 53;
+    --color-purple: 168 85 247;
+  }
+
+  .theme-light {
+    --color-bg-default: rgba(var(--color-white));
+    --color-bg-invert: rgba(var(--color-black));
+    --color-bg-accent: rgba(var(--color-lime));
+
+    --color-border-default: rgba(var(--color-black));
+    --color-border-invert: rgba(var(--color-white));
+    --color-border-accent: rgba(var(--color-lime));
+
+    --color-stroke-default: rgba(var(--color-black));
+    --color-stroke-invert: rgba(var(--color-white));
+    --color-stroke-accent: rgba(var(--color-lime));
+
+    --color-fill-default: rgba(var(--color-black));
+    --color-fill-invert: rgba(var(--color-white));
+    --color-fill-accent: rgba(var(--color-lime));
+
+    --color-text-default: rgba(var(--color-black));
+    --color-text-invert: rgba(var(--color-white));
+    --color-text-accent: rgba(var(--color-lime));
+    --color-text-onaccent: rgba(var(--color-purple));
+  }
+
+  .theme-dark {
+    --color-bg-default: rgba(var(--color-black));
+    --color-bg-invert: rgba(var(--color-white));
+    --color-bg-accent: rgba(var(--color-purple));
+
+    --color-border-default: rgba(var(--color-white));
+    --color-border-invert: rgba(var(--color-black));
+    --color-border-accent: rgba(var(--color-purple));
+
+    --color-stroke-default: rgba(var(--color-black));
+    --color-stroke-invert: rgba(var(--color-white));
+    --color-stroke-accent: rgba(var(--color-purple));
+
+    --color-fill-default: rgba(var(--color-white));
+    --color-fill-invert: rgba(var(--color-black));
+    --color-fill-accent: rgba(var(--color-purple));
+
+    --color-text-default: rgba(var(--color-white));
+    --color-text-invert: rgba(var(--color-black));
+    --color-text-accent: rgba(var(--color-purple));
+    --color-text-onaccent: rgba(var(--color-lime));
+  }
+}
