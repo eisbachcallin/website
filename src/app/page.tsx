@@ -8,8 +8,9 @@ export default function Home() {
   return (
     <SplitContainer
       stickyLeft
+      narrow
       leftSide={
-        <h1 className='font-sans text-2xl sm:text-3xl xl:text-4xl'>
+        <h1 className='font-sans text-2xl sm:text-3xl'>
           don’t act like a clown, dance like one
         </h1>
       }
