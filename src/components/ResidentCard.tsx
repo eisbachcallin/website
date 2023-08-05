@@ -8,11 +8,8 @@ interface ResidentCardProps {
 
 const ResidentCard = ({ residents }: ResidentCardProps) => {
   return (
-    <div
-      id={residents.name}
-      className='grid grid-cols-1 gap-4 font-sans sm:grid-cols-2 '
-    >
-      <div className='relative aspect-din w-full border border-black'>
+    <div id={residents.name} className='grid grid-cols-1 gap-4 sm:grid-cols-3'>
+      <div className='relative aspect-din w-full border border-black sm:col-span-1'>
         <Image
           width={800}
           height={800}
@@ -21,21 +18,28 @@ const ResidentCard = ({ residents }: ResidentCardProps) => {
           className='h-full w-full object-cover'
         />
       </div>
-
-      <div className='mb-2 space-y-2'>
-        <h2 className='text-lg font-semibold'>{residents.name}</h2>
-        <p className='text-base'>{residents.description}</p>
+      <div className='mb-2 space-y-2 sm:col-span-2 sm:max-w-[60ch]'>
+        <h2 className='font-mono text-lg font-semibold uppercase'>
+          {residents.name}
+        </h2>
+        <p className='font-sans  text-base '>{residents.description}</p>
         <div className='flex flex-col space-y-2'>
           {residents.links.map((link, index) => (
-            <Link
+            <div
               key={index}
-              href={link.url}
-              target='_blank'
-              rel='noreferrer'
-              className='flex justify-start text-black hover:text-pink-500'
+              className='group flex items-center font-mono uppercase'
             >
-              <p>{link.platform} ↗</p>
-            </Link>
+              <div className='pr-1'>{link.platform}</div>
+              <Link
+                href={link.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='font-sans text-pink-500 group-hover:text-black'
+              >
+                {' '}
+                ↗
+              </Link>
+            </div>
           ))}
         </div>
       </div>
