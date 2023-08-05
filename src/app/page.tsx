@@ -1,6 +1,7 @@
 import EventSection from '@/components/EventSection'
 import SplitContainer from '@/components/layout/SplitContainer'
 import { useDate } from '@/config/useDate'
+import { Metadata } from 'next'
 
 export default function Home() {
   const { futureEvents, pastEvents } = useDate()
@@ -16,9 +17,9 @@ export default function Home() {
       }
       rightSide={
         <>
-          <EventSection events={futureEvents} label='next ↓ ↓ ↓' />
+          <EventSection events={futureEvents} label='next events' />
           <hr className='border-default' />
-          <EventSection events={pastEvents} label='past ↓ ↓ ↓' />
+          <EventSection events={pastEvents} label='past events' />
         </>
       }
     />
