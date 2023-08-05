@@ -18,7 +18,7 @@ const RenderLinks: React.FC<RenderLinksProps> = ({ links }) => {
             href={link.href}
             target='_blank'
             rel='noopener noreferrer'
-            className='font-sans text-pink-500 group-hover:text-black'
+            className='font-sans text-accent group-hover:text-default'
           >
             {' '}
             ↗

@@ -23,7 +23,7 @@ const RenderLocation: React.FC<LocationProps> = ({
             href={mapUrl}
             target='_blank'
             rel='noopener noreferrer'
-            className='font-sans text-pink-500 group-hover:text-black'
+            className='font-sans text-accent group-hover:text-default'
           >
             {' '}
             ↗
@@ -31,8 +31,8 @@ const RenderLocation: React.FC<LocationProps> = ({
         </div>
       </div>
       <div>
-        <span className='text-pink-500'>@ </span>
-        {address} <span className='text-pink-500'> / </span>
+        <span className='text-accent'>@ </span>
+        {address} <span className='text-accent'> / </span>
         {city}
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function EventCard({ eventPost, className }: CardPostProps) {
     <article
       className={clsx(
         className,
-        'relative aspect-din w-full border border-black'
+        'relative aspect-din w-full border border-default'
       )}
     >
       <Link href={eventPost.slugAsParams}>

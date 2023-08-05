@@ -19,14 +19,14 @@ const SplitContainer: React.FC<SplitContainerProps> = ({
   return (
     <div
       className={clsx(
-        'mx-auto grid max-w-max flex-grow xl:border-x xl:border-black',
+        'mx-auto grid max-w-max flex-grow xl:border-x xl:border-default',
         narrow ? 'xl:grid-cols-6' : 'xl:grid-cols-4',
         className
       )}
     >
       <div
         className={clsx(
-          'col-span-full mx-auto w-full border-b border-black py-8 text-black xl:col-span-1 xl:border-b-0 xl:border-r xl:border-black xl:py-0'
+          'col-span-full mx-auto w-full border-b border-default py-8 text-default xl:col-span-1 xl:border-b-0 xl:border-r xl:border-default xl:py-0'
         )}
       >
         <div

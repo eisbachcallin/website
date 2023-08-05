@@ -20,16 +20,16 @@ const Artist: React.FC<ArtistProps> = ({ name, label, href }) => {
       <div className='pr-1'>{name}</div>
 
       {residentLabel && (
-        <div className='px-1 text-xs text-black'>
-          <span className='text-pink-500'>[</span>
+        <div className='px-1 text-xs text-default'>
+          <span className='text-onaccent'>[</span>
           {residentLabel}
-          <span className='text-pink-500'>]</span>
+          <span className='text-onaccent'>]</span>
         </div>
       )}
       {link && (
         <Link
           href={link}
-          className='font-sans text-pink-500 group-hover:text-black'
+          className='font-sans text-accent group-hover:text-default'
         >
           {' '}
           ↗

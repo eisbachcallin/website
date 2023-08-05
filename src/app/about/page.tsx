@@ -25,14 +25,14 @@ const About = () => {
             <p>
               Don’t be shy and send us an{' '}
               <Link
-                className='text-pink-500 hover:text-gray-900'
+                className='text-accent hover:text-default'
                 href='mailto:eisbach@gmail.com'
               >
                 email
               </Link>{' '}
               or follow us on our{' '}
               <Link
-                className='text-pink-500 hover:text-gray-900'
+                className='text-accent hover:text-default'
                 target='_blank'
                 rel='noopener noreferrer'
                 href='https://www.instagram.com/eisbachcallin/?hl=de'
@@ -41,7 +41,7 @@ const About = () => {
               </Link>{' '}
               &{' '}
               <Link
-                className='text-pink-500 hover:text-gray-900'
+                className='text-accent hover:text-default'
                 target='_blank'
                 rel='noopener noreferrer'
                 href='/'
@@ -50,7 +50,7 @@ const About = () => {
               </Link>{' '}
               channels! Feel free to give most of our recordings a listen too on{' '}
               <Link
-                className='text-pink-500 hover:text-gray-900'
+                className='text-accent hover:text-default'
                 target='_blank'
                 rel='noopener noreferrer'
                 href='https://www.mixcloud.com/eisbachcallin/'
@@ -70,7 +70,7 @@ const About = () => {
             height={500}
             src='/about/group.jpg'
             alt='foobar'
-            className='mb-2 w-full border border-black object-cover'
+            className='mb-2 w-full border border-default object-cover'
           />
           <ResidentSection residents={artists} label='residents ↓ ↓ ↓' />
         </div>

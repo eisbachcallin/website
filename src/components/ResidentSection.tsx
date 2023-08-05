@@ -10,7 +10,7 @@ const ResidentSection = ({ residents, label }: ResidentSectionProps) => {
   return (
     <section className='flex flex-col gap-y-2'>
       <div className='flex'>
-        <h2 className='bg-pink-500 p-[0.05rem] text-sm font-light uppercase leading-none  text-white'>
+        <h2 className='bg-accent p-[0.05rem] text-sm font-light uppercase leading-none text-onaccent'>
           {label}
         </h2>
       </div>

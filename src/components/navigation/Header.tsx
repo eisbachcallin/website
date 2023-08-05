@@ -4,7 +4,6 @@ import Logo from '@/assets/Logo'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
-import { ModeToggle } from '../layout/ModeSelect'
 
 type HeaderProps = {
   className?: string
@@ -23,13 +22,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const nonActiveStyle = linkStyle + ' text-default hover:text-accent'
   return (
     <header
-      className={clsx(
-        'sticky top-0 z-10 border-y border-default bg-default',
-        className
-      )}
+      className={clsx('sticky top-0 z-10 border-y border-default', className)}
     >
       <nav
-        className='mx-auto flex max-w-max items-center justify-between p-2 xl:border-x xl:border-default'
+        className='mx-auto flex max-w-max items-center justify-between bg-default p-2 xl:border-x xl:border-default'
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
@@ -39,7 +35,6 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </Link>
         </div>
         <div className='flex items-center gap-x-4'>
-          <ModeToggle />
           {navigation.map((item, i) => (
             <Link
               key={i}
