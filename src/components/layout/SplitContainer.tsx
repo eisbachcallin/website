@@ -6,6 +6,7 @@ interface SplitContainerProps {
   rightSide: React.ReactNode
   className?: string
   stickyLeft?: boolean
+  narrow?: boolean
 }
 
 const SplitContainer: React.FC<SplitContainerProps> = ({
@@ -13,11 +14,13 @@ const SplitContainer: React.FC<SplitContainerProps> = ({
   rightSide,
   className,
   stickyLeft = false,
+  narrow = false,
 }) => {
   return (
     <div
       className={clsx(
-        'mx-auto grid max-w-max flex-grow xl:grid-cols-3 xl:border-x xl:border-black',
+        'mx-auto grid max-w-max flex-grow xl:border-x xl:border-black',
+        narrow ? 'xl:grid-cols-6' : 'xl:grid-cols-4',
         className
       )}
     >
@@ -34,7 +37,14 @@ const SplitContainer: React.FC<SplitContainerProps> = ({
           {leftSide}
         </div>
       </div>
-      <div className='col-span-full xl:col-span-2'>{rightSide}</div>
+      <div
+        className={clsx(
+          'col-span-full',
+          narrow ? 'xl:col-span-5' : 'xl:col-span-3'
+        )}
+      >
+        {rightSide}
+      </div>
     </div>
   )
 }
