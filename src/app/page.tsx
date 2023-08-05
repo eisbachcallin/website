@@ -1,7 +1,6 @@
 import EventSection from '@/components/EventSection'
 import SplitContainer from '@/components/layout/SplitContainer'
 import { useDate } from '@/config/useDate'
-import { Metadata } from 'next'
 
 export default function Home() {
   const { futureEvents, pastEvents } = useDate()
