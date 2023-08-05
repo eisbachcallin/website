@@ -1,6 +1,11 @@
 import EventSection from '@/components/EventSection'
 import SplitContainer from '@/components/layout/SplitContainer'
 import { useDate } from '@/config/useDate'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'All past events',
+}
 
 export default function Past() {
   const { pastEvents } = useDate()
@@ -16,7 +21,7 @@ export default function Past() {
       }
       rightSide={
         <>
-          <EventSection events={pastEvents} label='past ↓ ↓ ↓' />
+          <EventSection events={pastEvents} label='past events' />
         </>
       }
     />
