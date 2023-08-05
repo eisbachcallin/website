@@ -4,6 +4,7 @@ import Logo from '@/assets/Logo'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
+import { ModeToggle } from '../layout/ModeSelect'
 
 type HeaderProps = {
   className?: string
@@ -17,27 +18,28 @@ const navigation = [
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const currentRoute = usePathname()
-  const linkStyle = 'text-sm font-light uppercase leading-none '
-  const activeStyle = linkStyle + ' text-pink-500'
-  const nonActiveStyle = linkStyle + 'text-gray-900 hover:text-pink-500'
+  const linkStyle = 'text-sm font-light uppercase leading-none'
+  const activeStyle = linkStyle + ' text-onaccent bg-accent'
+  const nonActiveStyle = linkStyle + ' text-default hover:text-accent'
   return (
     <header
       className={clsx(
-        'sticky top-0 z-10 border-y border-black bg-white',
+        'sticky top-0 z-10 border-y border-default bg-default',
         className
       )}
     >
       <nav
-        className='mx-auto flex max-w-max items-center justify-between p-2 xl:border-x xl:border-black'
+        className='mx-auto flex max-w-max items-center justify-between p-2 xl:border-x xl:border-default'
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
           <Link href={'/'} className='-m-1.5 p-1.5'>
             <span className='sr-only'>Eisbach Callin</span>
-            <Logo className='h-6 w-6 fill-black dark:fill-white' />
+            <Logo className='h-6 w-6 fill-default' />
           </Link>
         </div>
-        <div className='flex gap-x-4'>
+        <div className='flex items-center gap-x-4'>
+          <ModeToggle />
           {navigation.map((item, i) => (
             <Link
               key={i}
