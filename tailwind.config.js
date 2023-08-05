@@ -7,8 +7,35 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: ['class', '.theme-dark'],
   theme: {
     extend: {
+      backgroundColor: {
+        default: 'var(--color-bg-default)',
+        invert: 'var(--color-bg-invert)',
+        accent: 'var(--color-bg-accent)',
+      },
+      borderColor: {
+        default: 'var(--color-border-default)',
+        invert: 'var(--color-border-invert)',
+        accent: 'var(--color-border-accent)',
+      },
+      textColor: {
+        default: 'var(--color-text-default)',
+        invert: 'var(--color-text-invert)',
+        accent: 'var(--color-text-accent)',
+        onaccent: 'var(--color-text-onaccent)',
+      },
+      stroke: {
+        default: 'var(--color-stroke-default)',
+        invert: 'var(--color-stroke-invert)',
+        accent: 'var(--color-stroke-accent)',
+      },
+      fill: {
+        default: 'var(--color-fill-default)',
+        invert: 'var(--color-fill-invert)',
+        accent: 'var(--color-fill-accent)',
+      },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
         mono: ['var(--font-mono)', ...fontFamily.mono],
