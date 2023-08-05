@@ -33,7 +33,7 @@ export default function RootLayout({
       className={clsx(
         `${sans.variable} ${mono.variable}`,
         'scroll-smooth selection:bg-accent selection:text-onaccent',
-        'theme-light'
+        'theme-dark'
       )}
     >
       <body className='relative bg-default font-mono'>

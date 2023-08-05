@@ -6,18 +6,20 @@ const THEME_LIGHT = 'theme-light'
 const THEME_DARK = 'theme-dark'
 
 export function ModeSelect() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
     const theme = window.localStorage.getItem('theme')
     const currentMode = theme
-      ? theme === THEME_DARK
-      : document.documentElement.classList.contains(THEME_DARK)
-    setIsDarkMode(currentMode)
+      ? theme === THEME_LIGHT
+      : !document.documentElement.classList.contains(THEME_LIGHT)
+    setIsDarkMode(!currentMode)
     if (currentMode) {
-      document.documentElement.classList.add(THEME_DARK)
-    } else {
+      document.documentElement.classList.remove(THEME_DARK)
       document.documentElement.classList.add(THEME_LIGHT)
+    } else {
+      document.documentElement.classList.remove(THEME_LIGHT)
+      document.documentElement.classList.add(THEME_DARK)
     }
   }, [])
 
@@ -34,11 +36,11 @@ export function ModeSelect() {
   return (
     <button
       type='button'
-      className='inline-flex items-center justify-center bg-accent uppercase text-onaccent'
+      className='inline-flex items-center justify-center bg-accent text-sm uppercase text-onaccent'
       aria-label='Toggle color mode'
       onClick={toggleMode}
     >
-      {isDarkMode ? 'Light' : 'Dark'}
+      Light/Dark
     </button>
   )
 }
