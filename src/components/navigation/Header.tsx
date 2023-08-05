@@ -10,7 +10,7 @@ type HeaderProps = {
 }
 
 const navigation = [
-  { name: 'next', href: '/next' },
+  { name: 'next', href: '/' },
   { name: 'past', href: '/past' },
   { name: 'about', href: '/about' },
 ]
