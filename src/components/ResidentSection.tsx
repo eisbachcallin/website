@@ -8,10 +8,12 @@ interface ResidentSectionProps {
 
 const ResidentSection = ({ residents, label }: ResidentSectionProps) => {
   return (
-    <section className='flex flex-col gap-y-2 xl:grid xl:grid-cols-6'>
-      <h2 className='text-sm font-light uppercase leading-none xl:col-span-1'>
-        {label}
-      </h2>
+    <section className='flex flex-col gap-y-2'>
+      <div className='flex'>
+        <h2 className='bg-pink-500 p-[0.05rem] text-sm font-light uppercase leading-none  text-white'>
+          {label}
+        </h2>
+      </div>
       <div
         className={
           'grid w-full gap-2 lg:grid-cols-2 xl:col-span-5 xl:grid-cols-1'
