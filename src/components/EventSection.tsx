@@ -8,7 +8,7 @@ interface EventSectionProps {
 
 const EventSection = ({ events, label }: EventSectionProps) => {
   return (
-    <section className='flex flex-col gap-y-2 p-2 '>
+    <section className='flex h-auto flex-col gap-y-2 p-2'>
       <div className='flex'>
         <h2 className='bg-accent p-[0.05rem] text-sm font-light uppercase leading-none text-onaccent'>
           {label}
@@ -17,9 +17,7 @@ const EventSection = ({ events, label }: EventSectionProps) => {
 
       {events.length > 0 ? (
         <div
-          className={
-            'grid w-full gap-2 sm:grid-cols-2 xl:col-span-5 xl:grid-cols-4'
-          }
+          className={'grid gap-2 sm:grid-cols-2 xl:col-span-5 xl:grid-cols-4'}
         >
           {events.map((event) => (
             <EventCard key={event._id} eventPost={event} />
