@@ -17,7 +17,7 @@ const mono = Mono({
 export const metadata = {
   title: {
     template: '%s | Eisbach Callin',
-    default: 'Eisbach Callin',
+    default: 'All upcoming and past events | Eisbach Callin',
   },
   description: 'Underground Rave since 2010',
 }
