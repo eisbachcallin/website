@@ -11,7 +11,7 @@ const About = () => {
       stickyLeft
       leftSide={
         <div className='space-y-8 object-cover font-sans sm:text-8xl xl:space-y-16'>
-          <div className='text-2xl sm:text-3xl xl:max-w-[30ch] xl:text-4xl'>
+          <div className='text-2xl sm:text-3xl'>
             <span className='sr-only'>About Eisbach Callin</span>
             <h1>
               Eisbach Callin is a underground dance party at home in Munich,
@@ -20,7 +20,7 @@ const About = () => {
               your support over the years 🤗😚
             </h1>
           </div>
-          <section className='text-2xl sm:text-3xl xl:max-w-[30ch] xl:text-4xl'>
+          <section className='text-2xl sm:text-3xl'>
             <span className='sr-only'>Links & Socials</span>
             <p>
               Don’t be shy and send us an{' '}
