@@ -46,8 +46,8 @@
     --color-border-invert: rgba(var(--color-black));
     --color-border-accent: rgba(var(--color-purple));
 
-    --color-stroke-default: rgba(var(--color-black));
-    --color-stroke-invert: rgba(var(--color-white));
+    --color-stroke-default: rgba(var(--color-white));
+    --color-stroke-invert: rgba(var(--color-black));
     --color-stroke-accent: rgba(var(--color-purple));
 
     --color-fill-default: rgba(var(--color-white));
