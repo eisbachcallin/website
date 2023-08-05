@@ -4,6 +4,11 @@ import SplitContainer from '@/components/layout/SplitContainer'
 import ResidentSection from '@/components/ResidentSection'
 import artists from '../../config/residents'
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Munich’s finest underground rave',
+}
 
 const About = () => {
   return (
@@ -72,7 +77,7 @@ const About = () => {
             alt='foobar'
             className='mb-2 w-full border border-default object-cover'
           />
-          <ResidentSection residents={artists} label='residents ↓ ↓ ↓' />
+          <ResidentSection residents={artists} label='residents artists' />
         </div>
       }
     />
