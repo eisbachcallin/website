@@ -17,7 +17,7 @@ export default function Home() {
       rightSide={
         <>
           <EventSection events={futureEvents} label='next ↓ ↓ ↓' />
-          <hr className='border-black' />
+          <hr className='border-default' />
           <EventSection events={pastEvents} label='past ↓ ↓ ↓' />
         </>
       }
