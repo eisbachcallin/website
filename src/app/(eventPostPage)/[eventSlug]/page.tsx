@@ -26,6 +26,13 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const post = await getPostFromParams(params.eventSlug)
 
+  if (!post) {
+    return {
+      title: '404 - Event not found',
+      description: 'The requested event could not be found.',
+    }
+  }
+
   return {
     title: post.mdxMeta.title,
     description: post.mdxMeta.description,

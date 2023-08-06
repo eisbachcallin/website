@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About Munich’s finest underground rave',
+  title: 'About Munich’s finest dance parties',
 }
 
 const About = () => {
