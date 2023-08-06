@@ -71,6 +71,7 @@ const About = () => {
         <div className='p-2'>
           <Image
             priority
+            sizes='(min-width: 1280px) calc(69.77vw + 48px), calc(100vw - 18px)'
             width={800}
             height={500}
             src='/about/group.jpg'

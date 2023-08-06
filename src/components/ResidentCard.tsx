@@ -12,8 +12,9 @@ const ResidentCard = ({ residents }: ResidentCardProps) => {
       <div className='relative border border-default'>
         {' '}
         <Image
-          width={800}
-          height={800}
+          width={640}
+          height={640}
+          sizes='(min-width: 1280px) 23.26vw, (min-width: 1040px) calc(16.36vw - 13px), (min-width: 640px) calc(33.42vw - 19px), calc(100vw - 18px)'
           src={residents.avatar}
           alt={residents.name}
           className='aspect-din h-full w-full object-cover'

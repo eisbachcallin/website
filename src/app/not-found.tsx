@@ -1,7 +1,3 @@
-'use client'
-
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import SplitContainer from '@/components/layout/SplitContainer'
 import Image from 'next/image'
@@ -13,12 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default function NotFound() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.push('/404')
-  }, [router])
-
   return (
     <>
       <title>404 - Event not found | Eisbach Callin</title>
