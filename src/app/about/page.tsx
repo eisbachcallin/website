@@ -74,7 +74,7 @@ const About = () => {
             width={800}
             height={500}
             src='/about/group.jpg'
-            alt='foobar'
+            alt='An underground dance party from Eisbach Callin'
             className='mb-2 w-full border border-default object-cover'
           />
           <ResidentSection residents={artists} label='residents artists' />
