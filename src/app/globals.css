@@ -14,7 +14,7 @@
     --color-purple: 168 85 247;
   }
 
-  .theme-light {
+  [data-theme='light'] {
     --color-bg-default: rgba(var(--color-white));
     --color-bg-invert: rgba(var(--color-black));
     --color-bg-accent: rgba(var(--color-lime));
@@ -37,7 +37,7 @@
     --color-text-onaccent: rgba(var(--color-purple));
   }
 
-  .theme-dark {
+  [data-theme='dark'] {
     --color-bg-default: rgba(var(--color-black));
     --color-bg-invert: rgba(var(--color-white));
     --color-bg-accent: rgba(var(--color-purple));

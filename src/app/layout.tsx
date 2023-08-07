@@ -1,8 +1,9 @@
-import './globals.css'
-import { Nunito_Sans as Sans, JetBrains_Mono as Mono } from 'next/font/google'
-import clsx from 'clsx'
-import Header from '@/components/navigation/Header'
 import Footer from '@/components/navigation/Footer'
+import Header from '@/components/navigation/Header'
+import clsx from 'clsx'
+import { JetBrains_Mono as Mono, Nunito_Sans as Sans } from 'next/font/google'
+import './globals.css'
+import { Providers } from './providers'
 
 const sans = Sans({
   subsets: ['latin'],
@@ -35,11 +36,14 @@ export default function RootLayout({
         'scroll-smooth selection:bg-accent selection:text-onaccent',
         'theme-dark'
       )}
+      suppressHydrationWarning
     >
       <body className='relative bg-default font-mono'>
-        <Header />
-        <main className='flex min-h-[calc(100vh-6rem)]'>{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main className='flex min-h-[calc(100vh-6rem)]'>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

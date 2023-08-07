@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import SplitContainer from '@/components/layout/SplitContainer'
-import Image from 'next/image'
 import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '404 - Event not found',
@@ -11,8 +11,6 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <title>404 - Event not found | Eisbach Callin</title>
-      <meta name='description' content='Underground Rave since 2010'></meta>
       <link
         rel='icon'
         href='/icon.svg'
