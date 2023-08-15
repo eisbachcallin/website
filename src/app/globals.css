@@ -2,39 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   :root {
     --color-black: 0 0 0;
     --color-white: 255 255 255;
-    --color-lime: 163 230 53;
+
+    --color-blue: 59 130 246;
+    --color-sky: 14 165 233;
+
     --color-purple: 168 85 247;
+    --color-fuchsia: 217 70 239;
+
+    --color-lime: 163 230 53;
+    --color-orange: 249 115 22;
   }
 
   [data-theme='light'] {
     --color-bg-default: rgba(var(--color-white));
     --color-bg-invert: rgba(var(--color-black));
-    --color-bg-accent: rgba(var(--color-lime));
+    --color-bg-accent: rgba(var(--color-orange));
 
-    --color-border-default: rgba(var(--color-black));
+    --color-border-default: rgba(var(--color-sky));
     --color-border-invert: rgba(var(--color-white));
-    --color-border-accent: rgba(var(--color-lime));
+    --color-border-accent: rgba(var(--color-blue));
 
-    --color-stroke-default: rgba(var(--color-black));
+    --color-stroke-default: rgba(var(--color-sky));
     --color-stroke-invert: rgba(var(--color-white));
-    --color-stroke-accent: rgba(var(--color-lime));
+    --color-stroke-accent: rgba(var(--color-blue));
 
     --color-fill-default: rgba(var(--color-black));
     --color-fill-invert: rgba(var(--color-white));
-    --color-fill-accent: rgba(var(--color-lime));
+    --color-fill-accent: rgba(var(--color-blue));
 
     --color-text-default: rgba(var(--color-black));
     --color-text-invert: rgba(var(--color-white));
-    --color-text-accent: rgba(var(--color-lime));
-    --color-text-onaccent: rgba(var(--color-purple));
+    --color-text-accent: rgba(var(--color-blue));
+    --color-text-onaccent: rgba(var(--color-sky));
   }
 
   [data-theme='dark'] {
@@ -42,11 +45,11 @@
     --color-bg-invert: rgba(var(--color-white));
     --color-bg-accent: rgba(var(--color-purple));
 
-    --color-border-default: rgba(var(--color-white));
+    --color-border-default: rgba(var(--color-fuchsia));
     --color-border-invert: rgba(var(--color-black));
     --color-border-accent: rgba(var(--color-purple));
 
-    --color-stroke-default: rgba(var(--color-white));
+    --color-stroke-default: rgba(var(--color-fuchsia));
     --color-stroke-invert: rgba(var(--color-black));
     --color-stroke-accent: rgba(var(--color-purple));
 
@@ -57,6 +60,6 @@
     --color-text-default: rgba(var(--color-white));
     --color-text-invert: rgba(var(--color-black));
     --color-text-accent: rgba(var(--color-purple));
-    --color-text-onaccent: rgba(var(--color-lime));
+    --color-text-onaccent: rgba(var(--color-fuchsia));
   }
 }

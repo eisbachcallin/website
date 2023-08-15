@@ -10,7 +10,7 @@ const EventSection = ({ events, label }: EventSectionProps) => {
   return (
     <section className='flex h-auto flex-col gap-y-2 p-2'>
       <div className='flex'>
-        <h2 className='bg-accent p-[0.05rem] text-sm font-light uppercase leading-none text-onaccent'>
+        <h2 className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
           {label}
         </h2>
       </div>

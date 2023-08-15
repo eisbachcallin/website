@@ -18,7 +18,7 @@ const navigation = [
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const currentRoute = usePathname()
   const linkStyle = 'text-sm font-light uppercase leading-none'
-  const activeStyle = linkStyle + ' text-onaccent bg-accent'
+  const activeStyle = linkStyle + ' text-invert bg-invert'
   const nonActiveStyle = linkStyle + ' text-default hover:text-accent'
   return (
     <header
