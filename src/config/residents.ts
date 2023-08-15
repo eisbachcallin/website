@@ -7,7 +7,7 @@ export interface Resident {
   name: string
   description: string
   avatar: string
-  links: ResidentLink[]
+  links?: ResidentLink[]
 }
 
 const residents: Resident[] = [
@@ -72,12 +72,6 @@ const residents: Resident[] = [
     avatar: '/artists/visionaer.png',
     description:
       'Munich-based visualist Visionär casts a colorful universe on the wall, a flowing journey through music using a mix of inputs. Whether street scenes, distorted beyond recognition in an ecstatic rush of color or shining pale behind a filter; whether Soviet cartoons, Hungarian Magarin advertisements, or Murnau’s Nosferatu: with an attitude between love of detail and chutzpah, everything is shredded, reassembled, clothed and sent onto the stage. Basically, whatever is at hand can be blasted through the digital ether and into the audience’s optic nerves. So even the audience itself, a half-empty beer bottle, yesterday’s newspaper or just the way to the bakery can morph into a flashing blazing inferno of shapes and colors.',
-    links: [
-      {
-        url: 'https://www.mixcloud.com/Weiky/',
-        platform: 'Mixcloud',
-      },
-    ],
   },
 ]
 
