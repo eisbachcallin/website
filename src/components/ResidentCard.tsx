@@ -27,23 +27,24 @@ const ResidentCard = ({ residents }: ResidentCardProps) => {
         </h2>
         <p className='font-sans text-base'>{residents.description}</p>
         <div className='flex flex-col space-y-2'>
-          {residents.links.map((link, index) => (
-            <div
-              key={index}
-              className='group flex items-center font-mono uppercase'
-            >
-              <div className='pr-1'>{link.platform}</div>
-              <Link
-                href={link.url}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='font-sans text-accent group-hover:text-default'
+          {residents.links &&
+            residents.links.map((link, index) => (
+              <div
+                key={index}
+                className='group flex items-center font-mono uppercase'
               >
-                {' '}
-                ↗
-              </Link>
-            </div>
-          ))}
+                <div className='pr-1'>{link.platform}</div>
+                <Link
+                  href={link.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='font-sans text-accent group-hover:text-default'
+                >
+                  {' '}
+                  ↗
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </div>
