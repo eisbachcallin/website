@@ -1,7 +1,7 @@
 import Footer from '@/components/navigation/Footer'
 import Header from '@/components/navigation/Header'
 import clsx from 'clsx'
-import { JetBrains_Mono as Mono, Nunito_Sans as Sans } from 'next/font/google'
+import { Share_Tech_Mono as Mono, Inter as Sans } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 
@@ -12,6 +12,7 @@ const sans = Sans({
 
 const mono = Mono({
   subsets: ['latin'],
+  weight: ['400'],
   variable: '--font-mono',
 })
 
