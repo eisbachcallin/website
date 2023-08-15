@@ -14,8 +14,9 @@ const EventHero: React.FC<PostHeroProps> = ({ post }) => {
     <div className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 xl:grid-cols-1'>
       <Image
         priority
-        width={860}
-        height={860}
+        sizes='(min-width: 1280px) 19.42vw, (min-width: 640px) 50vw, calc(100vw - 18px)'
+        width={1230}
+        height={1724}
         src={cover}
         alt={mdxMeta.title}
         className='aspect-din w-full border border-default object-cover'

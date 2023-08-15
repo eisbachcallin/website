@@ -19,10 +19,9 @@ export default function EventCard({ eventPost, className }: CardPostProps) {
       <Link href={eventPost.slugAsParams}>
         <Image
           alt={eventPost.mdxMeta.title}
-          sizes='256×359, 620×869, 870×1220, 1070×1500, 1230×1724'
-          width={800}
-          height={800}
-          loading='lazy'
+          sizes='(min-width: 1280px) 19.42vw, (min-width: 640px) 50vw, calc(100vw - 18px)'
+          width={1230}
+          height={1724}
           src={eventPost.cover}
           className='h-full w-full object-cover'
         />
