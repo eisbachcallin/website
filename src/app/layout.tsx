@@ -33,8 +33,7 @@ export default function RootLayout({
       lang='en'
       className={clsx(
         `${sans.variable} ${mono.variable}`,
-        'scroll-smooth selection:bg-accent selection:text-onaccent',
-        'theme-dark'
+        'scroll-smooth selection:bg-accent selection:text-onaccent'
       )}
       suppressHydrationWarning
     >
