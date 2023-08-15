@@ -20,7 +20,7 @@
   [data-theme='light'] {
     --color-bg-default: rgba(var(--color-white));
     --color-bg-invert: rgba(var(--color-black));
-    --color-bg-accent: rgba(var(--color-orange));
+    --color-bg-accent: rgba(var(--color-sky));
 
     --color-border-default: rgba(var(--color-sky));
     --color-border-invert: rgba(var(--color-white));
