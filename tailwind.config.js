@@ -49,6 +49,17 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            '--tw-prose-body': theme('textColor.default'),
+            '--tw-prose-headings': theme('textColor.default'),
+            '--tw-prose-lead': theme('textColor.default'),
+            '--tw-prose-links': theme('textColor.accent'),
+            '--tw-prose-bold': theme('textColor.default'),
+            '--tw-prose-counters': theme('textColor.default'),
+            '--tw-prose-bullets': theme('textColor.default'),
+            '--tw-prose-hr': theme('textColor.default'),
+            '--tw-prose-quotes': theme('textColor.default'),
+            '--tw-prose-quote-borders': theme('borderColor.default'),
+            '--tw-prose-captions': theme('textColor.default'),
             '.hashtag': {
               opacity: '0',
               position: 'absolute',
