@@ -15,17 +15,17 @@ const About = () => {
     <SplitContainer
       stickyLeft
       leftSide={
-        <div className='space-y-8 object-cover font-sans sm:text-8xl xl:space-y-16'>
-          <div className='text-2xl sm:text-3xl'>
+        <div className='space-y-8 object-cover font-sans text-2xl sm:text-3xl xl:space-y-16'>
+          <div>
             <span className='sr-only'>About Eisbach Callin</span>
             <h1>
               Eisbach Callin is a underground dance party at home in Munich,
               Germany since 2010. All of this is only possible through the
               dedication and love of all of our supporters. Hugs and kisses for
-              your support over the years 🤗😚
+              your support over the years! 🤗😚
             </h1>
           </div>
-          <section className='text-2xl sm:text-3xl'>
+          <section>
             <span className='sr-only'>Links & Socials</span>
             <p>
               Don’t be shy and send us an{' '}
