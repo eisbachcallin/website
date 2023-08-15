@@ -23,7 +23,7 @@ export function RenderMdx({ code, className }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <div className='mdx prose prose-sm h-full flex-col px-2 pb-8 pt-2 font-sans md:prose-base prose-headings:font-mono prose-headings:uppercase prose-a:no-underline hover:prose-a:text-default xl:border-r xl:border-default'>
+    <div className='mdx prose prose-sm h-full flex-col px-2 pb-8 pt-2 font-sans md:prose-base prose-headings:font-mono prose-headings:uppercase prose-a:no-underline hover:prose-a:text-default sm:border-r sm:border-default'>
       <Component className={className} components={components} />
     </div>
   )
