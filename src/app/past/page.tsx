@@ -5,6 +5,8 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'All past events',
+  description:
+    'Relive Eisbach Callin’s nights of unforgettable rhythms and the legacy of dancefloor devastation like no other.',
 }
 
 export default function Past() {

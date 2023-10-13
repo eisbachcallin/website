@@ -21,7 +21,8 @@ export const metadata = {
     template: '%s | Eisbach Callin',
     default: 'All upcoming and past events | Eisbach Callin',
   },
-  description: 'Underground Rave since 2010',
+  description:
+    'Up Next: Legendary bass, eye popping visuals, and the best people — unmatched vibes await on the dancefloor. Come rave with us.',
 }
 
 export default function RootLayout({

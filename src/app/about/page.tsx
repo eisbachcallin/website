@@ -8,6 +8,8 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Munich’s finest dance parties',
+  description:
+    'Our parties are a decade-long love affair with bass music and dancing like there’s no tomorrow. Shaking up Munich since 2010.',
 }
 
 const About = () => {
