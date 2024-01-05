@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About Munich’s finest dance parties',
+  title: 'About Munich’s finest dance party',
 }
 
 const About = () => {
@@ -22,7 +22,7 @@ const About = () => {
               Eisbach Callin is a underground dance party at home in Munich,
               Germany since 2010. All of this is only possible through the
               dedication and love of all of our supporters. Hugs and kisses for
-              your support over the years! 🤗😚
+              your support over the years! 🤗🤗😚😚
             </h1>
           </div>
           <section>
@@ -44,16 +44,7 @@ const About = () => {
               >
                 instagram
               </Link>{' '}
-              &{' '}
-              <Link
-                className='text-accent hover:text-default'
-                target='_blank'
-                rel='noopener noreferrer'
-                href='/'
-              >
-                telegram
-              </Link>{' '}
-              channels! Feel free to give most of our recordings a listen too on{' '}
+              channel! Feel free to give our recordings a listen too on{' '}
               <Link
                 className='text-accent hover:text-default'
                 target='_blank'
@@ -62,7 +53,7 @@ const About = () => {
               >
                 mixcloud
               </Link>
-              .
+              ! We don't record much, but when we do, it's usually pretty good.
             </p>
           </section>
         </div>
