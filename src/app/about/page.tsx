@@ -53,7 +53,7 @@ const About = () => {
               >
                 mixcloud
               </Link>
-              ! We don't record much, but when we do, it's usually pretty good.
+              ! We don’t record much, but when we do, it’s usually pretty good.
             </p>
           </section>
         </div>

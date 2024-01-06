@@ -59,7 +59,7 @@ const residents: Resident[] = [
     name: 'MC Treasure Irie',
     avatar: '/artists/treasureirie.jpg',
     description:
-    "MC TREASURE IRIE is a DJ, lead singer, and MC. He exclusively sings his own songs and lyrics, which revolve around social criticism, politricks, and life's controversies. MC TREASURE IRIE originally comes from Ecuador and can now look back on a 20-year stage career. The word acrobat started with a hip-hop band in his hometown of Memmingen. After various reggae bands and sound projects in dub, hip-hop & drum'n'bass, MC TREASURE IRIE has been active on the mic for the Dandelion Soundsystem for over 10 years, as well as with Eisbach Callin', Siren Sisters, at Rootsbase/Fusion Festival, and the Siko Munich. He writes his lyrics in English, patois slang, as well as in German.",
+    'MC TREASURE IRIE is a DJ, lead singer, and MC. He exclusively sings his own songs and lyrics, which revolve around social criticism, politricks, and life’s controversies. MC TREASURE IRIE originally comes from Ecuador and can now look back on a 20-year stage career. The word acrobat started with a hip-hop band in his hometown of Memmingen. After various reggae bands and sound projects in dub, hip-hop & drum’n’bass, MC TREASURE IRIE has been active on the mic for the Dandelion Soundsystem for over 10 years, as well as with Eisbach Callin’, Siren Sisters, at Rootsbase/Fusion Festival, and the Siko Munich. He writes his lyrics in English, patois slang, as well as in German.',
     links: [
       {
         url: 'https://m.facebook.com/people/MC-Treasure-Irie/100030951506983/',
