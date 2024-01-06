@@ -24,7 +24,7 @@ const EventSection = ({ events, label }: EventSectionProps) => {
           ))}
         </div>
       ) : (
-        <h2>No events found.</h2>
+        <h2>Stay tuned - we’re cookin’</h2>
       )}
     </section>
   )
