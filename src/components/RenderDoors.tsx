@@ -10,11 +10,16 @@ interface DoorsProps {
 }
 
 const RenderDoors: React.FC<DoorsProps> = ({ timeDoors, price, before }) => {
+  const isNumericPrice = !isNaN(Number(price))
+
   return (
     <div className='flex space-x-1 font-mono uppercase'>
       <div>Doors {timeDoors}h</div>
       <div className='text-accent'>/</div>
-      <div className='font-medium'>{price}€</div>
+      <div className='font-medium'>
+        {price}
+        {isNumericPrice && '€'}
+      </div>
       {before && (
         <>
           <div className='text-accent'>/</div>
