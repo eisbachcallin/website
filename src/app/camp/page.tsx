@@ -5,17 +5,24 @@ import { useSearchParams } from 'next/navigation'
 import { useState, ChangeEvent, FormEvent } from 'react'
 import validator from 'validator'
 
+interface FormData {
+  firstName: string
+  lastName: string
+  email: string
+  crew: string
+}
+
+interface ResponseData {
+  ticketId?: string
+  crew?: string
+  firstName?: string
+  lastName?: string
+  email?: string
+}
+
 export default function CampPage2025() {
   const searchParams = useSearchParams()
   const uuid = searchParams.get('id') // Extract UUID from URL params
-
-  // Define state types
-  interface FormData {
-    firstName: string
-    lastName: string
-    email: string
-    crew: string
-  }
 
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
@@ -25,16 +32,11 @@ export default function CampPage2025() {
   })
   const [error, setError] = useState<string | null>(null)
   const [submissionStatus, setSubmissionStatus] = useState<
-    'success' | 'error' | null
+    'success' | 'error' | 'loading' | null
   >(null)
+  const [responseData, setResponseData] = useState<ResponseData | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  // Test UUID for development
-  const testUUID = '123e4567-e89b-12d3-a456-426614174000'
-
-  // Validate client-side: Allow only the test UUID during development
-  const isValidUUID = uuid === testUUID
-
-  // Handle input changes with proper typing
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -42,65 +44,86 @@ export default function CampPage2025() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  // Sanitize the input values before submission
-  const sanitizeFormData = (data: FormData) => {
-    return {
-      firstName: validator.escape(data.firstName.trim()), // Escape special chars
-      lastName: validator.escape(data.lastName.trim()), // Escape special chars
-      email: validator.normalizeEmail(data.email.trim()), // Normalize the email
-      crew: validator.escape(data.crew.trim()), // Escape special chars
-    }
-  }
+  const sanitizeFormData = (data: FormData) => ({
+    firstName: validator.escape(data.firstName.trim()),
+    lastName: validator.escape(data.lastName.trim()),
+    email: validator.normalizeEmail(data.email.trim())!,
+    crew: validator.escape(data.crew.trim()),
+  })
 
-  // Handle form submission with proper typing
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setError(null)
 
-    // Validate fields (check if formData is complete)
+    if (isSubmitting) return // Prevent multiple submissions
+
+    setIsSubmitting(true) // Flag the form as submitting
+    setError(null)
+    setSubmissionStatus('loading')
+
     if (
+      !uuid ||
       !formData.firstName ||
       !formData.lastName ||
       !formData.email ||
       !formData.crew
     ) {
       setError('Please fill in all fields.')
+      setIsSubmitting(false)
+      setSubmissionStatus(null)
       return
     }
 
-    // Validate email format
     if (!validator.isEmail(formData.email)) {
-      setError(
-        'Please enter a valid email address with a top-level domain (e.g., .com, .org).'
-      )
+      setError('Please enter a valid email address with a top-level domain.')
+      setIsSubmitting(false)
+      setSubmissionStatus(null)
       return
     }
 
-    // Sanitize form data
     const sanitizedData = sanitizeFormData(formData)
 
     try {
-      // Send the sanitized form data to your Next.js API route
-      const response = await fetch('/api/ticketSubmit', {
+      const response = await fetch(`/api/ticketSubmit?id=${uuid}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ...sanitizedData, uuid }), // Send sanitized data and UUID
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sanitizedData),
       })
 
       const result = await response.json()
+      console.log('Response from backend:', result)
 
-      if (result.success) {
+      // Check if the ticket is already claimed or invalid UUID
+      if (result.status === 'error' && result.error) {
+        if (result.error.includes('already claimed')) {
+          setSubmissionStatus('error')
+          setError('This ticket has already been claimed.') // More user-friendly error
+        } else if (result.error.includes('UUID not valid')) {
+          setSubmissionStatus('error')
+          setError('Invalid UUID. Please check the link.')
+        } else {
+          setSubmissionStatus('error')
+          setError(result.error) // Generic error fallback
+        }
+        return
+      }
+
+      if (response.ok && result.success) {
+        // Ensure the key matches the response
         setSubmissionStatus('success')
+        setResponseData({
+          ticketId: result.reqid, // Set ticketId and crew if available
+          crew: formData.crew, // Show the crew selected
+        })
       } else {
         setSubmissionStatus('error')
-        setError(result.error || 'Submission failed.')
+        setError(result.error || 'Failed to register the ticket.')
       }
     } catch (err) {
-      console.error(err)
+      console.error('Network or parsing error:', err)
       setSubmissionStatus('error')
-      setError('An unexpected error occurred.')
+      setError('An unexpected error occurred. Please try again later.')
+    } finally {
+      setIsSubmitting(false) // Reset submitting flag after completion
     }
   }
 
@@ -116,7 +139,7 @@ export default function CampPage2025() {
           <div className='p-2 xl:col-span-2'>
             some event description that is always visible
           </div>
-          {isValidUUID ? (
+          {uuid ? (
             <div className='min-h-max border-l border-default p-2 xl:col-span-1'>
               <h2 className='mb-2'>Register Your Ticket</h2>
               <form onSubmit={handleSubmit}>
@@ -129,7 +152,6 @@ export default function CampPage2025() {
                       type='text'
                       name='firstName'
                       className='mt-1 block w-full'
-                      placeholder=''
                       value={formData.firstName}
                       onChange={handleInputChange}
                       required
@@ -143,7 +165,6 @@ export default function CampPage2025() {
                       type='text'
                       name='lastName'
                       className='mt-1 block w-full'
-                      placeholder=''
                       value={formData.lastName}
                       onChange={handleInputChange}
                       required
@@ -157,7 +178,6 @@ export default function CampPage2025() {
                       type='email'
                       name='email'
                       className='mt-1 block w-full'
-                      placeholder=''
                       value={formData.email}
                       onChange={handleInputChange}
                       required
@@ -187,25 +207,29 @@ export default function CampPage2025() {
                   <button
                     className='bg-invert px-3 py-2 text-base font-light uppercase text-invert'
                     type='submit'
+                    disabled={isSubmitting} // Disable button during submission
                   >
-                    Submit
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
                   </button>
                 </div>
               </form>
-              {submissionStatus === 'success' && (
-                <p style={{ color: 'green' }}>
-                  Thank you! Your ticket has been registered.
-                </p>
+              {submissionStatus === 'success' && responseData && (
+                <div>
+                  <p style={{ color: 'green' }}>
+                    Thank you! Your ticket has been registered.
+                  </p>
+                  <p>Ticket ID: {responseData.ticketId}</p>
+                  <p>Crew: {responseData.crew}</p>
+                </div>
               )}
               {submissionStatus === 'error' && (
-                <p style={{ color: 'red' }}>
-                  There was an issue. Please try again.
-                </p>
+                <p style={{ color: 'red' }}>{error}</p>
               )}
             </div>
           ) : (
             <p>
-              Invalid or missing ticket. Use{' '}
+              this form will only render when a valid uuid is provided using the
+              &id=uuid format. Use{' '}
               <code>?id=123e4567-e89b-12d3-a456-426614174000</code> in the URL
               to test the form.
             </p>
