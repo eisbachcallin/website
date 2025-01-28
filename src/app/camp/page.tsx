@@ -61,47 +61,40 @@ export default function CampPage() {
     }
   }
 
-  const pollStatus = (uuid: string, requestId: string) => {
-    console.log('Starting status polling for UUID:', uuid)
+  const pollStatus = async (uuid: string, requestId: string) => {
+    try {
+      const response = await fetch(
+        `/api/status?uuid=${uuid}&requestId=${requestId}`
+      )
+      const data = await response.json()
 
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(
-          `/api/status?uuid=${uuid}&requestId=${requestId}`
-        )
-        const data = await res.json()
-
-        console.log('Polling response:', data)
-
-        if (data.status === 'success' || data.status === 'error') {
-          console.log('Polling complete with status:', data.status)
-          setStatus(data.status)
-
-          // Handle successful registration
+      if (response.ok) {
+        if (data.status === 'pending') {
+          // If status is still pending, keep polling
+          setTimeout(() => pollStatus(uuid, requestId), 5000)
+        } else {
+          // Handle completed status here
           if (data.status === 'success') {
+            // Store the form data in the state
             setSubmissionDetails({
-              uuid: uuid,
-              first: data.formFirst,
-              last: data.formLast,
-              email: data.formEmail,
-              crew: data.formCrew,
+              uuid,
+              first: data.formData?.formFirst,
+              last: data.formData?.formLast,
+              email: data.formData?.formEmail,
+              crew: data.formData?.formCrew,
             })
+            setStatus('success') // Set status to success
+          } else if (data.status === 'error') {
+            setErrorMessage(data.message) // Show error message if there's an error
+            setStatus('error') // Set status to error
           }
-
-          // If there is an error message from Zapier, display it
-          if (data.status === 'error') {
-            setErrorMessage(data.message || 'An unknown error occurred.')
-          }
-
-          setLoading(false) // End loading
-          clearInterval(interval)
         }
-      } catch (error) {
-        console.error('Error polling status:', error)
-        setErrorMessage('Error checking the status. Please try again later.')
-        setLoading(false)
+      } else {
+        console.error('Error fetching status:', data)
       }
-    }, 2000)
+    } catch (error) {
+      console.error('Polling error:', error)
+    }
   }
 
   return (

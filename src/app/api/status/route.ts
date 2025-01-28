@@ -13,6 +13,30 @@ type StatusData = {
 
 const statusCache: Record<string, StatusData> = {}
 
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url)
+  const uuid = searchParams.get('uuid')
+  const requestId = searchParams.get('requestId')
+
+  if (!uuid || !requestId) {
+    return NextResponse.json(
+      { error: 'UUID and requestId are required' },
+      { status: 400 }
+    )
+  }
+
+  const statusData = statusCache[requestId]
+
+  if (!statusData) {
+    return NextResponse.json({
+      status: 'pending',
+      message: 'Status not available yet',
+    })
+  }
+
+  return NextResponse.json(statusData)
+}
+
 export async function POST(req: Request) {
   const body = await req.json()
 
@@ -39,16 +63,17 @@ export async function POST(req: Request) {
     )
   }
 
-  // Always include formData, even for error states
+  // If the form data is missing, handle it accordingly
   const formData =
     formFirst && formLast && formEmail && formCrew
       ? { formFirst, formLast, formEmail, formCrew }
-      : { formFirst: '', formLast: '', formEmail: '', formCrew: '' } // Return empty formData even if missing
+      : undefined // Optionally, you could fallback to default values or skip this
 
+  // Create status data object to store
   const statusData: StatusData = {
     status,
     message,
-    formData, // Always return formData, even on errors
+    formData, // Only add formData if it exists
   }
 
   // Store status in the cache
