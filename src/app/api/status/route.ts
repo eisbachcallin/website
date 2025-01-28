@@ -1,63 +1,58 @@
 import { NextResponse } from 'next/server'
 
-const statusCache: Record<string, { status: string; message?: string }> = {}
-
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url)
-  const uuid = searchParams.get('uuid')
-
-  if (!uuid) {
-    console.log('GET request missing uuid')
-    return NextResponse.json({ error: 'UUID is required' }, { status: 400 })
+type StatusData = {
+  status: string
+  message: string
+  formData?: {
+    formFirst: string
+    formLast: string
+    formEmail: string
+    formCrew: string
   }
-
-  const statusData = statusCache[uuid]
-
-  if (!statusData) {
-    // Instead of returning 404, return 200 with a message saying status isn't available yet
-    return NextResponse.json({
-      status: 'pending',
-      message: 'Status not available yet',
-    })
-  }
-
-  return NextResponse.json(statusData)
 }
 
+const statusCache: Record<string, StatusData> = {}
+
 export async function POST(req: Request) {
-  const { searchParams } = new URL(req.url)
-  const uuid = searchParams.get('uuid')
-
-  if (!uuid) {
-    console.log('POST request missing uuid')
-    return NextResponse.json({ error: 'UUID is required' }, { status: 400 })
-  }
-
-  // Check if this UUID is already claimed
-  if (statusCache[uuid]?.status === 'success') {
-    return NextResponse.json({ error: 'UUID already claimed' }, { status: 400 })
-  }
-
   const body = await req.json()
 
-  // Log the entire payload to inspect what Zapier is sending
-  console.log('Zapier payload:', body)
+  // Log the full payload to check for any missing fields
+  console.log('Received Zapier payload:', body)
 
-  const { status, message } = body
+  const {
+    status,
+    message,
+    requestId,
+    uuid,
+    formFirst,
+    formLast,
+    formEmail,
+    formCrew,
+  } = body
 
-  console.log(
-    `POST request received for UUID: ${uuid}, status: ${status}, message: ${message}`
-  )
-
-  if (status === 'success' || status === 'error') {
-    // Store both status and message (if available)
-    statusCache[uuid] = { status, message }
-    console.log(
-      `Updated statusCache: ${uuid} -> ${status}, message: ${message}`
+  // Check if essential fields are present
+  if (!requestId || !uuid || !status || !message) {
+    console.error('Missing required fields in response:', body)
+    return NextResponse.json(
+      { error: 'Missing required fields in response' },
+      { status: 400 }
     )
-  } else {
-    console.log('Invalid status in POST request body:', body)
   }
 
-  return NextResponse.json({ message: 'Status updated' })
+  // Always include formData, even for error states
+  const formData =
+    formFirst && formLast && formEmail && formCrew
+      ? { formFirst, formLast, formEmail, formCrew }
+      : { formFirst: '', formLast: '', formEmail: '', formCrew: '' } // Return empty formData even if missing
+
+  const statusData: StatusData = {
+    status,
+    message,
+    formData, // Always return formData, even on errors
+  }
+
+  // Store status in the cache
+  statusCache[requestId] = statusData
+
+  return NextResponse.json({ message: 'Status updated successfully' })
 }

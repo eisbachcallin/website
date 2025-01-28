@@ -18,6 +18,7 @@ export default function CampPage() {
   const [loading, setLoading] = useState(false) // Loading state
   const [errorMessage, setErrorMessage] = useState<string | null>(null) // For error messages
   const [submissionDetails, setSubmissionDetails] = useState<any | null>(null) // To store user info after success
+  const [requestId, setRequestId] = useState<string | null>(null) // For requestId
 
   // Extract `uuid` from the query string
   useEffect(() => {
@@ -30,6 +31,9 @@ export default function CampPage() {
     e.preventDefault()
     if (!uuid) return alert('No UUID provided in URL!')
 
+    const generatedRequestId = Math.random().toString(36).substring(2, 15) // Generate requestId
+    setRequestId(generatedRequestId)
+
     setLoading(true) // Start loading
     setErrorMessage(null) // Clear any previous errors
 
@@ -39,14 +43,15 @@ export default function CampPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           form: formData,
-          querystring: uuid,
+          uuid: uuid,
+          requestId: generatedRequestId, // Pass the requestId
         }),
       })
 
       if (!res.ok) throw new Error('Failed to submit form.')
 
-      // Start polling status
-      pollStatus(uuid)
+      // Start polling status with the requestId
+      pollStatus(uuid, generatedRequestId)
     } catch (error) {
       console.error('Error submitting form:', error)
       setErrorMessage(
@@ -56,12 +61,14 @@ export default function CampPage() {
     }
   }
 
-  const pollStatus = (uuid: string) => {
+  const pollStatus = (uuid: string, requestId: string) => {
     console.log('Starting status polling for UUID:', uuid)
 
     const interval = setInterval(async () => {
       try {
-        const res = await fetch(`/api/status?uuid=${uuid}`)
+        const res = await fetch(
+          `/api/status?uuid=${uuid}&requestId=${requestId}`
+        )
         const data = await res.json()
 
         console.log('Polling response:', data)
@@ -74,16 +81,15 @@ export default function CampPage() {
           if (data.status === 'success') {
             setSubmissionDetails({
               uuid: uuid,
-              first: formData.first,
-              last: formData.last,
-              email: formData.email,
-              crew: formData.crew,
+              first: data.formFirst,
+              last: data.formLast,
+              email: data.formEmail,
+              crew: data.formCrew,
             })
           }
 
           // If there is an error message from Zapier, display it
           if (data.status === 'error') {
-            // Directly set error message from the response if available
             setErrorMessage(data.message || 'An unknown error occurred.')
           }
 
