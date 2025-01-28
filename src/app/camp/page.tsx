@@ -1,241 +1,151 @@
 'use client'
 
-import SplitContainer from '@/components/layout/SplitContainer'
-import { useSearchParams } from 'next/navigation'
-import { useState, ChangeEvent, FormEvent } from 'react'
-import validator from 'validator'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
-interface FormData {
-  firstName: string
-  lastName: string
-  email: string
-  crew: string
-}
+const CrewOptions = ['Crew A', 'Crew B', 'Crew C']
 
-interface ResponseData {
-  ticketId?: string
-  crew?: string
-  firstName?: string
-  lastName?: string
-  email?: string
-}
-
-export default function CampPage2025() {
-  const searchParams = useSearchParams()
-  const uuid = searchParams.get('id') // Extract UUID from URL params
-
-  const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
+export default function CampPage() {
+  const router = useRouter()
+  const [uuid, setUuid] = useState<string | null>(null)
+  const [formData, setFormData] = useState({
+    first: '',
+    last: '',
     email: '',
-    crew: '',
+    crew: CrewOptions[0],
   })
-  const [error, setError] = useState<string | null>(null)
-  const [submissionStatus, setSubmissionStatus] = useState<
-    'success' | 'error' | 'loading' | null
-  >(null)
-  const [responseData, setResponseData] = useState<ResponseData | null>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<string | null>(null)
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  // Extract `uuid` from the query string
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const uuidParam = urlParams.get('uuid')
+    setUuid(uuidParam)
+  }, [])
 
-  const sanitizeFormData = (data: FormData) => ({
-    firstName: validator.escape(data.firstName.trim()),
-    lastName: validator.escape(data.lastName.trim()),
-    email: validator.normalizeEmail(data.email.trim())!,
-    crew: validator.escape(data.crew.trim()),
-  })
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    if (isSubmitting) return // Prevent multiple submissions
-
-    setIsSubmitting(true) // Flag the form as submitting
-    setError(null)
-    setSubmissionStatus('loading')
-
-    if (
-      !uuid ||
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.crew
-    ) {
-      setError('Please fill in all fields.')
-      setIsSubmitting(false)
-      setSubmissionStatus(null)
-      return
-    }
-
-    if (!validator.isEmail(formData.email)) {
-      setError('Please enter a valid email address with a top-level domain.')
-      setIsSubmitting(false)
-      setSubmissionStatus(null)
-      return
-    }
-
-    const sanitizedData = sanitizeFormData(formData)
+    if (!uuid) return alert('No UUID provided in URL!')
 
     try {
-      const response = await fetch(`/api/ticketSubmit?id=${uuid}`, {
+      const res = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sanitizedData),
+        body: JSON.stringify({
+          form: formData,
+          querystring: uuid,
+        }),
       })
 
-      const result = await response.json()
-      console.log('Response from backend:', result)
+      if (!res.ok) throw new Error('Failed to submit form.')
 
-      // Check if the ticket is already claimed or invalid UUID
-      if (result.status === 'error' && result.error) {
-        if (result.error.includes('already claimed')) {
-          setSubmissionStatus('error')
-          setError('This ticket has already been claimed.') // More user-friendly error
-        } else if (result.error.includes('UUID not valid')) {
-          setSubmissionStatus('error')
-          setError('Invalid UUID. Please check the link.')
-        } else {
-          setSubmissionStatus('error')
-          setError(result.error) // Generic error fallback
-        }
-        return
-      }
-
-      if (response.ok && result.success) {
-        // Ensure the key matches the response
-        setSubmissionStatus('success')
-        setResponseData({
-          ticketId: result.reqid, // Set ticketId and crew if available
-          crew: formData.crew, // Show the crew selected
-        })
-      } else {
-        setSubmissionStatus('error')
-        setError(result.error || 'Failed to register the ticket.')
-      }
-    } catch (err) {
-      console.error('Network or parsing error:', err)
-      setSubmissionStatus('error')
-      setError('An unexpected error occurred. Please try again later.')
-    } finally {
-      setIsSubmitting(false) // Reset submitting flag after completion
+      // Start polling status
+      pollStatus(uuid)
+    } catch (error) {
+      console.error('Error submitting form:', error)
     }
+  }
+  const pollStatus = (uuid: string) => {
+    console.log('Starting status polling for UUID:', uuid)
+
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/status?uuid=${uuid}`)
+        const data = await res.json()
+
+        console.log('Polling response:', data)
+
+        if (data.status === 'success' || data.status === 'error') {
+          console.log('Polling complete with status:', data.status)
+          setStatus(data.status) // Assuming you have a state setter like setStatus
+          clearInterval(interval)
+        }
+      } catch (error) {
+        console.error('Error polling status:', error)
+      }
+    }, 2000)
   }
 
   return (
-    <SplitContainer
-      stickyLeft
-      narrow
-      leftSide={
-        <h1 className='font-sans text-2xl sm:text-3xl'>Eisbach Callin Camp</h1>
-      }
-      rightSide={
-        <div className='grid xl:grid-cols-4'>
-          <div className='p-2 xl:col-span-2'>
-            some event description that is always visible
+    <div className='mx-auto max-w-2xl p-6'>
+      <h1 className='mb-4 text-2xl font-bold'>Event Registration</h1>
+
+      {!uuid ? (
+        <p className='text-gray-600'>Please provide a valid UUID in the URL.</p>
+      ) : (
+        <form onSubmit={handleSubmit} className='space-y-4'>
+          <div>
+            <label className='block text-sm font-medium'>First Name</label>
+            <input
+              type='text'
+              value={formData.first}
+              onChange={(e) =>
+                setFormData({ ...formData, first: e.target.value })
+              }
+              className='w-full rounded border p-2'
+              required
+            />
           </div>
-          {uuid ? (
-            <div className='min-h-max border-l border-default p-2 xl:col-span-1'>
-              <h2 className='mb-2'>Register Your Ticket</h2>
-              <form onSubmit={handleSubmit}>
-                <div className='grid grid-cols-1 gap-6'>
-                  <label className='block'>
-                    <span className='bg-invert px-0.5 text-sm font-light uppercase leading-none text-invert'>
-                      First name
-                    </span>
-                    <input
-                      type='text'
-                      name='firstName'
-                      className='mt-1 block w-full'
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <label className='block'>
-                    <span className='bg-invert px-0.5 text-sm font-light uppercase leading-none text-invert'>
-                      Last name
-                    </span>
-                    <input
-                      type='text'
-                      name='lastName'
-                      className='mt-1 block w-full'
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <label className='block'>
-                    <span className='bg-invert px-0.5 text-sm font-light uppercase leading-none text-invert'>
-                      Email address
-                    </span>
-                    <input
-                      type='email'
-                      name='email'
-                      className='mt-1 block w-full'
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </label>
-                  <label className='block'>
-                    <span className='bg-invert px-0.5 text-sm font-light uppercase leading-none text-invert'>
-                      Crew
-                    </span>
-                    <select
-                      name='crew'
-                      className='mt-1 block w-full'
-                      value={formData.crew}
-                      onChange={handleInputChange}
-                      required
-                    >
-                      <option value='' disabled>
-                        Select your crew
-                      </option>
-                      <option value='Eisbach Callin'>Eisbach Callin</option>
-                      <option value='Bam Bam'>Bam Bam</option>
-                      <option value='Time Trippin'>Time Trippin</option>
-                      <option value='Other'>Other</option>
-                    </select>
-                  </label>
-                  {error && <p style={{ color: 'red' }}>{error}</p>}
-                  <button
-                    className='bg-invert px-3 py-2 text-base font-light uppercase text-invert'
-                    type='submit'
-                    disabled={isSubmitting} // Disable button during submission
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
-                  </button>
-                </div>
-              </form>
-              {submissionStatus === 'success' && responseData && (
-                <div>
-                  <p style={{ color: 'green' }}>
-                    Thank you! Your ticket has been registered.
-                  </p>
-                  <p>Ticket ID: {responseData.ticketId}</p>
-                  <p>Crew: {responseData.crew}</p>
-                </div>
-              )}
-              {submissionStatus === 'error' && (
-                <p style={{ color: 'red' }}>{error}</p>
-              )}
-            </div>
-          ) : (
-            <p>
-              this form will only render when a valid uuid is provided using the
-              &id=uuid format. Use{' '}
-              <code>?id=123e4567-e89b-12d3-a456-426614174000</code> in the URL
-              to test the form.
-            </p>
-          )}
-        </div>
-      }
-    />
+          <div>
+            <label className='block text-sm font-medium'>Last Name</label>
+            <input
+              type='text'
+              value={formData.last}
+              onChange={(e) =>
+                setFormData({ ...formData, last: e.target.value })
+              }
+              className='w-full rounded border p-2'
+              required
+            />
+          </div>
+          <div>
+            <label className='block text-sm font-medium'>Email</label>
+            <input
+              type='email'
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className='w-full rounded border p-2'
+              required
+            />
+          </div>
+          <div>
+            <label className='block text-sm font-medium'>Crew</label>
+            <select
+              value={formData.crew}
+              onChange={(e) =>
+                setFormData({ ...formData, crew: e.target.value })
+              }
+              className='w-full rounded border p-2'
+            >
+              {CrewOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button
+            type='submit'
+            className='rounded bg-blue-600 px-4 py-2 text-white'
+          >
+            Submit
+          </button>
+        </form>
+      )}
+
+      {status && (
+        <p
+          className={`mt-4 font-bold ${
+            status === 'success' ? 'text-green-600' : 'text-red-600'
+          }`}
+        >
+          {status === 'success'
+            ? 'Registration Successful!'
+            : 'Failed to register. Please try again.'}
+        </p>
+      )}
+    </div>
   )
 }
