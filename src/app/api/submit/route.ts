@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
-  const { form, querystring } = await req.json()
+  const { form, uuid, requestId } = await req.json()
   const webhookUrl = process.env.ZAPIER_WEBHOOK_URL
 
   if (!webhookUrl) {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const zapierResponse = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ form, uuid: querystring }),
+      body: JSON.stringify({ form, uuid, requestId }), // Send requestId along with form data
     })
 
     if (!zapierResponse.ok) {
