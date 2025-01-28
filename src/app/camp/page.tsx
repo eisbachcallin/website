@@ -15,6 +15,9 @@ export default function CampPage() {
     crew: CrewOptions[0],
   })
   const [status, setStatus] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false) // Loading state
+  const [errorMessage, setErrorMessage] = useState<string | null>(null) // For error messages
+  const [submissionDetails, setSubmissionDetails] = useState<any | null>(null) // To store user info after success
 
   // Extract `uuid` from the query string
   useEffect(() => {
@@ -26,6 +29,9 @@ export default function CampPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!uuid) return alert('No UUID provided in URL!')
+
+    setLoading(true) // Start loading
+    setErrorMessage(null) // Clear any previous errors
 
     try {
       const res = await fetch('/api/submit', {
@@ -43,8 +49,13 @@ export default function CampPage() {
       pollStatus(uuid)
     } catch (error) {
       console.error('Error submitting form:', error)
+      setErrorMessage(
+        'There was an error submitting your form. Please try again.'
+      )
+      setLoading(false)
     }
   }
+
   const pollStatus = (uuid: string) => {
     console.log('Starting status polling for UUID:', uuid)
 
@@ -57,11 +68,32 @@ export default function CampPage() {
 
         if (data.status === 'success' || data.status === 'error') {
           console.log('Polling complete with status:', data.status)
-          setStatus(data.status) // Assuming you have a state setter like setStatus
+          setStatus(data.status)
+
+          // Handle successful registration
+          if (data.status === 'success') {
+            setSubmissionDetails({
+              uuid: uuid,
+              first: formData.first,
+              last: formData.last,
+              email: formData.email,
+              crew: formData.crew,
+            })
+          }
+
+          // If there is an error message from Zapier, display it
+          if (data.status === 'error') {
+            // Directly set error message from the response if available
+            setErrorMessage(data.message || 'An unknown error occurred.')
+          }
+
+          setLoading(false) // End loading
           clearInterval(interval)
         }
       } catch (error) {
         console.error('Error polling status:', error)
+        setErrorMessage('Error checking the status. Please try again later.')
+        setLoading(false)
       }
     }, 2000)
   }
@@ -72,6 +104,29 @@ export default function CampPage() {
 
       {!uuid ? (
         <p className='text-gray-600'>Please provide a valid UUID in the URL.</p>
+      ) : submissionDetails ? (
+        // Show the confirmation box after success
+        <div className='rounded border border-green-600 bg-green-100 p-6'>
+          <h2 className='text-xl font-bold text-green-600'>
+            Registration Successful!
+          </h2>
+          <p className='mt-2'>
+            <strong>UUID:</strong> {submissionDetails.uuid}
+          </p>
+          <p>
+            <strong>Name:</strong> {submissionDetails.first}{' '}
+            {submissionDetails.last}
+          </p>
+          <p>
+            <strong>Email:</strong> {submissionDetails.email}
+          </p>
+          <p>
+            <strong>Crew:</strong> {submissionDetails.crew}
+          </p>
+          <p className='mt-2'>
+            Please check your email for further instructions.
+          </p>
+        </div>
       ) : (
         <form onSubmit={handleSubmit} className='space-y-4'>
           <div>
@@ -128,14 +183,25 @@ export default function CampPage() {
           </div>
           <button
             type='submit'
-            className='rounded bg-blue-600 px-4 py-2 text-white'
+            className='rounded bg-blue-600 px-4 py-2 text-white disabled:bg-blue-300'
+            disabled={loading}
           >
-            Submit
+            {loading ? (
+              <span className='h-4 w-4 animate-spin rounded-full border-2 border-t-2 border-white'></span>
+            ) : (
+              'Submit'
+            )}
           </button>
         </form>
       )}
 
-      {status && (
+      {/* Show error messages */}
+      {errorMessage && (
+        <p className='mt-4 font-bold text-red-600'>{errorMessage}</p>
+      )}
+
+      {/* Show status message */}
+      {status && !submissionDetails && (
         <p
           className={`mt-4 font-bold ${
             status === 'success' ? 'text-green-600' : 'text-red-600'
@@ -145,6 +211,13 @@ export default function CampPage() {
             ? 'Registration Successful!'
             : 'Failed to register. Please try again.'}
         </p>
+      )}
+
+      {/* Show a loading spinner if the form is submitting */}
+      {loading && !submissionDetails && (
+        <div className='mt-4 text-center'>
+          <span className='h-8 w-8 animate-spin rounded-full border-4 border-t-4 border-blue-600'></span>
+        </div>
       )}
     </div>
   )
