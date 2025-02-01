@@ -37,7 +37,7 @@
     --color-text-default: rgba(var(--color-black));
     --color-text-invert: rgba(var(--color-white));
     --color-text-accent: rgba(var(--color-blue));
-    --color-text-onaccent: rgba(var(--color-sky));
+    --color-text-onaccent: rgba(var(--color-black));
   }
 
   [data-theme='dark'] {
@@ -60,6 +60,6 @@
     --color-text-default: rgba(var(--color-white));
     --color-text-invert: rgba(var(--color-black));
     --color-text-accent: rgba(var(--color-purple));
-    --color-text-onaccent: rgba(var(--color-fuchsia));
+    --color-text-onaccent: rgba(var(--color-white));
   }
 }
