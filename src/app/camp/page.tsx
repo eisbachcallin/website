@@ -163,8 +163,14 @@ export default function CampPage() {
               // Render the form
               <form
                 onSubmit={handleSubmit}
-                className='grid w-full flex-1 grid-cols-1 gap-6 sm:max-w-md xl:max-w-xl'
+                className='grid w-full flex-1 grid-cols-1 gap-2 sm:max-w-md xl:max-w-xl'
               >
+                {errorMessage && (
+                  <p className='mt-4 text-center font-bold text-red-600'>
+                    {errorMessage}
+                  </p>
+                )}
+
                 {/* First Name */}
                 <label className='block'>
                   <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
@@ -210,7 +216,7 @@ export default function CampPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className='mt-0.5 block w-full border-accent px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                     placeholder='Your email'
                     required
                   />
@@ -222,11 +228,12 @@ export default function CampPage() {
                     Crew
                   </span>
                   <select
+                    required
                     value={formData.crew}
                     onChange={(e) =>
                       setFormData({ ...formData, crew: e.target.value })
                     }
-                    className='mt-0.5 block w-full border-accent px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                   >
                     <option value=''>Select your crew</option>
                     <option>Eisbach Callin</option>
@@ -239,22 +246,17 @@ export default function CampPage() {
                 {/* Submit Button */}
                 <button
                   type='submit'
-                  className='mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-300'
+                  className='mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-accent'
                   disabled={loading}
                 >
                   {loading ? (
-                    <span className='mx-auto block h-4 w-4 animate-spin rounded-full border-2 border-t-2 border-white'></span>
+                    <span className='mx-auto block h-5 w-5 animate-spin rounded-full border-2 border-t-2 border-gray-300 border-t-white'></span>
                   ) : (
                     'Request Invitation'
                   )}
                 </button>
 
                 {/* Error Message */}
-                {errorMessage && (
-                  <p className='mt-4 text-center font-bold text-red-600'>
-                    {errorMessage}
-                  </p>
-                )}
               </form>
             ))}
         </div>
