@@ -436,7 +436,7 @@ export default function CampPage() {
                   at campsites, and bring nothing hazardous. Got questions?{' '}
                   <Link
                     className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                    href='mailto:eisbach@gmail.com'
+                    href='mailto:eisbachcallin@gmail.com'
                   >
                     Drop us a message
                   </Link>
