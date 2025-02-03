@@ -97,9 +97,9 @@ export default function CampPage() {
     <SplitContainer
       stickyLeft
       leftSide={
-        <div className='space-y-8'>
+        <div className='flex flex-col items-start space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0 xl:flex-col xl:space-x-0 xl:space-y-8'>
           {/* ✅ Always Visible: Event Description */}
-          <div className='space-y-8 font-sans text-2xl sm:text-3xl xl:space-y-16'>
+          <div className='flex-1 font-sans text-2xl  sm:text-3xl xl:space-y-16  '>
             <div>
               <span className='sr-only'>About Eisbach Callin Camp</span>
               <h1>
@@ -117,32 +117,53 @@ export default function CampPage() {
           {uuid &&
             (submissionDetails ? (
               // Show success message if form is submitted
-              <div className='mt-6 rounded border border-green-600 bg-green-100 p-6'>
-                <h2 className='text-xl font-bold text-green-600'>
-                  Registration Successful!
+              <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
+                <h2 className='font-sans text-2xl text-green-600'>
+                  You're Invited!
                 </h2>
-                <p>
-                  <strong>UUID:</strong> {submissionDetails.uuid}
-                </p>
-                <p>
-                  <strong>Name:</strong> {submissionDetails.first}{' '}
-                  {submissionDetails.last}
-                </p>
-                <p>
-                  <strong>Email:</strong> {submissionDetails.email}
-                </p>
-                <p>
-                  <strong>Crew:</strong> {submissionDetails.crew}
-                </p>
-                <p className='mt-2'>
-                  Please check your email for further instructions.
+                <div>
+                  <p>
+                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                      UUID:
+                    </strong>{' '}
+                    {submissionDetails.uuid}
+                  </p>
+                  <p>
+                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                      Name:
+                    </strong>{' '}
+                    {submissionDetails.first} {submissionDetails.last}
+                  </p>
+                  <p>
+                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                      Email:
+                    </strong>{' '}
+                    {submissionDetails.email}
+                  </p>
+                  <p>
+                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                      Crew:
+                    </strong>{' '}
+                    {submissionDetails.crew}
+                  </p>
+                </div>
+                <p className='mt-2 font-sans'>
+                  Please check your email. If you didn't receive an email reach
+                  out to{' '}
+                  <Link
+                    className='p-[0.05rem] font-normal text-accent hover:text-default'
+                    href='#'
+                  >
+                    eisbachcalling@gmail.com
+                  </Link>
+                  .
                 </p>
               </div>
             ) : (
               // Render the form
               <form
                 onSubmit={handleSubmit}
-                className='grid max-w-lg grid-cols-1 gap-6'
+                className='grid w-full flex-1 grid-cols-1 gap-6 sm:max-w-md xl:max-w-xl'
               >
                 {/* First Name */}
                 <label className='block'>
@@ -243,8 +264,10 @@ export default function CampPage() {
           {/* Section 1 */}
           <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4 self-center'>
-                <h2 className='text-4xl sm:text-5xl '>Two Nights of Bass.</h2>
+              <div className='space-y-4'>
+                <h2 className='text-4xl sm:text-5xl'>
+                  One Festival. Two Nights of Bass. Three Crews.
+                </h2>
               </div>
             </div>
           </div>
@@ -258,7 +281,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/2016-12-25.png'
+                  src='/camp/1-03.png'
                 />
               </div>
               <div>
@@ -267,7 +290,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/about/group.jpg'
+                  src='/camp/1-02.png'
                 />
               </div>
               <div>
@@ -276,36 +299,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/2013-05-31.png'
-                />
-              </div>
-            </div>
-            <div className='grid gap-2'>
-              <div>
-                <Image
-                  width={800}
-                  height={800}
-                  alt='An underground dance party from Eisbach Callin'
-                  className='h-full max-w-full border border-default object-cover'
-                  src='/2016-12-25.png'
-                />
-              </div>
-              <div>
-                <Image
-                  width={800}
-                  height={800}
-                  alt='An underground dance party from Eisbach Callin'
-                  className='h-full max-w-full border border-default object-cover'
-                  src='/about/group.jpg'
-                />
-              </div>
-              <div>
-                <Image
-                  width={800}
-                  height={800}
-                  alt='An underground dance party from Eisbach Callin'
-                  className='h-full max-w-full border border-default object-cover'
-                  src='/2013-05-31.png'
+                  src='/camp/1-01.png'
                 />
               </div>
             </div>
@@ -316,7 +310,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/2016-12-25.png'
+                  src='/camp/2-03.png'
                 />
               </div>
               <div>
@@ -325,7 +319,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/about/group.jpg'
+                  src='/camp/2-02.png'
                 />
               </div>
               <div>
@@ -334,7 +328,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/2013-05-31.png'
+                  src='/camp/2-01.png'
                 />
               </div>
             </div>
@@ -345,7 +339,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/2016-12-25.png'
+                  src='/camp/3-03.png'
                 />
               </div>
               <div>
@@ -354,7 +348,7 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/about/group.jpg'
+                  src='/camp/3-02.png'
                 />
               </div>
               <div>
@@ -363,7 +357,36 @@ export default function CampPage() {
                   height={800}
                   alt='An underground dance party from Eisbach Callin'
                   className='h-full max-w-full border border-default object-cover'
-                  src='/2013-05-31.png'
+                  src='/camp/3-01.png'
+                />
+              </div>
+            </div>
+            <div className='grid gap-2'>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/camp/4-03.png'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/camp/4-02.png'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/camp/4-01.png'
                 />
               </div>
             </div>
@@ -421,7 +444,7 @@ export default function CampPage() {
           </div>
 
           {/* Section 2 */}
-          <div className='p-2 text-xl font-normal text-default sm:text-2xl'>
+          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4 self-center'>
                 <p className='text-2xl sm:text-3xl'>
@@ -433,13 +456,52 @@ export default function CampPage() {
                   vibes. You bring in trash, your bring it out, keep noise down
                   at campsites, and bring nothing hazardous. Got questions?{' '}
                   <Link
-                    className='font-normal text-accent hover:text-default'
+                    className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
                     href='mailto:eisbach@gmail.com'
                   >
                     Drop us a message
-                  </Link>{' '}
+                  </Link>
                   .
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3 */}
+          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
+            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
+              <div className='space-y-4 self-center'>
+                <ul className='text-2xl sm:text-3xl'>
+                  <li className='pb-2'>
+                    <span className='bg-invert p-[0.05rem] text-invert'>
+                      Socials:
+                    </span>
+                  </li>
+                  <li className='pb-2'>
+                    <Link
+                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
+                      href='#'
+                    >
+                      Eisbach Callin
+                    </Link>{' '}
+                  </li>
+                  <li className='pb-2'>
+                    <Link
+                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
+                      href='#'
+                    >
+                      Time Trippin
+                    </Link>{' '}
+                  </li>
+                  <li className='pb-2'>
+                    <Link
+                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
+                      href='#'
+                    >
+                      Bam Bam
+                    </Link>{' '}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
