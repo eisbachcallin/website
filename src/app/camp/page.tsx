@@ -33,8 +33,7 @@ export default function CampPage() {
 
     const generatedRequestId = Math.random().toString(36).substring(2, 15)
     setRequestId(generatedRequestId)
-
-    setLoading(true)
+    setLoading(true) // Start loading
     setErrorMessage(null)
 
     try {
@@ -50,13 +49,14 @@ export default function CampPage() {
 
       if (!res.ok) throw new Error('Failed to submit form.')
 
+      // Start polling for the status of the submission
       pollStatus(uuid, generatedRequestId)
     } catch (error) {
       console.error('Error submitting form:', error)
       setErrorMessage(
         'There was an error submitting your form. Please try again.'
       )
-      setLoading(false)
+      setLoading(false) // Stop loading if submission fails
     }
   }
 
@@ -69,7 +69,7 @@ export default function CampPage() {
 
       if (response.ok) {
         if (data.status === 'pending') {
-          setTimeout(() => pollStatus(uuid, requestId), 5000)
+          setTimeout(() => pollStatus(uuid, requestId), 5000) // Continue polling
         } else {
           if (data.status === 'success') {
             setSubmissionDetails({
@@ -84,6 +84,7 @@ export default function CampPage() {
             setErrorMessage(data.message)
             setStatus('error')
           }
+          setLoading(false) // Stop loading when we get a final response (success or error)
         }
       } else {
         console.error('Error fetching status:', data)
