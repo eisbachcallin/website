@@ -432,7 +432,7 @@ export default function CampPage() {
                   </span>{' '}
                   There are no tickets and no on-site ticket sales. We’re all
                   about safe, respectful spaces with zero tolerance for bad
-                  vibes. You bring in trash, your bring it out, keep noise down
+                  vibes. You take care of your trash, keep noise down
                   at campsites, and bring nothing hazardous. Got questions?{' '}
                   <Link
                     className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
