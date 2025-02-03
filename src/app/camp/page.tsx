@@ -6,8 +6,6 @@ import Image from 'next/image'
 import SplitContainer from '@/components/layout/SplitContainer'
 import Link from 'next/link'
 
-const CrewOptions = ['Crew A', 'Crew B', 'Crew C']
-
 export default function CampPage() {
   const router = useRouter()
   const [uuid, setUuid] = useState<string | null>(null)
@@ -15,7 +13,7 @@ export default function CampPage() {
     first: '',
     last: '',
     email: '',
-    crew: CrewOptions[0],
+    crew: '',
   })
   const [status, setStatus] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -99,144 +97,145 @@ export default function CampPage() {
     <SplitContainer
       stickyLeft
       leftSide={
-        <div>
-          {!uuid ? (
-            // Render event description when no uuid is present
-            <div className='space-y-8 font-sans text-2xl sm:text-3xl xl:space-y-16'>
-              <div>
-                <span className='sr-only'>About Eisbach Callin Camp</span>
-                <h1>
-                  Join us{' '}
-                  <span className='bg-invert p-[0.05rem] text-invert'>
-                    Aug 22–24
-                  </span>{' '}
-                  for a private festival with 20+ DJs from 3 crews, clean
-                  camping and good atmosphere.
-                </h1>
+        <div className='space-y-8'>
+          {/* ✅ Always Visible: Event Description */}
+          <div className='space-y-8 font-sans text-2xl sm:text-3xl xl:space-y-16'>
+            <div>
+              <span className='sr-only'>About Eisbach Callin Camp</span>
+              <h1>
+                Join us{' '}
+                <span className='bg-invert p-[0.05rem] text-invert'>
+                  Aug 22–24
+                </span>{' '}
+                for a private festival with 20+ DJs from 3 crews, clean camping,
+                and good atmosphere.
+              </h1>
+            </div>
+          </div>
+
+          {/* ✅ Conditional: Form visible only if UUID exists */}
+          {uuid &&
+            (submissionDetails ? (
+              // Show success message if form is submitted
+              <div className='mt-6 rounded border border-green-600 bg-green-100 p-6'>
+                <h2 className='text-xl font-bold text-green-600'>
+                  Registration Successful!
+                </h2>
+                <p>
+                  <strong>UUID:</strong> {submissionDetails.uuid}
+                </p>
+                <p>
+                  <strong>Name:</strong> {submissionDetails.first}{' '}
+                  {submissionDetails.last}
+                </p>
+                <p>
+                  <strong>Email:</strong> {submissionDetails.email}
+                </p>
+                <p>
+                  <strong>Crew:</strong> {submissionDetails.crew}
+                </p>
+                <p className='mt-2'>
+                  Please check your email for further instructions.
+                </p>
               </div>
-            </div>
-          ) : submissionDetails ? (
-            // Show success message if form is submitted
-            <div className='rounded border border-green-600 bg-green-100 p-6'>
-              <h2 className='text-xl font-bold text-green-600'>
-                Registration Successful!
-              </h2>
-              <p>
-                <strong>UUID:</strong> {submissionDetails.uuid}
-              </p>
-              <p>
-                <strong>Name:</strong> {submissionDetails.first}{' '}
-                {submissionDetails.last}
-              </p>
-              <p>
-                <strong>Email:</strong> {submissionDetails.email}
-              </p>
-              <p>
-                <strong>Crew:</strong> {submissionDetails.crew}
-              </p>
-              <p className='mt-2'>
-                Please check your email for further instructions.
-              </p>
-            </div>
-          ) : (
-            // Render the form when uuid is present
-            <>
-              <h1 className='text-3xl font-bold'>Event Registration</h1>
-              <p className='text-lg'>
-                Please fill out the form below to register for the event. Once
-                completed, you'll receive a confirmation.
-              </p>
-              <form onSubmit={handleSubmit} className='space-y-6'>
-                <div>
-                  <label className='block text-sm font-medium'>
+            ) : (
+              // Render the form
+              <form
+                onSubmit={handleSubmit}
+                className='grid max-w-lg grid-cols-1 gap-6'
+              >
+                {/* First Name */}
+                <label className='block'>
+                  <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
                     First Name
-                  </label>
+                  </span>
                   <input
                     type='text'
                     value={formData.first}
                     onChange={(e) =>
                       setFormData({ ...formData, first: e.target.value })
                     }
-                    className='w-full rounded-lg border p-3 text-lg'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    placeholder='Your first name'
                     required
                   />
-                </div>
-                <div>
-                  <label className='block text-sm font-medium'>Last Name</label>
+                </label>
+
+                {/* Last Name */}
+                <label className='block'>
+                  <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                    Last Name
+                  </span>
                   <input
                     type='text'
                     value={formData.last}
                     onChange={(e) =>
                       setFormData({ ...formData, last: e.target.value })
                     }
-                    className='w-full rounded-lg border p-3 text-lg'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    placeholder='Your last name'
                     required
                   />
-                </div>
-                <div>
-                  <label className='block text-sm font-medium'>Email</label>
+                </label>
+
+                {/* Email */}
+                <label className='block'>
+                  <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                    Email
+                  </span>
                   <input
                     type='email'
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className='w-full rounded-lg border p-3 text-lg'
+                    className='mt-0.5 block w-full border-accent px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    placeholder='Your email'
                     required
                   />
-                </div>
-                <div>
-                  <label className='block text-sm font-medium'>Crew</label>
+                </label>
+
+                {/* Crew Selection */}
+                <label className='block'>
+                  <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                    Crew
+                  </span>
                   <select
                     value={formData.crew}
                     onChange={(e) =>
                       setFormData({ ...formData, crew: e.target.value })
                     }
-                    className='w-full rounded-lg border p-3 text-lg'
+                    className='mt-0.5 block w-full border-accent px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                   >
-                    {CrewOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
+                    <option value=''>Select your crew</option>
+                    <option>Eisbach Callin</option>
+                    <option>Bam Bam</option>
+                    <option>Time Trippin</option>
+                    <option>Other</option>
                   </select>
-                </div>
+                </label>
+
+                {/* Submit Button */}
                 <button
                   type='submit'
-                  className='rounded-lg bg-blue-600 px-6 py-3 text-lg text-white disabled:bg-blue-300'
+                  className='mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-300'
                   disabled={loading}
                 >
                   {loading ? (
-                    <span className='h-4 w-4 animate-spin rounded-full border-2 border-t-2 border-white'></span>
+                    <span className='mx-auto block h-4 w-4 animate-spin rounded-full border-2 border-t-2 border-white'></span>
                   ) : (
-                    'Submit'
+                    'Request Invitation'
                   )}
                 </button>
+
+                {/* Error Message */}
+                {errorMessage && (
+                  <p className='mt-4 text-center font-bold text-red-600'>
+                    {errorMessage}
+                  </p>
+                )}
               </form>
-
-              {errorMessage && (
-                <p className='mt-4 font-bold text-red-600'>{errorMessage}</p>
-              )}
-
-              {status && !submissionDetails && (
-                <p
-                  className={`mt-4 font-bold ${
-                    status === 'success' ? 'text-green-600' : 'text-red-600'
-                  }`}
-                >
-                  {status === 'success'
-                    ? 'Registration Successful!'
-                    : 'Failed to register. Please try again.'}
-                </p>
-              )}
-
-              {loading && !submissionDetails && (
-                <div className='mt-4 text-center'>
-                  <span className='h-8 w-8 animate-spin rounded-full border-4 border-t-4 border-blue-600'></span>
-                </div>
-              )}
-            </>
-          )}
+            ))}
         </div>
       }
       rightSide={
