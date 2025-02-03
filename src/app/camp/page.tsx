@@ -114,7 +114,7 @@ export default function CampPage() {
             (submissionDetails ? (
               <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
                 <h2 className='font-sans text-2xl text-green-600'>
-                  You're Invited!
+                  You’re Invited!
                 </h2>
                 <div>
                   <p className='text-black'>
@@ -143,7 +143,7 @@ export default function CampPage() {
                   </p>
                 </div>
                 <p className='mt-2 font-sans text-black'>
-                  Please check your email. If you didn't receive an email reach
+                  Please check your email. If you didn’t receive an email reach
                   out to{' '}
                   <Link
                     className='p-[0.05rem] font-normal text-accent hover:text-black'
