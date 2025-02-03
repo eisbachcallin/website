@@ -106,11 +106,12 @@ export default function CampPage() {
               <div>
                 <span className='sr-only'>About Eisbach Callin Camp</span>
                 <h1>
-                  Join us for an unforgettable weekend filled with rolling
-                  beats, deep bass, and great vibes. From August 22 to 24,
-                  Eisbach Callin, Time Tripping, and Bam Bam will bring you a
-                  private festival experience with over 20 DJs, clean camping
-                  facilities, and an intimate, respectful atmosphere.
+                  Join us{' '}
+                  <span className='bg-invert p-[0.05rem] text-invert'>
+                    Aug 22–24
+                  </span>{' '}
+                  for a private festival with 20+ DJs from 3 crews, clean
+                  camping and good atmosphere.
                 </h1>
               </div>
             </div>
@@ -240,224 +241,207 @@ export default function CampPage() {
       }
       rightSide={
         <div className='font-sans text-default'>
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2'>
-              <h2 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                One Weekend. Three Crews. Two Nights of Bass.
-              </h2>
-              <p>
-                <span className='font-bold'>Eisbach Callin</span>,{' '}
-                <span className='font-bold'>Time Tripping</span>, and{' '}
-                <span className='font-bold'>Bam Bam</span>{' '}
-                <span className='font-extralight'>
-                  invite you to an intimate weekend for lovers of rolling beats
-                  and deep frequencies.
-                </span>{' '}
-                <span className='font-bold'>No hype, no frills</span>{' '}
-                <span className='font-extralight'>
-                  – just us, good music, and the essence of what a festival
-                  should be:
-                </span>{' '}
-                <span className='font-bold'>fun, friendship, and bass.</span>
-              </p>
+          {/* Section 1 */}
+          <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
+            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
+              <div className='space-y-4 self-center'>
+                <h2 className='text-4xl sm:text-5xl '>Two Nights of Bass.</h2>
+              </div>
             </div>
           </div>
 
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2'>
-              <h3 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                Save the Date: 22.08 – 24.08
-              </h3>
-              <p>
-                <span className='font-extralight'>
-                  Join us on the former Jim Camp grounds in Schattenhofen for
-                  two unforgettable nights and a laid-back, sunny weekend with:
-                </span>{' '}
-                <span className='font-bold'>20 DJs</span>{' '}
-                <span className='font-extralight'>
-                  from Munich and the surrounding area bringing the best in drum
-                  and bass, jungle, and beyond.
-                </span>{' '}
-                <span className='font-bold'>Daytime Program:</span>{' '}
-                <span className='font-extralight'>
-                  A not-so-serious lineup for the curious and the early risers.
-                </span>{' '}
-                <span className='font-bold'>Comfort Matters:</span>{' '}
-                <span className='font-extralight'>
-                  Showers and clean toilets, because nobody needs to rough it.
-                </span>{' '}
-                <span className='font-bold'>Fuel for the Vibes:</span>{' '}
-                <span className='font-extralight'>
-                  Coffee, snacks, and drinks at fair prices to keep you going.
-                </span>
-              </p>
+          {/* Section img */}
+          <div className='grid grid-cols-2 gap-2 border-b border-default  p-2 md:grid-cols-4'>
+            <div className='grid gap-2'>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2016-12-25.png'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/about/group.jpg'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2013-05-31.png'
+                />
+              </div>
+            </div>
+            <div className='grid gap-2'>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2016-12-25.png'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/about/group.jpg'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2013-05-31.png'
+                />
+              </div>
+            </div>
+            <div className='grid gap-2'>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2016-12-25.png'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/about/group.jpg'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2013-05-31.png'
+                />
+              </div>
+            </div>
+            <div className='grid gap-2'>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2016-12-25.png'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/about/group.jpg'
+                />
+              </div>
+              <div>
+                <Image
+                  width={800}
+                  height={800}
+                  alt='An underground dance party from Eisbach Callin'
+                  className='h-full max-w-full border border-default object-cover'
+                  src='/2013-05-31.png'
+                />
+              </div>
             </div>
           </div>
 
+          {/* Section 3 */}
           <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2'>
-              <h3 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                Important Info: Invitation Required
-              </h3>
-              <p>
-                <span className='font-bold'>Private Event:</span>{' '}
-                <span className='font-extralight'>
-                  This is a private event with limited access. You must have a
-                  ticket to enter.
-                </span>{' '}
-                <span className='font-bold'>No On-Site Ticketing:</span>{' '}
-                <span className='font-extralight'>
-                  There’s no on-site ticketing and no exceptions – this keeps
-                  things intimate and ensures everyone’s on the same wavelength.
-                </span>
-              </p>
+            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
+              <div className='space-y-4 self-center'>
+                <ul className='text-2xl sm:text-3xl'>
+                  <li className='pb-2'>
+                    <span className='bg-invert p-[0.05rem] text-invert'>
+                      Aug 22-24
+                    </span>
+                  </li>
+                  <li className='pb-2'>
+                    <span className='bg-invert p-[0.05rem] text-invert'>
+                      Jim Camp Grounds
+                    </span>{' '}
+                    in{' '}
+                    <span className='bg-invert p-[0.05rem] text-invert'>
+                      Schattenhofen
+                    </span>
+                  </li>
+                  <li className='pb-2'>
+                    <span className='bg-invert p-[0.05rem] text-invert'>
+                      20+ DJs from 3 Crews
+                    </span>
+                  </li>
+                  <li className='pb-2'>
+                    <span className='bg-invert p-[0.05rem] text-invert'>
+                      Invitation Only
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2'>
-              <h3 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                The Vibe: Safe, Fun, Respectful
-              </h3>
-              <p>
-                <span className='font-bold'>Safe Space:</span>{' '}
-                <span className='font-extralight'>
-                  Our camping grounds and festival space are welcoming to
-                  everyone – all genders, movements, and identities.
-                </span>{' '}
-                <span className='font-bold'>Zero Tolerance:</span>{' '}
-                <span className='font-extralight'>
-                  We don’t tolerate any kind of harassment, discrimination, or
-                  bad vibes.
-                </span>{' '}
-                <span className='font-bold'>Respect:</span>{' '}
-                <span className='font-extralight'>
-                  Respect your fellow humans, the environment, and the music,
-                  and we’ll all have an incredible time.
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2'>
-              <h3 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                The Plan
-              </h3>
-              <p>
-                <span className='font-bold'>Arrival:</span>{' '}
-                <span className='font-extralight'>
-                  Friday, August 22, from 4 PM – settle in, meet the crew, and
-                  soak up the atmosphere.
-                </span>{' '}
-                <span className='font-bold'>Bass Time:</span>{' '}
-                <span className='font-extralight'>
-                  Friday and Saturday nights – let the music take over.
-                </span>{' '}
-                <span className='font-bold'>Chill Days:</span>{' '}
-                <span className='font-extralight'>
-                  Relax, enjoy the space, or check out the casual daytime
-                  activities.
-                </span>{' '}
-                <span className='font-bold'>Departure:</span>{' '}
-                <span className='font-extralight'>
-                  Sunday, August 24, around noon – refreshed (or wonderfully
-                  exhausted).
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2 '>
-              <h3 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                Fine Print
-              </h3>
-              <p>
-                <span className='font-bold'>No Trash</span>{' '}
-                <span className='font-extralight'>
-                  Bring it in, take it out. Everyone is responsible for their
-                  own waste – Schattenhofen stays clean.
-                </span>{' '}
-                <span className='font-bold'>No Hazards</span>{' '}
-                <span className='font-extralight'>
-                  No gas bottles. Small camping stoves are fine, but please be
-                  safe.
-                </span>{' '}
-                <span className='font-bold'>Stay Respectful</span>{' '}
-                <span className='font-extralight'>
-                  No big speaker setups at the campsite. The music stays on the
-                  floors. Respect people’s rest.
-                </span>{' '}
-                <span className='font-bold'>Good Vibes</span>{' '}
-                <span className='font-extralight'>
-                  No stress, no drama, no exceptions.
-                </span>
-              </p>
-              {/* <ul className='list-inside space-y-2 font-sans'>
-                <li>
-                  <span className='bg-accent p-[0.05rem] text-onaccent'>
-                    No Trash:—
-                  </span>{' '}
-                  <span className='font-light'>
-                    Bring it in, take it out. Everyone is responsible for their
-                    own waste – Schattenhofen stays clean.
+          {/* Section 1 */}
+          <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
+            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
+              <div className='space-y-4 self-center'>
+                <h3 className='text-2xl sm:text-3xl'>
+                  Expect rolling beats, deep frequencies, and laid-back vibes on
+                  the former{' '}
+                  <span className='bg-invert p-[0.05rem] text-invert'>
+                    Jim Camp grounds in Schattenhofen
                   </span>
-                </li>
-                <li>
-                  <span className='bg-accent p-[0.05rem] text-onaccent'>
-                    Camp Rules:
-                  </span>{' '}
-                  <span className='font-light'>
-                    No gas bottles. Small camping stoves are fine, but please be
-                    safe.
-                  </span>
-                </li>
-                <li>
-                  <span className='bg-accent p-[0.05rem] text-onaccent'>
-                    Respect:
-                  </span>{' '}
-                  <span className='font-light'>
-                    No big speaker setups at the campsite. The music stays on
-                    the floors.
-                  </span>
-                </li>
-                <li>
-                  <span className='bg-accent p-[0.05rem] text-onaccent'>
-                    Fair Play:
-                  </span>{' '}
-                  <span className='font-light'>
-                    Support the bar and its fair prices – it’s how we keep this
-                    running.
-                  </span>
-                </li>
-                <li>
-                  <span className='bg-accent p-[0.05rem] text-onaccent'>
-                    Good Vibes Only:
-                  </span>{' '}
-                  <span className='font-light'>
-                    No stress, no drama, no exceptions.
-                  </span>
-                </li>
-              </ul> */}
+                  . We’ve got clean camping, showers, coffee, snacks, and all
+                  the essentials for a stress-free festival.
+                </h3>
+              </div>
             </div>
           </div>
 
-          <div className='font-noraml p-2 text-xl text-default sm:text-2xl'>
-            <div className='max-w-2xl space-y-2 '>
-              <h3 className='w-fit bg-invert p-[0.05rem] font-mono text-sm font-light uppercase leading-none text-invert'>
-                Questions?
-              </h3>
-              <p className='font-extralight'>
-                <Link
-                  className='font-normal text-accent hover:text-default'
-                  href='mailto:eisbach@gmail.com'
-                >
-                  Drop us a message
-                </Link>{' '}
-                for any questions or ticket info – let’s keep it short and
-                sweet.
-              </p>
+          {/* Section 2 */}
+          <div className='p-2 text-xl font-normal text-default sm:text-2xl'>
+            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
+              <div className='space-y-4 self-center'>
+                <p className='text-2xl sm:text-3xl'>
+                  <span className='bg-invert p-[0.05rem] text-invert'>
+                    This private event requires an invitation.
+                  </span>{' '}
+                  There are no tickets and no on-site ticket sales. We’re all
+                  about safe, respectful spaces with zero tolerance for bad
+                  vibes. You bring in trash, your bring it out, keep noise down
+                  at campsites, and bring nothing hazardous. Got questions?{' '}
+                  <Link
+                    className='font-normal text-accent hover:text-default'
+                    href='mailto:eisbach@gmail.com'
+                  >
+                    Drop us a message
+                  </Link>{' '}
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>
