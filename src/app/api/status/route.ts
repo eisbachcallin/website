@@ -39,8 +39,6 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const body = await req.json()
-
-  // Log the full payload to check for any missing fields
   console.log('Received Zapier payload:', body)
 
   const {
@@ -54,7 +52,6 @@ export async function POST(req: Request) {
     formCrew,
   } = body
 
-  // Check if essential fields are present
   if (!requestId || !uuid || !status || !message) {
     console.error('Missing required fields in response:', body)
     return NextResponse.json(
@@ -63,20 +60,17 @@ export async function POST(req: Request) {
     )
   }
 
-  // If the form data is missing, handle it accordingly
   const formData =
     formFirst && formLast && formEmail && formCrew
       ? { formFirst, formLast, formEmail, formCrew }
-      : undefined // Optionally, you could fallback to default values or skip this
+      : undefined
 
-  // Create status data object to store
   const statusData: StatusData = {
     status,
     message,
-    formData, // Only add formData if it exists
+    formData,
   }
 
-  // Store status in the cache
   statusCache[requestId] = statusData
 
   return NextResponse.json({ message: 'Status updated successfully' })
