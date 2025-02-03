@@ -33,7 +33,7 @@ export default function CampPage() {
 
     const generatedRequestId = Math.random().toString(36).substring(2, 15)
     setRequestId(generatedRequestId)
-    setLoading(true) // Start loading
+    setLoading(true)
     setErrorMessage(null)
 
     try {
@@ -49,14 +49,12 @@ export default function CampPage() {
 
       if (!res.ok) throw new Error('Failed to submit form.')
 
-      // Start polling for the status of the submission
       pollStatus(uuid, generatedRequestId)
     } catch (error) {
-      console.error('Error submitting form:', error)
       setErrorMessage(
         'There was an error submitting your form. Please try again.'
       )
-      setLoading(false) // Stop loading if submission fails
+      setLoading(false)
     }
   }
 
@@ -69,7 +67,7 @@ export default function CampPage() {
 
       if (response.ok) {
         if (data.status === 'pending') {
-          setTimeout(() => pollStatus(uuid, requestId), 5000) // Continue polling
+          setTimeout(() => pollStatus(uuid, requestId), 5000)
         } else {
           if (data.status === 'success') {
             setSubmissionDetails({
@@ -84,7 +82,7 @@ export default function CampPage() {
             setErrorMessage(data.message)
             setStatus('error')
           }
-          setLoading(false) // Stop loading when we get a final response (success or error)
+          setLoading(false)
         }
       } else {
         console.error('Error fetching status:', data)
@@ -99,7 +97,6 @@ export default function CampPage() {
       stickyLeft
       leftSide={
         <div className='flex flex-col items-start space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0 xl:flex-col xl:space-x-0 xl:space-y-8'>
-          {/* ✅ Always Visible: Event Description */}
           <div className='flex-1 font-sans text-2xl  sm:text-3xl xl:space-y-16  '>
             <div>
               <span className='sr-only'>About Eisbach Callin Camp</span>
@@ -113,46 +110,43 @@ export default function CampPage() {
               </h1>
             </div>
           </div>
-
-          {/* ✅ Conditional: Form visible only if UUID exists */}
           {uuid &&
             (submissionDetails ? (
-              // Show success message if form is submitted
               <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
                 <h2 className='font-sans text-2xl text-green-600'>
                   You're Invited!
                 </h2>
                 <div>
-                  <p>
-                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                  <p className='text-black'>
+                    <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                       UUID:
                     </strong>{' '}
                     {submissionDetails.uuid}
                   </p>
-                  <p>
-                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                  <p className='text-black'>
+                    <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                       Name:
                     </strong>{' '}
                     {submissionDetails.first} {submissionDetails.last}
                   </p>
-                  <p>
-                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                  <p className='text-black'>
+                    <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                       Email:
                     </strong>{' '}
                     {submissionDetails.email}
                   </p>
-                  <p>
-                    <strong className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
+                  <p className='text-black'>
+                    <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                       Crew:
                     </strong>{' '}
                     {submissionDetails.crew}
                   </p>
                 </div>
-                <p className='mt-2 font-sans'>
+                <p className='mt-2 font-sans text-black'>
                   Please check your email. If you didn't receive an email reach
                   out to{' '}
                   <Link
-                    className='p-[0.05rem] font-normal text-accent hover:text-default'
+                    className='p-[0.05rem] font-normal text-accent hover:text-black'
                     href='#'
                   >
                     eisbachcalling@gmail.com
@@ -161,18 +155,15 @@ export default function CampPage() {
                 </p>
               </div>
             ) : (
-              // Render the form
               <form
                 onSubmit={handleSubmit}
                 className='grid w-full flex-1 grid-cols-1 gap-2 sm:max-w-md xl:max-w-xl'
               >
                 {errorMessage && (
-                  <p className='mt-4 text-center font-bold text-red-600'>
+                  <p className='border border-red-600 bg-red-100 p-3 text-black'>
                     {errorMessage}
                   </p>
                 )}
-
-                {/* First Name */}
                 <label className='block'>
                   <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
                     First Name
@@ -188,8 +179,6 @@ export default function CampPage() {
                     required
                   />
                 </label>
-
-                {/* Last Name */}
                 <label className='block'>
                   <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
                     Last Name
@@ -205,8 +194,6 @@ export default function CampPage() {
                     required
                   />
                 </label>
-
-                {/* Email */}
                 <label className='block'>
                   <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
                     Email
@@ -222,8 +209,6 @@ export default function CampPage() {
                     required
                   />
                 </label>
-
-                {/* Crew Selection */}
                 <label className='block'>
                   <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
                     Crew
@@ -243,8 +228,6 @@ export default function CampPage() {
                     <option>Other</option>
                   </select>
                 </label>
-
-                {/* Submit Button */}
                 <button
                   type='submit'
                   className='mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-accent'
@@ -256,15 +239,12 @@ export default function CampPage() {
                     'Request Invitation'
                   )}
                 </button>
-
-                {/* Error Message */}
               </form>
             ))}
         </div>
       }
       rightSide={
         <div className='font-sans text-default'>
-          {/* Section 1 */}
           <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4'>
@@ -275,7 +255,6 @@ export default function CampPage() {
             </div>
           </div>
 
-          {/* Section img */}
           <div className='grid grid-cols-2 gap-2 border-b border-default  p-2 md:grid-cols-4'>
             <div className='grid gap-2'>
               <div>
@@ -395,7 +374,6 @@ export default function CampPage() {
             </div>
           </div>
 
-          {/* Section 3 */}
           <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4 self-center'>
@@ -429,7 +407,6 @@ export default function CampPage() {
             </div>
           </div>
 
-          {/* Section 1 */}
           <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4 self-center'>
@@ -446,7 +423,6 @@ export default function CampPage() {
             </div>
           </div>
 
-          {/* Section 2 */}
           <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4 self-center'>
@@ -470,8 +446,7 @@ export default function CampPage() {
             </div>
           </div>
 
-          {/* Section 3 */}
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
+          <div className='p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4 self-center'>
                 <ul className='text-2xl sm:text-3xl'>
