@@ -24,7 +24,7 @@
 
     --color-border-default: rgba(var(--color-sky));
     --color-border-invert: rgba(var(--color-white));
-    --color-border-accent: rgba(var(--color-blue));
+    --color-border-accent: rgba(var(--color-black));
 
     --color-stroke-default: rgba(var(--color-sky));
     --color-stroke-invert: rgba(var(--color-white));
