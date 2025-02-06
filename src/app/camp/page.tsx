@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import SplitContainer from '@/components/layout/SplitContainer'
 import Link from 'next/link'
+import validator from 'validator'
 
 export default function CampPage() {
   const router = useRouter()
@@ -31,17 +32,48 @@ export default function CampPage() {
     e.preventDefault()
     if (!uuid) return alert('No UUID provided in URL!')
 
+    const sanitizedFormData = {
+      first: validator.escape(formData.first.trim()),
+      last: validator.escape(formData.last.trim()),
+      email: validator.escape(formData.email.trim()),
+      crew: validator.escape(formData.crew.trim()),
+    }
+
+    if (
+      validator.isEmpty(sanitizedFormData.first) ||
+      validator.isEmpty(sanitizedFormData.last) ||
+      validator.isEmpty(sanitizedFormData.crew)
+    ) {
+      setErrorMessage('All fields are required.')
+      return
+    }
+
+    if (!validator.isEmail(sanitizedFormData.email)) {
+      setErrorMessage('Invalid email address.')
+      return
+    }
+
+    if (
+      !['Eisbach Callin', 'Bam Bam', 'Time Trippin', 'Other'].includes(
+        sanitizedFormData.crew
+      )
+    ) {
+      setErrorMessage('Invalid crew selection.')
+      return
+    }
+
+    setErrorMessage(null)
+    setLoading(true)
+
     const generatedRequestId = Math.random().toString(36).substring(2, 15)
     setRequestId(generatedRequestId)
-    setLoading(true)
-    setErrorMessage(null)
 
     try {
       const res = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          form: formData,
+          form: sanitizedFormData,
           uuid: uuid,
           requestId: generatedRequestId,
         }),
