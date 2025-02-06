@@ -212,7 +212,7 @@ export default function CampPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, first: e.target.value })
                     }
-                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                     placeholder='Your first name'
                     required
                   />
@@ -227,7 +227,7 @@ export default function CampPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, last: e.target.value })
                     }
-                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                     placeholder='Your last name'
                     required
                   />
@@ -242,7 +242,7 @@ export default function CampPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                     placeholder='Your email'
                     required
                   />
@@ -257,7 +257,7 @@ export default function CampPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, crew: e.target.value })
                     }
-                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-sm shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+                    className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
                   >
                     <option value=''>Select your crew</option>
                     <option>Eisbach Callin</option>
