@@ -494,28 +494,34 @@ export default function CampPage() {
                     </span>
                   </li>
                   <li className='pb-2'>
-                    <Link
+                    <a
+                      target='_blank'
+                      rel='noopener noreferrer'
                       className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='#'
+                      href='https://www.instagram.com/eisbachcallin/'
                     >
                       Eisbach Callin
-                    </Link>{' '}
+                    </a>{' '}
                   </li>
                   <li className='pb-2'>
-                    <Link
+                    <a
+                      target='_blank'
+                      rel='noopener noreferrer'
                       className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='#'
+                      href='https://www.instagram.com/timetrippingmunich/'
                     >
                       Time Trippin
-                    </Link>{' '}
+                    </a>{' '}
                   </li>
                   <li className='pb-2'>
-                    <Link
+                    <a
+                      target='_blank'
+                      rel='noopener noreferrer'
                       className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='#'
+                      href='https://www.instagram.com/bambam.fun/'
                     >
                       Bam Bam
-                    </Link>{' '}
+                    </a>{' '}
                   </li>
                 </ul>
               </div>
