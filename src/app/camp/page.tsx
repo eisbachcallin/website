@@ -25,7 +25,12 @@ export default function CampPage() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const uuidParam = urlParams.get('uuid')
-    setUuid(uuidParam)
+
+    if (uuidParam && uuidParam.length >= 10) {
+      setUuid(uuidParam)
+    } else {
+      setUuid(null)
+    }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -143,6 +148,7 @@ export default function CampPage() {
             </div>
           </div>
           {uuid &&
+            uuid.length >= 34 &&
             (submissionDetails ? (
               <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
                 <h2 className='font-sans text-2xl text-green-600'>
