@@ -59,7 +59,7 @@ export default function CampPage() {
     }
 
     if (
-      !['Eisbach Callin', 'Bam Bam', 'Time Trippin', 'Other'].includes(
+      !['Eisbach Callin', 'Bam Bam', 'Time Tripping', 'Other'].includes(
         sanitizedFormData.crew
       )
     ) {
@@ -262,7 +262,7 @@ export default function CampPage() {
                     <option value=''>Select your crew</option>
                     <option>Eisbach Callin</option>
                     <option>Bam Bam</option>
-                    <option>Time Trippin</option>
+                    <option>Time Tripping</option>
                     <option>Other</option>
                   </select>
                 </label>
@@ -486,7 +486,7 @@ export default function CampPage() {
 
           <div className='p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4 self-center'>
+              <div className='space-y-4'>
                 <ul className='text-2xl sm:text-3xl'>
                   <li className='pb-2'>
                     <span className='bg-invert p-[0.05rem] text-invert'>
@@ -510,7 +510,7 @@ export default function CampPage() {
                       className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
                       href='https://www.instagram.com/timetrippingmunich/'
                     >
-                      Time Trippin
+                      Time Tripping
                     </a>{' '}
                   </li>
                   <li className='pb-2'>
