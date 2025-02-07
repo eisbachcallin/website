@@ -486,7 +486,7 @@ export default function CampPage() {
 
           <div className='p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4 self-center'>
+              <div className='space-y-4'>
                 <ul className='text-2xl sm:text-3xl'>
                   <li className='pb-2'>
                     <span className='bg-invert p-[0.05rem] text-invert'>
