@@ -437,6 +437,11 @@ export default function CampPage() {
                   </li>
                   <li className='pb-2'>
                     <span className='bg-invert p-[0.05rem] text-invert'>
+                      A Massive Soundsystem
+                    </span>
+                  </li>
+                  <li className='pb-2'>
+                    <span className='bg-invert p-[0.05rem] text-invert'>
                       Invitation Only
                     </span>
                   </li>
@@ -501,6 +506,16 @@ export default function CampPage() {
                       href='https://www.instagram.com/eisbachcallin/'
                     >
                       Eisbach Callin
+                    </a>{' '}
+                  </li>
+                  <li className='pb-2'>
+                    <a
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
+                      href='https://www.instagram.com/oktagon.kollektiv/'
+                    >
+                      Oktagon Soundsystem
                     </a>{' '}
                   </li>
                   <li className='pb-2'>
