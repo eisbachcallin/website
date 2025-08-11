@@ -38,5 +38,8 @@
     "@types/validator": "^13.12.2",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0"
+  },
+  "engines": {
+    "node": ">=20.19.4"
   }
 }
