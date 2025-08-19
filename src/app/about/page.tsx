@@ -31,7 +31,7 @@ const About = () => {
               Don’t be shy and send us an{' '}
               <Link
                 className='text-accent hover:text-default'
-                href='mailto:eisbach@gmail.com'
+                href='mailto:eisbachcallin@gmail.com'
               >
                 email
               </Link>{' '}
