@@ -32,13 +32,13 @@ const residents: Resident[] = [
     ],
   },
   {
-    name: 'Dubz aka Turdbaby',
-    avatar: '/artists/turdbaby.jpg',
+    name: 'Dubzlinger',
+    avatar: '/artists/dubzlinger.jpg',
     description:
-      'Turdbaby takes you on a colorful journey through all varieties of bass music, be it soulful garage, gritty dubstep, uptempo kuduro, brostep, or almighty jungle; simply an eclectic mix of everything that can lead to the fringes of breakcore and dark dub - anything goes, as long as the rave is in ruins afterwards!',
+      'Dubzlinger aka Turdbaby takes you on a colorful journey through all varieties of bass music, be it soulful garage, gritty dubstep, uptempo kuduro, brostep, or almighty jungle; simply an eclectic mix of everything that can lead to the fringes of breakcore and dark dub - anything goes, as long as the rave is in ruins afterwards!',
     links: [
       {
-        url: 'https://www.mixcloud.com/turdbaby/',
+        url: 'https://www.mixcloud.com/dubzlinger/',
         platform: 'Mixcloud',
       },
     ],
