@@ -7,9 +7,7 @@ import EventHero from '@/components/EventHero'
 import SplitContainer from '@/components/layout/SplitContainer'
 
 interface PageProps {
-  params: {
-    eventSlug: string
-  }
+  params: Promise<{ eventSlug: string }>
 }
 
 async function getPostFromParams(slug: string) {
@@ -24,7 +22,8 @@ export const generateStaticParams = async () =>
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params.eventSlug)
+  const { eventSlug } = await params
+  const post = await getPostFromParams(eventSlug)
 
   if (!post) {
     return {
@@ -40,7 +39,8 @@ export async function generateMetadata({
 }
 
 const EventPostPage = async ({ params }: PageProps) => {
-  const post = await getPostFromParams(params.eventSlug)
+  const { eventSlug } = await params
+  const post = await getPostFromParams(eventSlug)
 
   return (
     <SplitContainer
