@@ -152,7 +152,9 @@ export default function CampPage() {
     if (success) {
       return (
         <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
-          <h2 className='font-sans text-2xl text-green-600'>You're Invited!</h2>
+          <h2 className='font-sans text-2xl text-green-600'>
+            You&apos;re Invited!
+          </h2>
           <div>
             <p className='text-black'>
               <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
@@ -180,7 +182,8 @@ export default function CampPage() {
             </p>
           </div>
           <p className='mt-2 font-sans text-black'>
-            Please check your email. If you didn't receive an email reach out to{' '}
+            Please check your email. If you didn&apos;t receive an email reach
+            out to{' '}
             <Link
               className='p-[0.05rem] font-normal text-accent hover:text-black'
               href='mailto:eisbachcallin@gmail.com'
@@ -205,7 +208,7 @@ export default function CampPage() {
       return (
         <div className='mt-6 w-full flex-1 space-y-4 border border-default p-3'>
           <p className='font-sans text-default'>
-            Create an account or log in to redeem your ticket.
+            Log in above to redeem your ticket.
           </p>
         </div>
       )
@@ -228,7 +231,7 @@ export default function CampPage() {
     return (
       <form
         onSubmit={handleSubmit}
-        className='grid w-full flex-1 grid-cols-1 gap-2 sm:max-w-md xl:max-w-xl'
+        className='mt-6 grid w-full flex-1 grid-cols-1 gap-2 sm:max-w-md xl:max-w-xl'
       >
         {error && (
           <p className='border border-red-600 bg-red-100 p-3 text-black'>
@@ -285,7 +288,7 @@ export default function CampPage() {
         </label>
         <button
           type='submit'
-          className='mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-accent'
+          className=':ring-offset-2 mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-accent'
           disabled={loading}
         >
           {loading ? (
