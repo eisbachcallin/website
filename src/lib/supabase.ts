@@ -1,6 +1,24 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!
+let supabaseInstance: SupabaseClient | null = null
 
-export const supabase = createClient(supabaseUrl, supabaseServiceKey)
+export function getSupabase(): SupabaseClient {
+  if (!supabaseInstance) {
+    const url = process.env.SUPABASE_URL
+    const key = process.env.SUPABASE_SERVICE_KEY
+
+    if (!url || !key) {
+      throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_KEY')
+    }
+
+    supabaseInstance = createClient(url, key)
+  }
+  return supabaseInstance
+}
+
+// For backwards compatibility, but prefer getSupabase()
+export const supabase = new Proxy({} as SupabaseClient, {
+  get(_, prop) {
+    return Reflect.get(getSupabase(), prop)
+  },
+})
