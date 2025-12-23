@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+type MetadataPublic = {
+  admin?: boolean
+}
+
 export async function middleware(request: NextRequest) {
   if (!request.nextUrl.pathname.startsWith('/admin')) {
     return NextResponse.next()
@@ -22,7 +26,8 @@ export async function middleware(request: NextRequest) {
     }
 
     const session = await response.json()
-    if (session.identity?.metadata_public?.admin !== true) {
+    const metadata = session.identity?.metadata_public as MetadataPublic | null
+    if (metadata?.admin !== true) {
       return NextResponse.redirect(new URL('/camp', request.url))
     }
 

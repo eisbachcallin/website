@@ -1,5 +1,9 @@
 import { Configuration, FrontendApi, Session } from '@ory/client'
 
+type MetadataPublic = {
+  admin?: boolean
+}
+
 const ory = new FrontendApi(
   new Configuration({ basePath: process.env.NEXT_PUBLIC_ORY_URL })
 )
@@ -23,7 +27,8 @@ export async function requireSession(cookie: string): Promise<Session> {
 
 export async function requireAdmin(cookie: string): Promise<Session> {
   const session = await requireSession(cookie)
-  if (session.identity?.metadata_public?.admin !== true) {
+  const metadata = session.identity?.metadata_public as MetadataPublic | null
+  if (metadata?.admin !== true) {
     throw new Error('forbidden')
   }
   return session
