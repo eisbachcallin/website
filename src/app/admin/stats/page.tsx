@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { logout } from '@/lib/ory'
 
 type TicketStats = {
   total_tickets: number
@@ -37,45 +38,61 @@ export default function StatsPage() {
     return () => clearInterval(interval)
   }, [])
 
-  if (loading) return <div className='p-8'>Loading...</div>
+  if (loading) {
+    return (
+      <div className='min-h-screen bg-default p-8 font-sans'>
+        <span className='mx-auto block h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-black'></span>
+      </div>
+    )
+  }
 
   return (
-    <div className='min-h-screen bg-gray-50 p-4'>
+    <div className='min-h-screen bg-default p-4 font-sans text-default'>
       <div className='mx-auto max-w-4xl'>
-        <div className='mb-6 flex items-center justify-between'>
-          <h1 className='text-2xl font-semibold'>Stats</h1>
-          <Link href='/admin' className='text-blue-600 hover:underline'>
-            Back to Attendees
-          </Link>
+        <div className='mb-6 flex items-center justify-between border-b border-default pb-4'>
+          <h1 className='text-2xl'>Stats</h1>
+          <div className='flex items-center space-x-4'>
+            <Link
+              href='/admin'
+              className='bg-accent p-[0.05rem] text-onaccent hover:text-invert'
+            >
+              Back to Attendees
+            </Link>
+            <button
+              type='button'
+              onClick={() => logout()}
+              className='text-accent underline hover:text-black'
+            >
+              Log out
+            </button>
+          </div>
         </div>
 
         {tickets && (
           <div className='mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4'>
-            <div className='rounded bg-white p-4 shadow'>
-              <p className='text-3xl font-semibold'>{tickets.total_tickets}</p>
-              <p className='text-sm text-gray-600'>Total Tickets</p>
+            <div className='border border-default p-4'>
+              <p className='text-3xl'>{tickets.total_tickets}</p>
+              <p className='text-sm'>Total Tickets</p>
             </div>
-            <div className='rounded bg-white p-4 shadow'>
-              <p className='text-3xl font-semibold'>{tickets.available}</p>
-              <p className='text-sm text-gray-600'>Available</p>
+            <div className='border border-default p-4'>
+              <p className='text-3xl'>{tickets.available}</p>
+              <p className='text-sm'>Available</p>
             </div>
-            <div className='rounded bg-white p-4 shadow'>
-              <p className='text-3xl font-semibold'>{tickets.claimed}</p>
-              <p className='text-sm text-gray-600'>Claimed</p>
+            <div className='border border-default p-4'>
+              <p className='text-3xl'>{tickets.claimed}</p>
+              <p className='text-sm'>Claimed</p>
             </div>
-            <div className='rounded bg-white p-4 shadow'>
-              <p className='text-3xl font-semibold text-green-600'>
-                {tickets.checked_in}
-              </p>
-              <p className='text-sm text-gray-600'>Checked In</p>
+            <div className='border p-4'>
+              <p className='text-3xl'>{tickets.checked_in}</p>
+              <p className='text-sm'>Checked In</p>
             </div>
           </div>
         )}
 
-        <h2 className='mb-4 text-xl font-semibold'>By Crew</h2>
-        <div className='overflow-hidden rounded bg-white shadow'>
+        <h2 className='mb-4 text-xl'>By Crew</h2>
+        <div className='overflow-hidden border border-default'>
           <table className='w-full text-left text-sm'>
-            <thead className='bg-gray-100'>
+            <thead className='bg-invert text-invert'>
               <tr>
                 <th className='px-4 py-2'>Crew</th>
                 <th className='px-4 py-2'>Registered</th>
@@ -85,7 +102,7 @@ export default function StatsPage() {
             </thead>
             <tbody>
               {crews.map((c) => (
-                <tr key={c.id} className='border-t'>
+                <tr key={c.id} className='border-t border-default'>
                   <td className='px-4 py-2'>{c.name}</td>
                   <td className='px-4 py-2'>{c.attendee_count}</td>
                   <td className='px-4 py-2'>{c.checked_in_count}</td>

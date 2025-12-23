@@ -59,11 +59,6 @@ export default function CampPage() {
     fetchCrews()
   }, [])
 
-  const handleLogin = () => {
-    const returnTo = `${window.location.origin}/camp?uuid=${uuid}`
-    window.location.href = getRegistrationUrl(returnTo)
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!uuid || !session) return
@@ -117,6 +112,39 @@ export default function CampPage() {
   const emailVerified = session?.identity?.verifiable_addresses?.some(
     (addr) => addr.via === 'email' && addr.verified
   )
+
+  const renderAuthStatus = () => {
+    if (authLoading) return null
+
+    if (!session) {
+      return (
+        <button
+          onClick={() => {
+            const returnTo = uuid
+              ? `${window.location.origin}/camp?uuid=${uuid}`
+              : `${window.location.origin}/camp`
+            window.location.href = getRegistrationUrl(returnTo)
+          }}
+          className='w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent'
+        >
+          Log in / Register
+        </button>
+      )
+    }
+
+    return (
+      <div className='flex items-center justify-between text-sm text-default'>
+        <span>Logged in as {session.identity?.traits?.email}</span>
+        <button
+          type='button'
+          onClick={() => logout()}
+          className='text-accent underline hover:text-black'
+        >
+          Log out
+        </button>
+      </div>
+    )
+  }
 
   const renderForm = () => {
     if (!uuid || uuid.length < 34) return null
@@ -179,12 +207,6 @@ export default function CampPage() {
           <p className='font-sans text-default'>
             Create an account or log in to redeem your ticket.
           </p>
-          <button
-            onClick={handleLogin}
-            className='w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent'
-          >
-            Continue
-          </button>
         </div>
       )
     }
@@ -213,16 +235,6 @@ export default function CampPage() {
             {error}
           </p>
         )}
-        <div className='flex items-center justify-between text-sm text-default'>
-          <span>Logged in as {session.identity?.traits?.email}</span>
-          <button
-            type='button'
-            onClick={() => logout()}
-            className='text-accent underline hover:text-black'
-          >
-            Log out
-          </button>
-        </div>
         <label className='block'>
           <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
             First Name
@@ -304,6 +316,7 @@ export default function CampPage() {
               </h1>
             </div>
           </div>
+          {renderAuthStatus()}
           {renderForm()}
         </div>
       }

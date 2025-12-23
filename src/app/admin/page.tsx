@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { logout } from '@/lib/ory'
 
 type Attendee = {
   id: string
@@ -91,13 +92,25 @@ export default function AdminPage() {
   }
 
   return (
-    <div className='min-h-screen bg-gray-50 p-4'>
+    <div className='min-h-screen bg-default p-4 font-sans text-default'>
       <div className='mx-auto max-w-6xl'>
-        <div className='mb-6 flex items-center justify-between'>
-          <h1 className='text-2xl font-semibold'>Attendees</h1>
-          <Link href='/admin/stats' className='text-blue-600 hover:underline'>
-            View Stats
-          </Link>
+        <div className='mb-6 flex items-center justify-between border-b border-default pb-4'>
+          <h1 className='text-2xl'>Attendees</h1>
+          <div className='flex items-center space-x-4'>
+            <Link
+              href='/admin/stats'
+              className='bg-accent p-[0.05rem] text-onaccent hover:text-invert'
+            >
+              View Stats
+            </Link>
+            <button
+              type='button'
+              onClick={() => logout()}
+              className='text-accent underline hover:text-black'
+            >
+              Log out
+            </button>
+          </div>
         </div>
 
         <form onSubmit={handleSearch} className='mb-4 flex flex-wrap gap-2'>
@@ -106,7 +119,7 @@ export default function AdminPage() {
             placeholder='Search name or email...'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className='rounded border px-3 py-2'
+            className='border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
           />
           <select
             value={crewFilter}
@@ -114,7 +127,7 @@ export default function AdminPage() {
               setCrewFilter(e.target.value)
               setPage(1)
             }}
-            className='rounded border px-3 py-2'
+            className='border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
           >
             <option value=''>All crews</option>
             {crews.map((c) => (
@@ -129,7 +142,7 @@ export default function AdminPage() {
               setCheckedInFilter(e.target.value)
               setPage(1)
             }}
-            className='rounded border px-3 py-2'
+            className='border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
           >
             <option value=''>All</option>
             <option value='true'>Checked in</option>
@@ -137,20 +150,22 @@ export default function AdminPage() {
           </select>
           <button
             type='submit'
-            className='rounded bg-black px-4 py-2 text-white'
+            className='border-transparent bg-invert px-6 py-2 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent'
           >
             Search
           </button>
         </form>
 
-        <p className='mb-2 text-sm text-gray-600'>{total} attendees found</p>
+        <p className='mb-2 text-sm'>{total} attendees found</p>
 
         {loading ? (
-          <p>Loading...</p>
+          <div className='p-8'>
+            <span className='mx-auto block h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-black'></span>
+          </div>
         ) : (
-          <div className='overflow-x-auto rounded bg-white shadow'>
+          <div className='overflow-x-auto border border-default'>
             <table className='w-full text-left text-sm'>
-              <thead className='bg-gray-100'>
+              <thead className='bg-invert text-invert'>
                 <tr>
                   <th className='px-4 py-2'>Name</th>
                   <th className='px-4 py-2'>Email</th>
@@ -161,7 +176,7 @@ export default function AdminPage() {
               </thead>
               <tbody>
                 {attendees.map((a) => (
-                  <tr key={a.id} className='border-t'>
+                  <tr key={a.id} className='border-t border-default'>
                     <td className='px-4 py-2'>
                       {a.first_name} {a.last_name}
                     </td>
@@ -169,7 +184,9 @@ export default function AdminPage() {
                     <td className='px-4 py-2'>{a.crew_name}</td>
                     <td className='px-4 py-2'>
                       {a.checked_in ? (
-                        <span className='text-green-600'>Checked in</span>
+                        <span className='bg-green-600 p-[0.05rem] text-sm text-white'>
+                          Checked in
+                        </span>
                       ) : (
                         <span className='text-gray-500'>Not checked in</span>
                       )}
@@ -177,13 +194,18 @@ export default function AdminPage() {
                     <td className='px-4 py-2'>
                       {a.checked_in ? (
                         <span className='text-xs text-gray-400'>
-                          {new Date(a.checked_in_at!).toLocaleTimeString()}
+                          {new Date(a.checked_in_at!).toLocaleString('de-DE', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
                         </span>
                       ) : (
                         <button
                           onClick={() => handleCheckIn(a.id)}
                           disabled={checkingIn === a.id}
-                          className='rounded bg-green-600 px-3 py-1 text-xs text-white disabled:opacity-50'
+                          className='border-transparent bg-green-600 px-3 py-1 text-xs text-white hover:bg-green-700 disabled:opacity-50'
                         >
                           {checkingIn === a.id ? '...' : 'Check In'}
                         </button>
@@ -197,11 +219,11 @@ export default function AdminPage() {
         )}
 
         {totalPages > 1 && (
-          <div className='mt-4 flex gap-2'>
+          <div className='mt-4 flex items-center gap-2'>
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1}
-              className='rounded border px-3 py-1 disabled:opacity-50'
+              className='border border-default px-3 py-1 disabled:opacity-50'
             >
               Prev
             </button>
@@ -211,7 +233,7 @@ export default function AdminPage() {
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page === totalPages}
-              className='rounded border px-3 py-1 disabled:opacity-50'
+              className='border border-default px-3 py-1 disabled:opacity-50'
             >
               Next
             </button>
