@@ -418,7 +418,7 @@ export default function CampPage() {
                 <ul className='text-2xl sm:text-3xl'>
                   <li className='pb-2'>
                     <span className='bg-invert p-[0.05rem] text-invert'>
-                      Aug 22-24
+                      Jul 17-18
                     </span>
                   </li>
                   <li className='pb-2'>
