@@ -185,9 +185,9 @@ export default function CampPage() {
                   out to{' '}
                   <Link
                     className='p-[0.05rem] font-normal text-accent hover:text-black'
-                    href='mailto:eisbachcallin@gmail.com'
+                    href='mailto:mail@eisbachcallin.com'
                   >
-                    eisbachcallin@gmail.com
+                    mail@eisbachcallin.com
                   </Link>
                   .
                 </p>
@@ -479,7 +479,7 @@ export default function CampPage() {
                   campsites, and bring nothing hazardous. Got questions?{' '}
                   <Link
                     className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                    href='mailto:eisbachcallin@gmail.com'
+                    href='mailto:mail@eisbachcallin.com'
                   >
                     Drop us a message
                   </Link>
