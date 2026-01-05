@@ -140,7 +140,7 @@ export default function CampPage() {
               <h1>
                 Join us{' '}
                 <span className='bg-invert p-[0.05rem] text-invert'>
-                  Aug 22–24
+                  Jul 17-18
                 </span>{' '}
                 for a private festival with 20+ DJs from 3 crews, clean camping,
                 and good atmosphere.
