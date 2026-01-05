@@ -186,9 +186,9 @@ export default function CampPage() {
             out to{' '}
             <Link
               className='p-[0.05rem] font-normal text-accent hover:text-black'
-              href='mailto:eisbachcallin@gmail.com'
+              href='mailto:mail@eisbachcallin.com'
             >
-              eisbachcallin@gmail.com
+              mail@eisbachcallin.com
             </Link>
             .
           </p>
@@ -312,7 +312,7 @@ export default function CampPage() {
               <h1>
                 Join us{' '}
                 <span className='bg-invert p-[0.05rem] text-invert'>
-                  Aug 22–24
+                  Jul 17-18
                 </span>{' '}
                 for a private festival with 20+ DJs from 3 crews, clean camping,
                 and good atmosphere.
@@ -460,7 +460,7 @@ export default function CampPage() {
                 <ul className='text-2xl sm:text-3xl'>
                   <li className='pb-2'>
                     <span className='bg-invert p-[0.05rem] text-invert'>
-                      Aug 22-24
+                      Jul 17-18
                     </span>
                   </li>
                   <li className='pb-2'>
@@ -521,7 +521,7 @@ export default function CampPage() {
                   campsites, and bring nothing hazardous. Got questions?{' '}
                   <Link
                     className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                    href='mailto:eisbachcallin@gmail.com'
+                    href='mailto:mail@eisbachcallin.com'
                   >
                     Drop us a message
                   </Link>
@@ -548,16 +548,6 @@ export default function CampPage() {
                       href='https://www.instagram.com/eisbachcallin/'
                     >
                       Eisbach Callin
-                    </a>{' '}
-                  </li>
-                  <li className='pb-2'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='https://www.instagram.com/oktagon.kollektiv/'
-                    >
-                      Oktagon Soundsystem
                     </a>{' '}
                   </li>
                   <li className='pb-2'>
