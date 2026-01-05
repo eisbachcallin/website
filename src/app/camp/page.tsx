@@ -513,16 +513,6 @@ export default function CampPage() {
                       target='_blank'
                       rel='noopener noreferrer'
                       className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='https://www.instagram.com/oktagon.kollektiv/'
-                    >
-                      Oktagon Soundsystem
-                    </a>{' '}
-                  </li>
-                  <li className='pb-2'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
                       href='https://www.instagram.com/timetrippingmunich/'
                     >
                       Time Tripping
