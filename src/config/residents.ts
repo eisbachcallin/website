@@ -33,17 +33,17 @@ const residents: Resident[] = [
   },
   {
     name: 'Dubz.you',
-    avatar: '/artists/dubzlinger.jpg',
+    avatar: '/artists/dubz.jpg',
     description:
       'Dubz.you aka Dubzlinger aka Turdbaby takes you on a colorful journey through all varieties of bass music, be it soulful garage, gritty dubstep, uptempo kuduro, brostep, or almighty jungle; simply an eclectic mix of everything that can lead to the fringes of breakcore and dark dub - anything goes, as long as the rave is in ruins afterwards!',
     links: [
       {
-        url: 'https://instagram.com/dubz.you',
-        platform: 'Instagram',
+        url: 'https://dubz.you/',
+        platform: 'Website',
       },
       {
-        url: 'https://soundcloud.com/dubz-you',
-        platform: 'Soundcloud',
+        url: 'https://instagram.com/dubz.you',
+        platform: 'Instagram',
       },
     ],
   },
