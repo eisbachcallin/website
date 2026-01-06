@@ -40,7 +40,7 @@ const About = () => {
                 className='text-accent hover:text-default'
                 target='_blank'
                 rel='noopener noreferrer'
-                href='https://www.instagram.com/eisbachcallin/?hl=de'
+                href='https://www.instagram.com/eisbachcallin/'
               >
                 instagram
               </Link>{' '}
