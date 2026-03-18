@@ -305,7 +305,7 @@ export default function CampPage() {
     <SplitContainer
       stickyLeft
       leftSide={
-        <div className='flex flex-col items-start space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0 xl:flex-col xl:space-x-0 xl:space-y-8'>
+        <div className='flex flex-col items-start space-y-8'>
           <div className='flex-1 font-sans text-2xl sm:text-3xl xl:space-y-16'>
             <div>
               <span className='sr-only'>About Eisbach Callin Camp</span>
