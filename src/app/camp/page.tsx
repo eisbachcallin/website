@@ -24,6 +24,13 @@ export default function CampPage() {
     email: string
     crew: string
   } | null>(null)
+  const [existingTicket, setExistingTicket] = useState<{
+    first: string
+    last: string
+    email: string
+    crew: string
+    uuid: string
+  } | null>(null)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -38,6 +45,11 @@ export default function CampPage() {
       try {
         const { data } = await ory.toSession()
         setSession(data)
+        const res = await fetch('/api/my-ticket', { credentials: 'include' })
+        if (res.ok) {
+          const json = await res.json()
+          if (json.ticket) setExistingTicket(json.ticket)
+        }
       } catch {
         setSession(null)
       } finally {
@@ -147,38 +159,39 @@ export default function CampPage() {
   }
 
   const renderForm = () => {
-    if (!uuid || uuid.length < 34) return null
-
-    if (success) {
+    if (success || existingTicket) {
+      const t = success ?? existingTicket!
       return (
         <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
           <h2 className='font-sans text-2xl text-green-600'>
             You&apos;re Invited!
           </h2>
           <div>
-            <p className='text-black'>
-              <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
-                UUID:
-              </strong>{' '}
-              {success.uuid}
-            </p>
+            {t.uuid && (
+              <p className='text-black'>
+                <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
+                  UUID:
+                </strong>{' '}
+                {t.uuid}
+              </p>
+            )}
             <p className='text-black'>
               <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                 Name:
               </strong>{' '}
-              {success.first} {success.last}
+              {t.first} {t.last}
             </p>
             <p className='text-black'>
               <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                 Email:
               </strong>{' '}
-              {success.email}
+              {t.email}
             </p>
             <p className='text-black'>
               <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
                 Crew:
               </strong>{' '}
-              {success.crew}
+              {t.crew}
             </p>
           </div>
           <p className='mt-2 font-sans text-black'>
@@ -195,6 +208,8 @@ export default function CampPage() {
         </div>
       )
     }
+
+    if (!uuid || uuid.length < 34) return null
 
     if (authLoading) {
       return (
