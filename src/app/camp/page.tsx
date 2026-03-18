@@ -327,7 +327,7 @@ export default function CampPage() {
               <h1>
                 Join us{' '}
                 <span className='bg-invert p-[0.05rem] text-invert'>
-                  Jul 17-18
+                  Jul 17-18, 2026
                 </span>{' '}
                 for a private festival with 20+ DJs from 3 crews, clean camping,
                 and good atmosphere.
@@ -475,7 +475,7 @@ export default function CampPage() {
                 <ul className='text-2xl sm:text-3xl'>
                   <li className='pb-2'>
                     <span className='bg-invert p-[0.05rem] text-invert'>
-                      Jul 17-18
+                      Jul 17-18, 2026
                     </span>
                   </li>
                   <li className='pb-2'>
