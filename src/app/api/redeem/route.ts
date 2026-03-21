@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Configuration, FrontendApi } from '@ory/client'
 import { supabase } from '@/lib/supabase'
+import { sendConfirmationEmail } from '@/lib/email'
 
 const ory = new FrontendApi(
   new Configuration({ basePath: process.env.NEXT_PUBLIC_ORY_URL })
@@ -64,6 +65,21 @@ export async function POST(req: NextRequest) {
   if (data.error) {
     return NextResponse.json({ error: data.error }, { status: 400 })
   }
+
+  // Resolve crew name for the confirmation email
+  const { data: crewData } = await supabase
+    .from('crews')
+    .select('name')
+    .eq('id', parseInt(crew_id, 10))
+    .single()
+
+  // Send confirmation email — non-blocking, failure does not affect redemption
+  sendConfirmationEmail(email, {
+    first: first_name.trim(),
+    last: last_name.trim(),
+    crew: crewData?.name || '',
+    uuid,
+  }).catch((err) => console.error('Failed to send confirmation email:', err))
 
   return NextResponse.json({
     success: true,
