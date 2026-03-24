@@ -45,8 +45,6 @@ export async function POST(req: NextRequest) {
 
   const identityId = session.identity?.id
   const email = session.identity?.traits?.email
-  console.log('identity traits:', JSON.stringify(session.identity?.traits))
-  console.log('email resolved to:', email)
 
   // Call Supabase function
   const { data, error } = await supabase.rpc('redeem_ticket', {
@@ -75,13 +73,17 @@ export async function POST(req: NextRequest) {
     .eq('id', parseInt(crew_id, 10))
     .single()
 
-  // Send confirmation email — non-blocking, failure does not affect redemption
-  sendConfirmationEmail(email, {
-    first: first_name.trim(),
-    last: last_name.trim(),
-    crew: crewData?.name || '',
-    uuid,
-  }).catch((err) => console.error('Failed to send confirmation email:', err))
+  // Send confirmation email — failure does not affect redemption
+  try {
+    await sendConfirmationEmail(email, {
+      first: first_name.trim(),
+      last: last_name.trim(),
+      crew: crewData?.name || '',
+      uuid,
+    })
+  } catch (err) {
+    console.error('Failed to send confirmation email:', err)
+  }
 
   return NextResponse.json({
     success: true,
