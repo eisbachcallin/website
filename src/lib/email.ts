@@ -47,10 +47,12 @@ export async function sendConfirmationEmail(
 </html>
 `
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: 'Eisbach Callin <camp@eisbachcallin.com>',
     to,
     subject: 'Du bist dabei – CAMP 2026 / You\'re in – CAMP 2026',
     html,
   })
+
+  if (error) throw error
 }
