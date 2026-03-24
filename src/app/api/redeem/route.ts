@@ -45,6 +45,8 @@ export async function POST(req: NextRequest) {
 
   const identityId = session.identity?.id
   const email = session.identity?.traits?.email
+  console.log('identity traits:', JSON.stringify(session.identity?.traits))
+  console.log('email resolved to:', email)
 
   // Call Supabase function
   const { data, error } = await supabase.rpc('redeem_ticket', {
