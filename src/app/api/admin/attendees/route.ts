@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
   }
 
   const { searchParams } = new URL(req.url)
-  const search = searchParams.get('search') || ''
+  const search = (searchParams.get('search') || '').slice(0, 100)
   const crewId = searchParams.get('crew_id')
   const checkedIn = searchParams.get('checked_in')
   const page = parseInt(searchParams.get('page') || '1', 10)
