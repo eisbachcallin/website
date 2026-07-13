@@ -12,9 +12,10 @@ export async function GET(req: NextRequest) {
   }
 
   const { searchParams } = new URL(req.url)
-  const search = searchParams.get('search') || ''
+  const search = (searchParams.get('search') || '').slice(0, 100)
   const crewId = searchParams.get('crew_id')
   const checkedIn = searchParams.get('checked_in')
+  const confirmed = searchParams.get('confirmed')
   const page = parseInt(searchParams.get('page') || '1', 10)
   const limit = 50
   const offset = (page - 1) * limit
@@ -26,6 +27,7 @@ export async function GET(req: NextRequest) {
       last_name,
       email,
       crew_id,
+      confirmed,
       created_at,
       crews(name),
       tickets(checked_in, checked_in_at)
@@ -49,6 +51,12 @@ export async function GET(req: NextRequest) {
     query = query.eq('tickets.checked_in', false)
   }
 
+  if (confirmed === 'true') {
+    query = query.eq('confirmed', true)
+  } else if (confirmed === 'false') {
+    query = query.eq('confirmed', false)
+  }
+
   query = query
     .order('created_at', { ascending: false })
     .range(offset, offset + limit - 1)
@@ -67,6 +75,7 @@ export async function GET(req: NextRequest) {
     email: a.email,
     crew_id: a.crew_id,
     crew_name: a.crews?.name,
+    confirmed: a.confirmed,
     checked_in: a.tickets?.checked_in || false,
     checked_in_at: a.tickets?.checked_in_at,
     created_at: a.created_at,

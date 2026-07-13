@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Eisbach Callin Camp',
-  description: 'Underground Rave since 2010',
+  description: 'Private, invitation-only event.',
 }
 
 export default function RootLayout({

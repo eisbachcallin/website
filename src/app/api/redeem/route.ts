@@ -7,6 +7,36 @@ const ory = new FrontendApi(
   new Configuration({ basePath: process.env.NEXT_PUBLIC_ORY_URL })
 )
 
+// In-memory rate limiter: max 5 redemption attempts per identity per hour
+const RATE_LIMIT = 5
+const RATE_WINDOW_MS = 60 * 60 * 1000
+const redeemAttempts = new Map<string, { count: number; resetAt: number }>()
+
+function checkRateLimit(identityId: string): boolean {
+  const now = Date.now()
+  const record = redeemAttempts.get(identityId)
+  if (!record || now > record.resetAt) {
+    redeemAttempts.set(identityId, { count: 1, resetAt: now + RATE_WINDOW_MS })
+    return true
+  }
+  if (record.count >= RATE_LIMIT) return false
+  record.count++
+  return true
+}
+
+// Safe error codes the RPC may return that can be forwarded to the client
+const SAFE_RPC_ERRORS = new Set([
+  'ticket_not_found',
+  'ticket_already_redeemed',
+  'already_registered',
+  'crew_not_found',
+  'crew_inactive',
+])
+
+function safeRedeemError(raw: string): string {
+  return SAFE_RPC_ERRORS.has(raw) ? raw : 'redemption_failed'
+}
+
 export async function POST(req: NextRequest) {
   const cookie = req.headers.get('cookie') || ''
 
@@ -46,6 +76,14 @@ export async function POST(req: NextRequest) {
   const identityId = session.identity?.id
   const email = session.identity?.traits?.email
 
+  if (!identityId) {
+    return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
+  }
+
+  if (!checkRateLimit(identityId)) {
+    return NextResponse.json({ error: 'too_many_attempts' }, { status: 429 })
+  }
+
   // Call Supabase function
   const { data, error } = await supabase.rpc('redeem_ticket', {
     p_uuid: uuid,
@@ -63,7 +101,7 @@ export async function POST(req: NextRequest) {
 
   // data is the JSONB result from the function
   if (data.error) {
-    return NextResponse.json({ error: data.error }, { status: 400 })
+    return NextResponse.json({ error: safeRedeemError(data.error) }, { status: 400 })
   }
 
   // Resolve crew name for the confirmation email
