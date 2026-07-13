@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/auth-server'
 import { supabase } from '@/lib/supabase'
 
-export async function POST(
+export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -22,32 +22,31 @@ export async function POST(
     return NextResponse.json({ error: 'invalid_id' }, { status: 400 })
   }
 
-  // Checking in implies confirmation ("Confirm & Check In" is one request)
-  const { error: confirmError } = await supabase
-    .from('attendees')
-    .update({ confirmed: true })
-    .eq('id', id)
-
-  if (confirmError) {
-    console.error('Confirm error:', confirmError)
-    return NextResponse.json({ error: 'server_error' }, { status: 500 })
+  let body: { confirmed?: unknown }
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'invalid_body' }, { status: 400 })
   }
 
-  const { data, error } = await supabase.rpc('check_in_attendee', {
-    p_attendee_id: id,
-  })
+  if (typeof body.confirmed !== 'boolean') {
+    return NextResponse.json({ error: 'invalid_body' }, { status: 400 })
+  }
+
+  const { data, error } = await supabase
+    .from('attendees')
+    .update({ confirmed: body.confirmed })
+    .eq('id', id)
+    .select('id, confirmed')
+    .single()
 
   if (error) {
-    console.error('Check-in error:', error)
+    if (error.code === 'PGRST116') {
+      return NextResponse.json({ error: 'not_found' }, { status: 404 })
+    }
+    console.error('Failed to update attendee:', error)
     return NextResponse.json({ error: 'server_error' }, { status: 500 })
   }
 
-  if (data.error) {
-    return NextResponse.json({ error: data.error }, { status: 400 })
-  }
-
-  return NextResponse.json({
-    success: true,
-    checked_in_at: data.checked_in_at,
-  })
+  return NextResponse.json({ success: true, confirmed: data.confirmed })
 }

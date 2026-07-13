@@ -10,6 +10,7 @@ type Attendee = {
   last_name: string
   email: string
   crew_name: string
+  confirmed: boolean
   checked_in: boolean
   checked_in_at: string | null
   created_at: string
@@ -24,10 +25,12 @@ export default function AdminPage() {
   const [search, setSearch] = useState('')
   const [crewFilter, setCrewFilter] = useState('')
   const [checkedInFilter, setCheckedInFilter] = useState('')
+  const [confirmedFilter, setConfirmedFilter] = useState('')
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [total, setTotal] = useState(0)
   const [checkingIn, setCheckingIn] = useState<string | null>(null)
+  const [toggling, setToggling] = useState<string | null>(null)
 
   const fetchAttendees = useCallback(async () => {
     setLoading(true)
@@ -35,6 +38,7 @@ export default function AdminPage() {
     if (search) params.set('search', search)
     if (crewFilter) params.set('crew_id', crewFilter)
     if (checkedInFilter) params.set('checked_in', checkedInFilter)
+    if (confirmedFilter) params.set('confirmed', confirmedFilter)
     params.set('page', page.toString())
 
     const res = await fetch(`/api/admin/attendees?${params}`)
@@ -45,7 +49,7 @@ export default function AdminPage() {
       setTotal(data.total)
     }
     setLoading(false)
-  }, [search, crewFilter, checkedInFilter, page])
+  }, [search, crewFilter, checkedInFilter, confirmedFilter, page])
 
   useEffect(() => {
     fetch('/api/crews')
@@ -68,6 +72,7 @@ export default function AdminPage() {
           a.id === id
             ? {
                 ...a,
+                confirmed: true,
                 checked_in: true,
                 checked_in_at: new Date().toISOString(),
               }
@@ -83,6 +88,23 @@ export default function AdminPage() {
       )
     }
     setCheckingIn(null)
+  }
+
+  const handleToggleConfirmed = async (id: string, next: boolean) => {
+    setToggling(id)
+    const res = await fetch(`/api/admin/attendees/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ confirmed: next }),
+    })
+    if (res.ok) {
+      setAttendees((prev) =>
+        prev.map((a) => (a.id === id ? { ...a, confirmed: next } : a))
+      )
+    } else {
+      alert('Update failed')
+    }
+    setToggling(null)
   }
 
   const handleSearch = (e: React.FormEvent) => {
@@ -148,6 +170,18 @@ export default function AdminPage() {
             <option value='true'>Checked in</option>
             <option value='false'>Not checked in</option>
           </select>
+          <select
+            value={confirmedFilter}
+            onChange={(e) => {
+              setConfirmedFilter(e.target.value)
+              setPage(1)
+            }}
+            className='border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
+          >
+            <option value=''>All</option>
+            <option value='true'>Confirmed</option>
+            <option value='false'>Not confirmed</option>
+          </select>
           <button
             type='submit'
             className='border-transparent bg-invert px-6 py-2 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent'
@@ -170,6 +204,7 @@ export default function AdminPage() {
                   <th className='px-4 py-2'>Name</th>
                   <th className='px-4 py-2'>Email</th>
                   <th className='px-4 py-2'>Crew</th>
+                  <th className='px-4 py-2'>Confirmed</th>
                   <th className='px-4 py-2'>Status</th>
                   <th className='px-4 py-2'>Action</th>
                 </tr>
@@ -182,6 +217,28 @@ export default function AdminPage() {
                     </td>
                     <td className='px-4 py-2'>{a.email}</td>
                     <td className='px-4 py-2'>{a.crew_name}</td>
+                    <td className='px-4 py-2'>
+                      <button
+                        onClick={() => handleToggleConfirmed(a.id, !a.confirmed)}
+                        disabled={toggling === a.id}
+                        title={
+                          a.confirmed
+                            ? 'Click to mark as not confirmed'
+                            : 'Click to mark as confirmed'
+                        }
+                        className={
+                          a.confirmed
+                            ? 'bg-green-600 p-[0.05rem] text-sm text-white hover:bg-green-700 disabled:opacity-50'
+                            : 'bg-amber-500 p-[0.05rem] text-sm text-white hover:bg-amber-600 disabled:opacity-50'
+                        }
+                      >
+                        {toggling === a.id
+                          ? '...'
+                          : a.confirmed
+                            ? 'Confirmed'
+                            : 'Not confirmed'}
+                      </button>
+                    </td>
                     <td className='px-4 py-2'>
                       {a.checked_in ? (
                         <span className='bg-green-600 p-[0.05rem] text-sm text-white'>
@@ -205,9 +262,17 @@ export default function AdminPage() {
                         <button
                           onClick={() => handleCheckIn(a.id)}
                           disabled={checkingIn === a.id}
-                          className='border-transparent bg-green-600 px-3 py-1 text-xs text-white hover:bg-green-700 disabled:opacity-50'
+                          className={
+                            a.confirmed
+                              ? 'border-transparent bg-green-600 px-3 py-1 text-xs text-white hover:bg-green-700 disabled:opacity-50'
+                              : 'border-transparent bg-amber-500 px-3 py-1 text-xs text-white hover:bg-amber-600 disabled:opacity-50'
+                          }
                         >
-                          {checkingIn === a.id ? '...' : 'Check In'}
+                          {checkingIn === a.id
+                            ? '...'
+                            : a.confirmed
+                              ? 'Check In'
+                              : 'Confirm & Check In'}
                         </button>
                       )}
                     </td>

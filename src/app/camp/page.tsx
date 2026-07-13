@@ -324,14 +324,7 @@ export default function CampPage() {
           <div className='flex-1 font-sans text-2xl sm:text-3xl xl:space-y-16'>
             <div>
               <span className='sr-only'>About Eisbach Callin Camp</span>
-              <h1>
-                Join us{' '}
-                <span className='bg-invert p-[0.05rem] text-invert'>
-                  Jul 17-18, 2026
-                </span>{' '}
-                for a private festival with 20+ DJs from 3 crews, clean camping,
-                and good atmosphere.
-              </h1>
+              <h1>Invited to CAMP?</h1>
             </div>
           </div>
           {renderAuthStatus()}
@@ -340,16 +333,6 @@ export default function CampPage() {
       }
       rightSide={
         <div className='font-sans text-default'>
-          <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4'>
-                <h2 className='text-4xl sm:text-5xl'>
-                  One Festival. Two Nights of Bass. Three Crews.
-                </h2>
-              </div>
-            </div>
-          </div>
-
           <div className='grid grid-cols-2 gap-2 border-b border-default  p-2 md:grid-cols-4'>
             <div className='grid gap-2'>
               <div>
@@ -469,123 +452,12 @@ export default function CampPage() {
             </div>
           </div>
 
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4 self-center'>
-                <ul className='text-2xl sm:text-3xl'>
-                  <li className='pb-2'>
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      Jul 17-18, 2026
-                    </span>
-                  </li>
-                  <li className='pb-2'>
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      Jim Camp Grounds
-                    </span>{' '}
-                    in{' '}
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      Schattenhofen
-                    </span>
-                  </li>
-                  <li className='pb-2'>
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      20+ DJs from 3 Crews
-                    </span>
-                  </li>
-                  <li className='pb-2'>
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      A Massive Soundsystem
-                    </span>
-                  </li>
-                  <li className='pb-2'>
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      Invitation Only
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className=' border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4 self-center'>
-                <h3 className='text-2xl sm:text-3xl'>
-                  Expect rolling beats, deep frequencies, and laid-back vibes on
-                  the former{' '}
-                  <span className='bg-invert p-[0.05rem] text-invert'>
-                    Jim Camp grounds in Schattenhofen
-                  </span>
-                  . We’ve got clean camping, showers, coffee, snacks, and all
-                  the essentials for a stress-free festival.
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div className='border-b border-default p-2 text-xl font-normal text-default sm:text-2xl'>
-            <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4 self-center'>
-                <p className='text-2xl sm:text-3xl'>
-                  <span className='bg-invert p-[0.05rem] text-invert'>
-                    This private event requires an invitation.
-                  </span>{' '}
-                  There are no tickets and no on-site ticket sales. We’re all
-                  about safe, respectful spaces with zero tolerance for bad
-                  vibes. You take care of your trash, keep noise down at
-                  campsites, and bring nothing hazardous. Got questions?{' '}
-                  <Link
-                    className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                    href='mailto:mail@eisbachcallin.com'
-                  >
-                    Drop us a message
-                  </Link>
-                  .
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className='p-2 text-xl font-normal text-default sm:text-2xl'>
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
-              <div className='space-y-4'>
-                <ul className='text-2xl sm:text-3xl'>
-                  <li className='pb-2'>
-                    <span className='bg-invert p-[0.05rem] text-invert'>
-                      Socials:
-                    </span>
-                  </li>
-                  <li className='pb-2'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='https://www.instagram.com/eisbachcallin/'
-                    >
-                      Eisbach Callin
-                    </a>{' '}
-                  </li>
-                  <li className='pb-2'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='https://www.instagram.com/timetrippingmunich/'
-                    >
-                      Time Tripping
-                    </a>{' '}
-                  </li>
-                  <li className='pb-2'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='bg-accent p-[0.05rem] font-normal text-onaccent hover:text-invert'
-                      href='https://www.instagram.com/bambam.fun/'
-                    >
-                      Bam Bam
-                    </a>{' '}
-                  </li>
-                </ul>
+              <div className='space-y-4 self-center'>
+                <p className='bg-invert p-[0.05rem] text-invert'>
+                  This private event requires an invitation.
+                </p>
               </div>
             </div>
           </div>
