@@ -197,90 +197,168 @@ export default function AdminPage() {
             <span className='mx-auto block h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-black'></span>
           </div>
         ) : (
-          <div className='overflow-x-auto border border-default'>
-            <table className='w-full text-left text-sm'>
-              <thead className='bg-invert text-invert'>
-                <tr>
-                  <th className='px-4 py-2'>Name</th>
-                  <th className='px-4 py-2'>Email</th>
-                  <th className='px-4 py-2'>Crew</th>
-                  <th className='px-4 py-2'>Confirmed</th>
-                  <th className='px-4 py-2'>Status</th>
-                  <th className='px-4 py-2'>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {attendees.map((a) => (
-                  <tr key={a.id} className='border-t border-default'>
-                    <td className='px-4 py-2'>
+          <>
+            {/* Mobile: card layout — no sideways scrolling */}
+            <div className='space-y-3 sm:hidden'>
+              {attendees.map((a) => (
+                <div key={a.id} className='border border-default p-4'>
+                  <div className='mb-2'>
+                    <p className='text-base'>
                       {a.first_name} {a.last_name}
-                    </td>
-                    <td className='px-4 py-2'>{a.email}</td>
-                    <td className='px-4 py-2'>{a.crew_name}</td>
-                    <td className='px-4 py-2'>
-                      <button
-                        onClick={() => handleToggleConfirmed(a.id, !a.confirmed)}
-                        disabled={toggling === a.id}
-                        title={
-                          a.confirmed
-                            ? 'Click to mark as not confirmed'
-                            : 'Click to mark as confirmed'
-                        }
-                        className={
-                          a.confirmed
-                            ? 'bg-green-600 p-[0.05rem] text-sm text-white hover:bg-green-700 disabled:opacity-50'
-                            : 'bg-amber-500 p-[0.05rem] text-sm text-white hover:bg-amber-600 disabled:opacity-50'
-                        }
-                      >
-                        {toggling === a.id
-                          ? '...'
-                          : a.confirmed
-                            ? 'Confirmed'
-                            : 'Not confirmed'}
-                      </button>
-                    </td>
-                    <td className='px-4 py-2'>
-                      {a.checked_in ? (
-                        <span className='bg-green-600 p-[0.05rem] text-sm text-white'>
-                          Checked in
-                        </span>
-                      ) : (
-                        <span className='text-gray-500'>Not checked in</span>
-                      )}
-                    </td>
-                    <td className='px-4 py-2'>
-                      {a.checked_in ? (
-                        <span className='text-xs text-gray-400'>
-                          {new Date(a.checked_in_at!).toLocaleString('de-DE', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
-                        </span>
-                      ) : (
+                    </p>
+                    <p className='break-all text-sm text-gray-500'>{a.email}</p>
+                    <p className='text-sm text-gray-500'>{a.crew_name}</p>
+                  </div>
+                  <div className='mb-3 flex flex-wrap items-center gap-2'>
+                    <button
+                      onClick={() => handleToggleConfirmed(a.id, !a.confirmed)}
+                      disabled={toggling === a.id}
+                      title={
+                        a.confirmed
+                          ? 'Click to mark as not confirmed'
+                          : 'Click to mark as confirmed'
+                      }
+                      className={
+                        a.confirmed
+                          ? 'bg-green-600 px-2 py-1 text-sm text-white hover:bg-green-700 disabled:opacity-50'
+                          : 'bg-amber-500 px-2 py-1 text-sm text-white hover:bg-amber-600 disabled:opacity-50'
+                      }
+                    >
+                      {toggling === a.id
+                        ? '...'
+                        : a.confirmed
+                          ? 'Confirmed'
+                          : 'Not confirmed'}
+                    </button>
+                    {a.checked_in ? (
+                      <span className='bg-green-600 px-2 py-1 text-sm text-white'>
+                        Checked in
+                      </span>
+                    ) : (
+                      <span className='text-sm text-gray-500'>
+                        Not checked in
+                      </span>
+                    )}
+                  </div>
+                  {a.checked_in ? (
+                    <p className='text-xs text-gray-400'>
+                      Checked in{' '}
+                      {new Date(a.checked_in_at!).toLocaleString('de-DE', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </p>
+                  ) : (
+                    <button
+                      onClick={() => handleCheckIn(a.id)}
+                      disabled={checkingIn === a.id}
+                      className={
+                        a.confirmed
+                          ? 'w-full border-transparent bg-green-600 px-3 py-3 text-sm text-white hover:bg-green-700 disabled:opacity-50'
+                          : 'w-full border-transparent bg-amber-500 px-3 py-3 text-sm text-white hover:bg-amber-600 disabled:opacity-50'
+                      }
+                    >
+                      {checkingIn === a.id
+                        ? '...'
+                        : a.confirmed
+                          ? 'Check In'
+                          : 'Confirm & Check In'}
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: table layout */}
+            <div className='hidden overflow-x-auto border border-default sm:block'>
+              <table className='w-full text-left text-sm'>
+                <thead className='bg-invert text-invert'>
+                  <tr>
+                    <th className='px-4 py-2'>Name</th>
+                    <th className='px-4 py-2'>Email</th>
+                    <th className='px-4 py-2'>Crew</th>
+                    <th className='px-4 py-2'>Confirmed</th>
+                    <th className='px-4 py-2'>Status</th>
+                    <th className='px-4 py-2'>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {attendees.map((a) => (
+                    <tr key={a.id} className='border-t border-default'>
+                      <td className='px-4 py-2'>
+                        {a.first_name} {a.last_name}
+                      </td>
+                      <td className='px-4 py-2'>{a.email}</td>
+                      <td className='px-4 py-2'>{a.crew_name}</td>
+                      <td className='px-4 py-2'>
                         <button
-                          onClick={() => handleCheckIn(a.id)}
-                          disabled={checkingIn === a.id}
+                          onClick={() =>
+                            handleToggleConfirmed(a.id, !a.confirmed)
+                          }
+                          disabled={toggling === a.id}
+                          title={
+                            a.confirmed
+                              ? 'Click to mark as not confirmed'
+                              : 'Click to mark as confirmed'
+                          }
                           className={
                             a.confirmed
-                              ? 'border-transparent bg-green-600 px-3 py-1 text-xs text-white hover:bg-green-700 disabled:opacity-50'
-                              : 'border-transparent bg-amber-500 px-3 py-1 text-xs text-white hover:bg-amber-600 disabled:opacity-50'
+                              ? 'bg-green-600 p-[0.05rem] text-sm text-white hover:bg-green-700 disabled:opacity-50'
+                              : 'bg-amber-500 p-[0.05rem] text-sm text-white hover:bg-amber-600 disabled:opacity-50'
                           }
                         >
-                          {checkingIn === a.id
+                          {toggling === a.id
                             ? '...'
                             : a.confirmed
-                              ? 'Check In'
-                              : 'Confirm & Check In'}
+                              ? 'Confirmed'
+                              : 'Not confirmed'}
                         </button>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                      </td>
+                      <td className='px-4 py-2'>
+                        {a.checked_in ? (
+                          <span className='bg-green-600 p-[0.05rem] text-sm text-white'>
+                            Checked in
+                          </span>
+                        ) : (
+                          <span className='text-gray-500'>Not checked in</span>
+                        )}
+                      </td>
+                      <td className='px-4 py-2'>
+                        {a.checked_in ? (
+                          <span className='text-xs text-gray-400'>
+                            {new Date(a.checked_in_at!).toLocaleString('de-DE', {
+                              day: '2-digit',
+                              month: '2-digit',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}
+                          </span>
+                        ) : (
+                          <button
+                            onClick={() => handleCheckIn(a.id)}
+                            disabled={checkingIn === a.id}
+                            className={
+                              a.confirmed
+                                ? 'border-transparent bg-green-600 px-3 py-1 text-xs text-white hover:bg-green-700 disabled:opacity-50'
+                                : 'border-transparent bg-amber-500 px-3 py-1 text-xs text-white hover:bg-amber-600 disabled:opacity-50'
+                            }
+                          >
+                            {checkingIn === a.id
+                              ? '...'
+                              : a.confirmed
+                                ? 'Check In'
+                                : 'Confirm & Check In'}
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
 
         {totalPages > 1 && (

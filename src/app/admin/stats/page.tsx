@@ -90,7 +90,28 @@ export default function StatsPage() {
         )}
 
         <h2 className='mb-4 text-xl'>By Crew</h2>
-        <div className='overflow-hidden border border-default'>
+
+        {/* Mobile: card layout — no sideways scrolling */}
+        <div className='space-y-3 sm:hidden'>
+          {crews.map((c) => (
+            <div key={c.id} className='border border-default p-4'>
+              <p className='mb-2 text-base'>{c.name}</p>
+              <div className='flex justify-between text-sm'>
+                <span>Registered: {c.attendee_count}</span>
+                <span>Checked in: {c.checked_in_count}</span>
+                <span>
+                  {c.attendee_count > 0
+                    ? Math.round((c.checked_in_count / c.attendee_count) * 100)
+                    : 0}
+                  %
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: table layout */}
+        <div className='hidden overflow-hidden border border-default sm:block'>
           <table className='w-full text-left text-sm'>
             <thead className='bg-invert text-invert'>
               <tr>
