@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
   }
 
   const { searchParams } = new URL(req.url)
-  const search = (searchParams.get('search') || '').slice(0, 100)
+  const search = (searchParams.get('search') || '').trim().slice(0, 100)
   const crewId = searchParams.get('crew_id')
   const checkedIn = searchParams.get('checked_in')
   const confirmed = searchParams.get('confirmed')
@@ -36,9 +36,18 @@ export async function GET(req: NextRequest) {
   )
 
   if (search) {
-    query = query.or(
-      `first_name.ilike.%${search}%,last_name.ilike.%${search}%,email.ilike.%${search}%`
-    )
+    // Match each word independently so "John", "John Smith" and "Smith John"
+    // all work: every word must match one of the name/email fields (AND across
+    // words, OR across fields). Chained .or() calls are combined with AND.
+    const terms = search
+      .split(/\s+/)
+      .map((t) => t.replace(/[%,()]/g, '').trim())
+      .filter(Boolean)
+    for (const term of terms) {
+      query = query.or(
+        `first_name.ilike.%${term}%,last_name.ilike.%${term}%,email.ilike.%${term}%`
+      )
+    }
   }
 
   if (crewId) {
