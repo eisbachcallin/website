@@ -22,7 +22,7 @@ export default function CampPage() {
               Danke dass ihr alle da wart und bis zum nächsten Mal!
             </p>
             <p className='mt-2 font-sans text-default'>
-              Fragen? Schreib uns an{' '}
+              Fragen, Feedback, Liebesbriefe? Schreib uns an{' '}
               <Link
                 className='p-[0.05rem] font-normal text-accent hover:text-black'
                 href='mailto:mail@eisbachcallin.com'
