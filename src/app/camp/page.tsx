@@ -1,321 +1,11 @@
-'use client'
-
-import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import SplitContainer from '@/components/layout/SplitContainer'
 import Link from 'next/link'
-import { ory, getRegistrationUrl, logout } from '@/lib/ory'
-import type { Session } from '@ory/client'
 
-type Crew = { id: number; name: string }
-
+// Placeholder shown between CAMP events.
+// The full ticket-redemption page is preserved in `page.event.tsx.bak` —
+// swap it back into `page.tsx` when the next CAMP event is planned.
 export default function CampPage() {
-  const [uuid, setUuid] = useState<string | null>(null)
-  const [session, setSession] = useState<Session | null>(null)
-  const [authLoading, setAuthLoading] = useState(true)
-  const [crews, setCrews] = useState<Crew[]>([])
-  const [formData, setFormData] = useState({ first: '', last: '', crew_id: '' })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<{
-    uuid: string
-    first: string
-    last: string
-    email: string
-    crew: string
-  } | null>(null)
-  const [existingTicket, setExistingTicket] = useState<{
-    first: string
-    last: string
-    email: string
-    crew: string
-    uuid: string
-  } | null>(null)
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const uuidParam = params.get('uuid')
-    if (uuidParam && uuidParam.length >= 34) {
-      setUuid(uuidParam)
-    }
-  }, [])
-
-  useEffect(() => {
-    async function checkSession() {
-      try {
-        const { data } = await ory.toSession()
-        setSession(data)
-        const res = await fetch('/api/my-ticket', { credentials: 'include' })
-        if (res.ok) {
-          const json = await res.json()
-          if (json.ticket) setExistingTicket(json.ticket)
-        }
-      } catch {
-        setSession(null)
-      } finally {
-        setAuthLoading(false)
-      }
-    }
-    checkSession()
-  }, [])
-
-  useEffect(() => {
-    async function fetchCrews() {
-      try {
-        const res = await fetch('/api/crews')
-        if (res.ok) setCrews(await res.json())
-      } catch (e) {
-        console.error('Failed to fetch crews:', e)
-      }
-    }
-    fetchCrews()
-  }, [])
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!uuid || !session) return
-
-    setError(null)
-    setLoading(true)
-
-    try {
-      const res = await fetch('/api/redeem', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          uuid,
-          first_name: formData.first,
-          last_name: formData.last,
-          crew_id: formData.crew_id,
-        }),
-      })
-
-      const data = await res.json()
-
-      if (!res.ok) {
-        const messages: Record<string, string> = {
-          ticket_not_found: 'Invalid ticket. Check your QR code.',
-          ticket_already_claimed: 'This ticket has already been redeemed.',
-          user_already_has_ticket: 'You already have a ticket registered.',
-          invalid_crew: 'Invalid crew selection.',
-          email_not_verified: 'Please verify your email first.',
-          unauthorized: 'Please log in to continue.',
-        }
-        setError(messages[data.error] || 'Something went wrong. Try again.')
-        return
-      }
-
-      const crew = crews.find((c) => c.id === parseInt(formData.crew_id))
-      setSuccess({
-        uuid,
-        first: formData.first,
-        last: formData.last,
-        email: session.identity?.traits?.email || '',
-        crew: crew?.name || '',
-      })
-    } catch {
-      setError('Network error. Please try again.')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const emailVerified = session?.identity?.verifiable_addresses?.some(
-    (addr) => addr.via === 'email' && addr.verified
-  )
-
-  const renderAuthStatus = () => {
-    if (authLoading) return null
-
-    if (!session) {
-      return (
-        <button
-          onClick={() => {
-            const returnTo = uuid
-              ? `${window.location.origin}/camp?uuid=${uuid}`
-              : `${window.location.origin}/camp`
-            window.location.href = getRegistrationUrl(returnTo)
-          }}
-          className='w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent'
-        >
-          Log in / Register
-        </button>
-      )
-    }
-
-    return (
-      <div className='flex items-center justify-between text-sm text-default'>
-        <span>Logged in as {session.identity?.traits?.email}</span>
-        <button
-          type='button'
-          onClick={() => logout()}
-          className='text-accent underline hover:text-black'
-        >
-          Log out
-        </button>
-      </div>
-    )
-  }
-
-  const renderForm = () => {
-    if (success || existingTicket) {
-      const t = success ?? existingTicket!
-      return (
-        <div className='mt-6 w-full flex-1 space-y-4 border border-green-600 bg-green-100 p-3'>
-          <h2 className='font-sans text-2xl text-green-600'>
-            You&apos;re Invited!
-          </h2>
-          <div>
-            {t.uuid && (
-              <p className='text-black'>
-                <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
-                  UUID:
-                </strong>{' '}
-                {t.uuid}
-              </p>
-            )}
-            <p className='text-black'>
-              <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
-                Name:
-              </strong>{' '}
-              {t.first} {t.last}
-            </p>
-            <p className='text-black'>
-              <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
-                Email:
-              </strong>{' '}
-              {t.email}
-            </p>
-            <p className='text-black'>
-              <strong className='bg-black p-[0.05rem] text-sm font-light uppercase leading-none text-white'>
-                Crew:
-              </strong>{' '}
-              {t.crew}
-            </p>
-          </div>
-          <p className='mt-2 font-sans text-black'>
-            Please check your email. If you didn&apos;t receive an email reach
-            out to{' '}
-            <Link
-              className='p-[0.05rem] font-normal text-accent hover:text-black'
-              href='mailto:mail@eisbachcallin.com'
-            >
-              mail@eisbachcallin.com
-            </Link>
-            .
-          </p>
-        </div>
-      )
-    }
-
-    if (!uuid || uuid.length < 34) return null
-
-    if (authLoading) {
-      return (
-        <div className='mt-6 w-full flex-1 p-3'>
-          <span className='mx-auto block h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-black'></span>
-        </div>
-      )
-    }
-
-    if (!session) {
-      return (
-        <div className='mt-6 w-full flex-1 space-y-4 border border-default p-3'>
-          <p className='font-sans text-default'>
-            Log in above to redeem your ticket.
-          </p>
-        </div>
-      )
-    }
-
-    if (!emailVerified) {
-      return (
-        <div className='mt-6 w-full flex-1 space-y-4 border border-yellow-600 bg-yellow-100 p-3'>
-          <h2 className='font-sans text-xl text-yellow-700'>
-            Verify Your Email
-          </h2>
-          <p className='text-black'>
-            Check your inbox for a verification email from us. Once verified,
-            refresh this page to continue.
-          </p>
-        </div>
-      )
-    }
-
-    return (
-      <form
-        onSubmit={handleSubmit}
-        className='mt-6 grid w-full flex-1 grid-cols-1 gap-2 sm:max-w-md xl:max-w-xl'
-      >
-        {error && (
-          <p className='border border-red-600 bg-red-100 p-3 text-black'>
-            {error}
-          </p>
-        )}
-        <label className='block'>
-          <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
-            First Name
-          </span>
-          <input
-            type='text'
-            value={formData.first}
-            onChange={(e) =>
-              setFormData({ ...formData, first: e.target.value })
-            }
-            className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
-            placeholder='Your first name'
-            required
-          />
-        </label>
-        <label className='block'>
-          <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
-            Last Name
-          </span>
-          <input
-            type='text'
-            value={formData.last}
-            onChange={(e) => setFormData({ ...formData, last: e.target.value })}
-            className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
-            placeholder='Your last name'
-            required
-          />
-        </label>
-        <label className='block'>
-          <span className='bg-invert p-[0.05rem] text-sm font-light uppercase leading-none text-invert'>
-            Crew
-          </span>
-          <select
-            required
-            value={formData.crew_id}
-            onChange={(e) =>
-              setFormData({ ...formData, crew_id: e.target.value })
-            }
-            className='mt-0.5 block w-full border-accent bg-default px-3 py-2 font-sans text-base shadow-sm focus:border-default focus:ring-1 focus:ring-blue-500'
-          >
-            <option value=''>Select your crew</option>
-            {crews.map((crew) => (
-              <option key={crew.id} value={crew.id}>
-                {crew.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button
-          type='submit'
-          className=':ring-offset-2 mt-4 w-full border-transparent bg-invert px-6 py-3 font-sans text-sm text-invert hover:border-default hover:bg-accent hover:text-onaccent focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-accent'
-          disabled={loading}
-        >
-          {loading ? (
-            <span className='mx-auto block h-5 w-5 animate-spin rounded-full border-2 border-t-2 border-gray-300 border-t-white'></span>
-          ) : (
-            'Redeem Ticket'
-          )}
-        </button>
-      </form>
-    )
-  }
-
   return (
     <SplitContainer
       stickyLeft
@@ -323,12 +13,25 @@ export default function CampPage() {
         <div className='flex flex-col items-start space-y-8'>
           <div className='flex-1 font-sans text-2xl sm:text-3xl xl:space-y-16'>
             <div>
-              <span className='sr-only'>About Eisbach Callin Camp</span>
-              <h1>Invited to CAMP?</h1>
+              <span className='sr-only'>Eisbach Callin Camp</span>
+              <h1>CAMP</h1>
             </div>
           </div>
-          {renderAuthStatus()}
-          {renderForm()}
+          <div className='w-full flex-1 space-y-4 border border-default p-3'>
+            <p className='font-sans text-2xl text-default sm:text-3xl'>
+              Danke dass ihr alle da wart und bis zum nächsten Mal!
+            </p>
+            <p className='mt-2 font-sans text-default'>
+              Fragen? Schreib uns an{' '}
+              <Link
+                className='p-[0.05rem] font-normal text-accent hover:text-black'
+                href='mailto:mail@eisbachcallin.com'
+              >
+                mail@eisbachcallin.com
+              </Link>
+              .
+            </p>
+          </div>
         </div>
       }
       rightSide={
@@ -456,7 +159,7 @@ export default function CampPage() {
             <div className='flex max-w-4xl flex-col space-y-2 sm:flex-row sm:items-start sm:gap-4 sm:space-y-0'>
               <div className='space-y-4 self-center'>
                 <p className='bg-invert p-[0.05rem] text-invert'>
-                  This private event requires an invitation.
+                  Bis zum nächsten Mal.
                 </p>
               </div>
             </div>
